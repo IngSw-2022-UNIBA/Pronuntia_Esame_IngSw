@@ -52,9 +52,9 @@ AppAsset::register($this);
                 . Html::endForm()
                 . '</li>'
                 ),
-            ['label' => 'crea', 'url' => ['/logopedisti/create']],
+            ['label' => 'crea', 'url' => ['/utenti/create']],
             
-            ['label' => 'index', 'url' => ['/logopedisti/index']]
+            ['label' => 'index', 'url' => ['/logopedisti/create']]
         ],
     ]);
     NavBar::end();
