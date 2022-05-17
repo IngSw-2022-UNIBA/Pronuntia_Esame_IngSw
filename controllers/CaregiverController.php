@@ -2,16 +2,16 @@
 
 namespace app\controllers;
 
-use app\models\Utenti;
-use app\models\UtentiSearch;
+use app\models\Caregiver;
+use app\models\CaregiverSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * UtentiController implements the CRUD actions for Utenti model.
+ * CaregiverController implements the CRUD actions for Caregiver model.
  */
-class UtentiController extends Controller
+class CaregiverController extends Controller
 {
     /**
      * @inheritDoc
@@ -32,13 +32,13 @@ class UtentiController extends Controller
     }
 
     /**
-     * Lists all Utenti models.
+     * Lists all Caregiver models.
      *
      * @return string
      */
     public function actionIndex()
     {
-        $searchModel = new UtentiSearch();
+        $searchModel = new CaregiverSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -48,7 +48,7 @@ class UtentiController extends Controller
     }
 
     /**
-     * Displays a single Utenti model.
+     * Displays a single Caregiver model.
      * @param int $idUtente Id Utente
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
@@ -61,13 +61,13 @@ class UtentiController extends Controller
     }
 
     /**
-     * Creates a new Utenti model.
+     * Creates a new Caregiver model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
-        $model = new Utenti();
+        $model = new Caregiver();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
@@ -83,7 +83,7 @@ class UtentiController extends Controller
     }
 
     /**
-     * Updates an existing Utenti model.
+     * Updates an existing Caregiver model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $idUtente Id Utente
      * @return string|\yii\web\Response
@@ -103,7 +103,7 @@ class UtentiController extends Controller
     }
 
     /**
-     * Deletes an existing Utenti model.
+     * Deletes an existing Caregiver model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $idUtente Id Utente
      * @return \yii\web\Response
@@ -117,15 +117,15 @@ class UtentiController extends Controller
     }
 
     /**
-     * Finds the Utenti model based on its primary key value.
+     * Finds the Caregiver model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $idUtente Id Utente
-     * @return Utenti the loaded model
+     * @return Caregiver the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($idUtente)
     {
-        if (($model = Utenti::findOne(['idUtente' => $idUtente])) !== null) {
+        if (($model = Caregiver::findOne(['idUtente' => $idUtente])) !== null) {
             return $model;
         }
 

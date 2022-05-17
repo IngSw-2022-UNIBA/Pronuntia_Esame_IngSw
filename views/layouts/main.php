@@ -52,8 +52,9 @@ AppAsset::register($this);
                 . Html::endForm()
                 . '</li>'
                 ),
-            ['label' => 'LINK PROVE', 'url' => ['/utenti/create']],
-            ['label' => 'LINK PROVE2', 'url' => ['/utenti/index']]
+            ['label' => 'crea', 'url' => ['/logopedisti/create']],
+            
+            ['label' => 'index', 'url' => ['/logopedisti/index']]
         ],
     ]);
     NavBar::end();
