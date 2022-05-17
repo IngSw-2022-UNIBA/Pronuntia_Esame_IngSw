@@ -35,6 +35,7 @@ class Utenti extends \yii\db\ActiveRecord
             [['email', 'password', 'tipoUtente'], 'required'],
             [['tipoUtente'], 'integer'],
             [['email'], 'string', 'max' => 55],
+            ['email','email'],
             [['password'], 'string', 'max' => 25],
         ];
     }
