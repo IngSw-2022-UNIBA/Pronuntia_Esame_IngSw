@@ -31,6 +31,12 @@ class LogopedistiController extends Controller
         );
     }
 
+
+    public function actionForm() // come parametro dobbiamo passare l'id
+    {
+        return $this->render('create'); // qui dobbiamo aprire la view create e passare l'id
+    }
+
     /**
      * Lists all Logopedisti models.
      *
