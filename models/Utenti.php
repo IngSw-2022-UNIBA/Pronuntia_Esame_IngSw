@@ -10,6 +10,7 @@ use Yii;
  * @property int $idUtente
  * @property string $email
  * @property string $password
+ * @property int $tipoUtente
  *
  * @property Bambini $bambini
  * @property Caregiver $caregiver
@@ -31,7 +32,8 @@ class Utenti extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['email', 'password'], 'required'],
+            [['email', 'password', 'tipoUtente'], 'required'],
+            [['tipoUtente'], 'integer'],
             [['email'], 'string', 'max' => 55],
             [['password'], 'string', 'max' => 25],
         ];
@@ -46,6 +48,7 @@ class Utenti extends \yii\db\ActiveRecord
             'idUtente' => 'Id Utente',
             'email' => 'Email',
             'password' => 'Password',
+            'tipoUtente' => 'Tipo Utente',
         ];
     }
 
