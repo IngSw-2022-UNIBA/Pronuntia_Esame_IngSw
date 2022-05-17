@@ -7,7 +7,8 @@ USE pronuntia;
 CREATE TABLE utenti (
   idUtente int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   email varchar(55) NOT NULL,
-  password varchar(25) NOT NULL
+  password varchar(25) NOT NULL,
+  tipoUtente int(11) NOT NULL
 );
 
 CREATE TABLE logopedisti (
