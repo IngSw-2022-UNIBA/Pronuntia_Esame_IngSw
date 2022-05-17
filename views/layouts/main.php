@@ -52,7 +52,8 @@ AppAsset::register($this);
                 . Html::endForm()
                 . '</li>'
                 ),
-            ['label' => 'LINK PROVE', 'url' => ['/utenti/create']]
+            ['label' => 'LINK PROVE', 'url' => ['/utenti/create']],
+            ['label' => 'LINK PROVE2', 'url' => ['/utenti/index']]
         ],
     ]);
     NavBar::end();
