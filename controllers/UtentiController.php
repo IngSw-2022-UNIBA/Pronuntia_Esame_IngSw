@@ -72,7 +72,7 @@ class UtentiController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                // return LogopedistiController::actionForm();    //per aprire subito dopo il form del logopedista (ammettendo che si ha scelto come tipo il logopedista)
+                //return LogopedistiController::actionForm();    //per aprire subito dopo il form del logopedista (ammettendo che si ha scelto come tipo il logopedista)
                 return $this->redirect(['view', 'idUtente' => $model->idUtente]);
             }
         } else {
