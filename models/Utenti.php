@@ -136,4 +136,11 @@ class Utenti extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     {
         return $this->hasOne(Logopedisti::className(), ['idUtente' => 'idUtente']);
     }
+
+    public static function isLogopedista($tipo){
+        if($tipo == 1){
+            return true;
+        }
+        return false;
+    }
 }
