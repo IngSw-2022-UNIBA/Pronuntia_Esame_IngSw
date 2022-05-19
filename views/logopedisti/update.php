@@ -5,9 +5,6 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Logopedisti */
 
-$this->title = 'Update Logopedisti: ' . $model->idUtente;
-$this->params['breadcrumbs'][] = ['label' => 'Logopedistis', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->idUtente, 'url' => ['view', 'idUtente' => $model->idUtente]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="logopedisti-update">
