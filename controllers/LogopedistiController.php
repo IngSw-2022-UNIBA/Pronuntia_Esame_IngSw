@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\Logopedisti;
+use app\models\Utenti;
 use app\models\LogopedistiSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -82,6 +83,10 @@ class LogopedistiController extends Controller
         } else {
             $model->loadDefaultValues();
         }
+
+        // Imposto il tipo utente a 4 che significa utente registrato con conferma
+        $utente = new Utenti();
+        $utente->setTipo(4);
 
         return $this->render('create', [
             'model' => $model,

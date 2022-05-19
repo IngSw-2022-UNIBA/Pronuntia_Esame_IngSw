@@ -43,7 +43,6 @@ $log = new Utenti();
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav'],
         'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
             ) : (
@@ -62,8 +61,8 @@ $log = new Utenti();
             ) : (
                     $log->isLogopedista(Yii::$app->user->identity->tipoUtente) ? (
                         ['label' => 'Completa la registrazione', 'url' => ['/logopedisti/create']]
-                    ) : ( '<li>'.
-                        '<\li>'
+                    ) : (
+                         ['label' => 'Modifica profilo', 'url' => ['/logopedisti/update', 'idUtente'=> Yii::$app->user->id]]
                  )
             ),
 

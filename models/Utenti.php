@@ -138,9 +138,17 @@ class Utenti extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     }
 
     public static function isLogopedista($tipo){
+        //solo se è logopedista non confermato
         if($tipo == 1){
             return true;
         }
         return false;
     }
+
+    public static function setTipo($tipo){
+        $model = UtentiSearch::findIdentity(Yii::$app->user->id);
+        $model->tipoUtente = $tipo;
+        $model->save();
+    }
+
 }
