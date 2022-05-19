@@ -62,7 +62,7 @@ $log = new Utenti();
                     $log->isLogopedista(Yii::$app->user->identity->tipoUtente) ? (
                         ['label' => 'Completa la registrazione', 'url' => ['/logopedisti/create']]
                     ) : (
-                         ['label' => 'Modifica profilo', 'url' => ['/logopedisti/update', 'idUtente'=> Yii::$app->user->id]]
+                         ['label' => 'Il tuo profilo', 'url' => ['/logopedisti/view', 'idUtente'=> Yii::$app->user->id]]
                  )
             ),
 

@@ -1,13 +1,15 @@
 <?php
 
 namespace app\controllers;
-
+use app\controllers\UtentiController;
+use app\controllers\SiteController;
 use app\models\Logopedisti;
 use app\models\Utenti;
 use app\models\LogopedistiSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+
 
 /**
  * LogopedistiController implements the CRUD actions for Logopedisti model.
@@ -124,7 +126,11 @@ class LogopedistiController extends Controller
     {
         $this->findModel($idUtente)->delete();
 
-        return $this->redirect(['index']);
+        $modelutente = Utenti::findOne(['idUtente' => $idUtente]);
+        $modelutente->delete($idUtente);
+
+        // TODO: LOGOUT ---------------------------------------------------------------------------------------
+
     }
 
     /**
