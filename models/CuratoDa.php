@@ -34,6 +34,7 @@ class CuratoDa extends \yii\db\ActiveRecord
         return [
             [['data', 'idLogopedista', 'idCaregiver', 'idBambino'], 'required'],
             [['data'], 'safe'],
+            ['data', 'date', 'format' => 'yyyy-M-d'],
             [['idLogopedista', 'idCaregiver', 'idBambino'], 'integer'],
             [['idLogopedista', 'idCaregiver', 'idBambino'], 'unique', 'targetAttribute' => ['idLogopedista', 'idCaregiver', 'idBambino']],
             [['idLogopedista'], 'exist', 'skipOnError' => true, 'targetClass' => Logopedisti::className(), 'targetAttribute' => ['idLogopedista' => 'idUtente']],
