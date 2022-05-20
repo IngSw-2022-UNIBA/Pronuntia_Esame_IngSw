@@ -80,6 +80,18 @@ $log = new Utenti();
                 )
             ),
 
+            Yii::$app->user->isGuest ? (
+                '<li>'
+                .'</li>'
+            ) : (
+            $log->isLogopedistaConf(Yii::$app->user->identity->tipoUtente) ? (
+                ['label' => 'Lista bambini', 'url' => ['/curato-da/index']]
+            ) : (
+                '<li>'
+                .'</li>'
+            )
+            ),
+
             // Bambino --------------------------------------------------------------------------------------
             Yii::$app->user->isGuest ? (
                 '<li>'
