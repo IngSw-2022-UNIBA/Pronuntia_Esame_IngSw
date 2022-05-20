@@ -1,7 +1,8 @@
 <?php
 
 namespace app\controllers;
-
+use app\controllers\UtentiController;
+use app\models\Utenti;
 use app\models\Caregiver;
 use app\models\CaregiverSearch;
 use yii\web\Controller;
@@ -71,6 +72,9 @@ class CaregiverController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
+                // Imposto il tipo utente a 6 che significa utente registrato con conferma
+                $utente = new Utenti();
+                $utente->setTipo(6);
                 return $this->redirect(['view', 'idUtente' => $model->idUtente]);
             }
         } else {
@@ -113,7 +117,10 @@ class CaregiverController extends Controller
     {
         $this->findModel($idUtente)->delete();
 
-        return $this->redirect(['index']);
+        $modelutente = Utenti::findOne(['idUtente' => $idUtente]);
+        $modelutente->delete($idUtente);
+
+        return $this->goHome();
     }
 
     /**

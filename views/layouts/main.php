@@ -56,7 +56,7 @@ $log = new Utenti();
                 . '</li>'
                 ),
 
-            // Logopedista
+            // Logopedista --------------------------------------------------------------------------------------
             Yii::$app->user->isGuest ? (
                 ['label' => 'Registrati', 'url' => ['/utenti/create']]
             ) : (
@@ -80,7 +80,7 @@ $log = new Utenti();
                 )
             ),
 
-            // Bambino
+            // Bambino --------------------------------------------------------------------------------------
             Yii::$app->user->isGuest ? (
                 '<li>'
                 .'</li>'
@@ -103,6 +103,31 @@ $log = new Utenti();
                     '<li>'
                     .'</li>'
                 )
+            ),
+
+            // Caregiver --------------------------------------------------------------------------------------
+            Yii::$app->user->isGuest ? (
+                '<li>'
+                .'</li>'
+            ) : (
+            $log->isCaregiver(Yii::$app->user->identity->tipoUtente) ? (
+            ['label' => 'Completa la tua registrazione', 'url' => ['/caregiver/create']]
+            ) : (
+                '<li>'
+                .'</li>'
+            )
+            ),
+
+            Yii::$app->user->isGuest ? (
+                '<li>'
+                .'</li>'
+            ) : (
+            $log->isCaregiverConf(Yii::$app->user->identity->tipoUtente) ? (
+            ['label' => 'Il tuo profilo', 'url' => ['/caregiver/view', 'idUtente'=> Yii::$app->user->id]]
+            ) : (
+                '<li>'
+                .'</li>'
+            )
             ),
 
         ],

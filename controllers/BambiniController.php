@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\controllers\UtentiController;
 use app\models\Utenti;
 use app\models\Bambini;
 use app\models\BambiniSearch;
