@@ -16,7 +16,12 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'password')->passwordInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'tipoUtente')->textInput() ?>
+    <?= $form->field($model, 'tipoUtente')->dropDownList([
+            '1'=>'Logopedista',
+            '2' =>'Caregiver',
+            '3'=>'Paziente'],
+        ['prompt'=>'Seleziona Tipo']
+    ); ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
