@@ -11,6 +11,7 @@ use Yii;
  * @property string $email
  * @property string $password
  * @property int $tipoUtente
+ * @property string $passwordRepeat
  *
  * @property Bambini $bambini
  * @property Caregiver $caregiver
@@ -18,6 +19,9 @@ use Yii;
  */
 class Utenti extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 {
+
+    public $password_repeat;
+    
     /**
      * {@inheritdoc}
      */
@@ -32,11 +36,12 @@ class Utenti extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     public function rules()
     {
         return [
-            [['email', 'password', 'tipoUtente'], 'required'],
+            [['email', 'password', 'password_repeat', 'tipoUtente'], 'required'],
             [['tipoUtente'], 'integer'],
             [['email'], 'string', 'max' => 55],
             ['email','email'],
             [['password'], 'string', 'max' => 25],
+            ['password_repeat', 'compare', 'compareAttribute' => 'password'],
         ];
     }
 
