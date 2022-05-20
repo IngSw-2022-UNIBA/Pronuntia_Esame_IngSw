@@ -129,7 +129,7 @@ class LogopedistiController extends Controller
         $modelutente = Utenti::findOne(['idUtente' => $idUtente]);
         $modelutente->delete($idUtente);
 
-        // TODO: LOGOUT ---------------------------------------------------------------------------------------
+        return $this->goHome();
 
     }
 
