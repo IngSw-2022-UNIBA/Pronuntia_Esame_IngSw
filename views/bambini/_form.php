@@ -4,14 +4,13 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Logopedisti */
+/* @var $model app\models\Bambini */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="logopedisti-form">
+<div class="bambini-form">
 
     <?php $form = ActiveForm::begin(); ?>
-
 
     <?= $form->field($model,'idUtente')->hiddenInput(array('value'=>Yii::$app->user->id))->label(false) ?>
 
@@ -22,8 +21,6 @@ use yii\widgets\ActiveForm;
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>
-
-
 
     <?php ActiveForm::end(); ?>
 

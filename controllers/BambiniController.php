@@ -1,20 +1,18 @@
 <?php
 
 namespace app\controllers;
-use app\controllers\UtentiController;
-use app\controllers\SiteController;
-use app\models\Logopedisti;
+
 use app\models\Utenti;
-use app\models\LogopedistiSearch;
+use app\models\Bambini;
+use app\models\BambiniSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
-
 /**
- * LogopedistiController implements the CRUD actions for Logopedisti model.
+ * BambiniController implements the CRUD actions for Bambini model.
  */
-class LogopedistiController extends Controller
+class BambiniController extends Controller
 {
     /**
      * @inheritDoc
@@ -34,20 +32,14 @@ class LogopedistiController extends Controller
         );
     }
 
-
-    public function actionForm() // come parametro dobbiamo passare l'id
-    {
-        return $this->render('form'); // qui dobbiamo aprire la view create e passare l'id
-    }
-
     /**
-     * Lists all Logopedisti models.
+     * Lists all Bambini models.
      *
      * @return string
      */
     public function actionIndex()
     {
-        $searchModel = new LogopedistiSearch();
+        $searchModel = new BambiniSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -57,7 +49,7 @@ class LogopedistiController extends Controller
     }
 
     /**
-     * Displays a single Logopedisti model.
+     * Displays a single Bambini model.
      * @param int $idUtente Id Utente
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
@@ -70,19 +62,18 @@ class LogopedistiController extends Controller
     }
 
     /**
-     * Creates a new Logopedisti model.
+     * Creates a new Bambini model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
-        $model = new Logopedisti();
+        $model = new Bambini();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                // Imposto il tipo utente a 4 che significa utente registrato con conferma
                 $utente = new Utenti();
-                $utente->setTipo(4);
+                $utente->setTipo(5);
                 return $this->redirect(['view', 'idUtente' => $model->idUtente]);
             }
         } else {
@@ -95,7 +86,7 @@ class LogopedistiController extends Controller
     }
 
     /**
-     * Updates an existing Logopedisti model.
+     * Updates an existing Bambini model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $idUtente Id Utente
      * @return string|\yii\web\Response
@@ -115,7 +106,7 @@ class LogopedistiController extends Controller
     }
 
     /**
-     * Deletes an existing Logopedisti model.
+     * Deletes an existing Bambini model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $idUtente Id Utente
      * @return \yii\web\Response
@@ -129,19 +120,18 @@ class LogopedistiController extends Controller
         $modelutente->delete($idUtente);
 
         return $this->goHome();
-
     }
 
     /**
-     * Finds the Logopedisti model based on its primary key value.
+     * Finds the Bambini model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $idUtente Id Utente
-     * @return Logopedisti the loaded model
+     * @return Bambini the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($idUtente)
     {
-        if (($model = Logopedisti::findOne(['idUtente' => $idUtente])) !== null) {
+        if (($model = Bambini::findOne(['idUtente' => $idUtente])) !== null) {
             return $model;
         }
 

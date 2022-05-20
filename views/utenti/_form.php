@@ -19,8 +19,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'tipoUtente')->dropDownList([
             '1'=>'Logopedista',
-            '2' =>'Caregiver',
-            '3'=>'Paziente'],
+            '2' =>'Bambino',
+            '3'=>'Caregiver'],
         ['prompt'=>'Seleziona Tipo']
     ); ?>
 
