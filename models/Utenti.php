@@ -11,6 +11,7 @@ use Yii;
  * @property string $email
  * @property string $password
  * @property int $tipoUtente
+ * @property string $passwordRepeat
  *
  * @property Bambini $bambini
  * @property Caregiver $caregiver
@@ -18,6 +19,9 @@ use Yii;
  */
 class Utenti extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 {
+
+    public $password_repeat;
+
     /**
      * {@inheritdoc}
      */
@@ -32,11 +36,12 @@ class Utenti extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     public function rules()
     {
         return [
-            [['email', 'password', 'tipoUtente'], 'required'],
+            [['email', 'password', 'password_repeat', 'tipoUtente'], 'required'],
             [['tipoUtente'], 'integer'],
             [['email'], 'string', 'max' => 55],
             ['email','email'],
             [['password'], 'string', 'max' => 25],
+            ['password_repeat', 'compare', 'compareAttribute' => 'password'],
         ];
     }
 
@@ -137,6 +142,8 @@ class Utenti extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
         return $this->hasOne(Logopedisti::className(), ['idUtente' => 'idUtente']);
     }
 
+
+
     public static function isLogopedista($tipo){
         //solo se è logopedista non confermato
         if($tipo == 1){
@@ -145,6 +152,48 @@ class Utenti extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
         return false;
     }
 
+    public static function isLogopedistaConf($tipo){
+        //solo se è logopedista confermato
+        if($tipo == 4){
+            return true;
+        }
+
+        return false;
+    }
+
+    public static function isBambino($tipo){
+        //solo se è bambino non confermato
+        if($tipo == 2){
+            return true;
+        }
+        return false;
+    }
+
+    public static function isBambinoConf($tipo){
+        //solo se è bambino confermato
+        if($tipo == 5){
+            return true;
+        }
+        return false;
+    }
+
+    public static function isCaregiver($tipo){
+        //solo se è Caregiver non confermato
+        if($tipo == 3){
+            return true;
+        }
+        return false;
+    }
+
+    public static function isCaregiverConf($tipo){
+        //solo se è Caregiver confermato
+        if($tipo == 6){
+            return true;
+        }
+        return false;
+    }
+
+    // setta il tipo del utente loggato
     public static function setTipo($tipo){
         $model = UtentiSearch::findIdentity(Yii::$app->user->id);
         $model->tipoUtente = $tipo;

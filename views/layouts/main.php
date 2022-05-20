@@ -34,7 +34,7 @@ $log = new Utenti();
 <header>
     <?php
     NavBar::begin([
-        'brandLabel' => Yii::$app->name,
+        'brandLabel' => 'Homepage',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar navbar-expand-md navbar-dark bg-dark fixed-top',
@@ -56,17 +56,54 @@ $log = new Utenti();
                 . '</li>'
                 ),
 
+            // Logopedista
             Yii::$app->user->isGuest ? (
                 ['label' => 'Registrati', 'url' => ['/utenti/create']]
             ) : (
                     $log->isLogopedista(Yii::$app->user->identity->tipoUtente) ? (
                         ['label' => 'Completa la registrazione', 'url' => ['/logopedisti/create']]
                     ) : (
-                         ['label' => 'Il tuo profilo', 'url' => ['/logopedisti/view', 'idUtente'=> Yii::$app->user->id]]
-                 )
+                        '<li>'
+                        .'</li>'
+                    )
             ),
 
+            Yii::$app->user->isGuest ? (
+                '<li>'
+                .'</li>'
+            ) : (
+                $log->isLogopedistaConf(Yii::$app->user->identity->tipoUtente) ? (
+                    ['label' => 'Il tuo profilo', 'url' => ['/logopedisti/view', 'idUtente'=> Yii::$app->user->id]]
+                ) : (
+                    '<li>'
+                    .'</li>'
+                )
+            ),
 
+            // Bambino
+            Yii::$app->user->isGuest ? (
+                '<li>'
+                .'</li>'
+            ) : (
+                $log->isBambino(Yii::$app->user->identity->tipoUtente) ? (
+                    ['label' => 'Completa la tua registrazione', 'url' => ['/bambini/create']]
+                ) : (
+                    '<li>'
+                    .'</li>'
+                )
+            ),
+
+            Yii::$app->user->isGuest ? (
+                '<li>'
+                .'</li>'
+            ) : (
+                $log->isBambinoConf(Yii::$app->user->identity->tipoUtente) ? (
+                    ['label' => 'Il tuo profilo', 'url' => ['/bambini/view', 'idUtente'=> Yii::$app->user->id]]
+                ) : (
+                    '<li>'
+                    .'</li>'
+                )
+            ),
 
         ],
     ]);
@@ -86,7 +123,7 @@ $log = new Utenti();
 
 <footer class="footer mt-auto py-3 text-muted">
     <div class="container">
-        <p class="float-left">&copy; My Company <?= date('Y') ?></p>
+        <p class="float-left">&copy; Call Of Code <?= date('Y') ?></p>
         <p class="float-right"><?= Yii::powered() ?></p>
     </div>
 </footer>

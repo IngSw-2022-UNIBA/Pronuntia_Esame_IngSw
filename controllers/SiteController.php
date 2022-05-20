@@ -87,19 +87,6 @@ class SiteController extends Controller
         ]);
     }
 
-    // fatta da me
-    public function actionSignup(){
-        $model = new Signup();
-                       //metto i dati dal form nel oggetto && faccio caricare dall'oggetto i dati nel db
-        if($model->load(Yii::$app->request->post() && $model->signup())){
-            return $this->redirect(Yii::$app->homeUrl);
-        }
-        return $this->render('signup', [
-            'model' => $model
-        ]);
-    }
-
-
     /**
      * Logout action.
      *
