@@ -39,8 +39,7 @@ class CuratoDaController extends Controller
     public function actionIndex()
     {
         $searchModel = new CuratoDaSearch();
-        $dataProvider = $searchModel->searchPazienti($this->request->queryParams); // se uso search() non funziona
-                                                                                   // se uso searchPazienti() mi da un emptyset
+        $dataProvider = $searchModel->search($this->request->queryParams); // se uso searchPazienti() mi da un emptyset
 
         return $this->render('index', [
             'searchModel' => $searchModel,

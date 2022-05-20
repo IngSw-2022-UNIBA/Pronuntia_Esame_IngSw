@@ -1,5 +1,7 @@
 <?php
 
+use app\models\CuratoDa;
+
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
