@@ -73,9 +73,9 @@ class CuratoDaSearch extends CuratoDa
     public function searchPazienti($params)
     {
         $logopedista = Yii::$app->user->id;
-        $query = Utenti::find()->select('*')->from('utenti')
-            ->join("join", "bambini", "utenti.idUtente = bambini.idUtente")
-            ->where("bambini.idUtente='$logopedista'");
+        $query = CuratoDa::find()->select('*')->from('curato_da')
+            ->join("natural join", "bambini")
+            ->where("curato_da.idLogopedista='$logopedista'");
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,

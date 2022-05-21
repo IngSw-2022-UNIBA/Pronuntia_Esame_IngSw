@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use app\controllers\BambiniController;
+use app\models\Bambini;
 use app\models\CuratoDa;
 use app\models\CuratoDaSearch;
 use yii\web\Controller;
@@ -39,7 +41,7 @@ class CuratoDaController extends Controller
     public function actionIndex()
     {
         $searchModel = new CuratoDaSearch();
-        $dataProvider = $searchModel->search($this->request->queryParams); // se uso searchPazienti() mi da un emptyset
+        $dataProvider = $searchModel->searchPazienti($this->request->queryParams); // se uso searchPazienti() mi da un emptyset
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -57,9 +59,15 @@ class CuratoDaController extends Controller
      */
     public function actionView($idLogopedista, $idCaregiver, $idBambino)
     {
-        return $this->render('view', [
-            'model' => $this->findModel($idLogopedista, $idCaregiver, $idBambino),
+        $modelbambino = new Bambini();
+        return $this->render('/pazienti/view',[
+           'model' => $modelbambino->findModel($idBambino)      // Non va
         ]);
+
+        // questo stava prima
+        /*return $this->render('view', [
+            'model' => $this->findModel($idLogopedista, $idCaregiver, $idBambino),
+        ]);*/
     }
 
     /**

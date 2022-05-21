@@ -29,14 +29,15 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            'data',
-            'idLogopedista',
-            'idCaregiver',
             'idBambino',
+            'data',
+            //'idLogopedista',
+            //'idCaregiver',
+
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, CuratoDa $model, $key, $index, $column) {
+                    //return Url::toRoute(['/bambini/view', 'idUtente' => $model->idBambino]);
                     return Url::toRoute([$action, 'idLogopedista' => $model->idLogopedista, 'idCaregiver' => $model->idCaregiver, 'idBambino' => $model->idBambino]);
                  }
             ],
