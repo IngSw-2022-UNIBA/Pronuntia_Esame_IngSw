@@ -16,7 +16,6 @@ AppAsset::register($this);
 $log = new Utenti();
 
 
-
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -85,7 +84,7 @@ $log = new Utenti();
                 .'</li>'
             ) : (
             $log->isLogopedistaConf(Yii::$app->user->identity->tipoUtente) ? (
-                ['label' => 'Lista bambini', 'url' => ['/curato-da/index']]
+                ['label' => 'Lista bambini', 'url' => ['/logopedisti/listabambini']]
             ) : (
                 '<li>'
                 .'</li>'

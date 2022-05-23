@@ -18,6 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
+        <?= Html::a('Aggiungi Bambini', ['/bambini/index'], ['class' => 'btn btn-success']) ?> //deve poter avere un update diverso per modificare la foreign key con un click
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -34,8 +35,8 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Bambini $model, $key, $index, $column) {
-                    return Url::toRoute([$action, 'idUtente' => $model->idUtente]);
-                 }
+                    return Url::toRoute(['/bambini/viewlog', 'idUtente' => $model->idUtente]); // impongo di andare semore in viewlog ma va adattato bene
+                }
             ],
         ],
     ]); ?>

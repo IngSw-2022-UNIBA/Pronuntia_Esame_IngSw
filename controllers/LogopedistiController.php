@@ -3,6 +3,7 @@
 namespace app\controllers;
 use app\controllers\UtentiController;
 use app\controllers\SiteController;
+use app\models\BambiniSearch;
 use app\models\Logopedisti;
 use app\models\Utenti;
 use app\models\LogopedistiSearch;
@@ -146,5 +147,16 @@ class LogopedistiController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    public function actionListabambini()
+    {
+        $searchModel = new BambiniSearch();
+        $dataProvider = $searchModel->searchPazienti($this->request->queryParams);
+
+        return $this->render('listabambini', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
     }
 }

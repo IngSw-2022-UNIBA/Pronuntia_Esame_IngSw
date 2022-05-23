@@ -2,15 +2,15 @@
 
 namespace app\models;
 
-use app\models\CuratoDa;
+use app\models\TerapiaAssegnata;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 
 /**
- * CuratoDaSearch represents the model behind the search form of `app\models\CuratoDa`.
+ * TerapiaAssegnataSearch represents the model behind the search form of `app\models\TerapiaAssegnata`.
  */
-class CuratoDaSearch extends CuratoDa
+class TerapiaAssegnataSearch extends TerapiaAssegnata
 {
     /**
      * {@inheritdoc}
@@ -18,8 +18,8 @@ class CuratoDaSearch extends CuratoDa
     public function rules()
     {
         return [
-            [['data'], 'safe'],
-            [['idLogopedista', 'idCaregiver', 'idBambino'], 'integer'],
+            [['idTerapia', 'idBatteria', 'idBambino'], 'integer'],
+            [['data', 'Diagnosi'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class CuratoDaSearch extends CuratoDa
      */
     public function search($params)
     {
-        $query = CuratoDa::find();
+        $query = TerapiaAssegnata::find();
 
         // add conditions that should always apply here
 
@@ -59,23 +59,34 @@ class CuratoDaSearch extends CuratoDa
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'data' => $this->data,
-            'idLogopedista' => $this->idLogopedista,
-            'idCaregiver' => $this->idCaregiver,
+            'idTerapia' => $this->idTerapia,
+            'idBatteria' => $this->idBatteria,
             'idBambino' => $this->idBambino,
+            'data' => $this->data,
         ]);
+
+        $query->andFilterWhere(['like', 'Diagnosi', $this->Diagnosi]);
 
         return $dataProvider;
     }
 
-    // funzione che ricerca i pazienti del logopedista
-
-    public function searchPazienti($params)
+    /**
+     * Creates data provider instance with search query applied
+     *
+     * @param array $params
+     *
+     * @return ActiveDataProvider
+     */
+    public function searchTerapie($params, $idBambino)
     {
         $logopedista = Yii::$app->user->id;
-        $query = CuratoDa::find()->select('*')->from('curato_da')
-            ->join("natural join", "bambini")
-            ->where("curato_da.idLogopedista='$logopedista'");
+        $query = TerapiaAssegnata::find()->select('*')->from('terapie_assegnate')
+            ->join("JOIN", "bambini", "terapie_assegnate.idBambino = bambini.idUtente")
+            ->where("bambini.idLogopedista='$logopedista' AND terapie_assegnate.idBambino='$idBambino'");
+
+        //-----
+
+        // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -91,13 +102,14 @@ class CuratoDaSearch extends CuratoDa
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'data' => $this->data,
-            'idLogopedista' => $this->idLogopedista,
-            'idCaregiver' => $this->idCaregiver,
+            'idTerapia' => $this->idTerapia,
+            'idBatteria' => $this->idBatteria,
             'idBambino' => $this->idBambino,
+            'data' => $this->data,
         ]);
 
-        return $dataProvider;
+        $query->andFilterWhere(['like', 'Diagnosi', $this->Diagnosi]);
 
+        return $dataProvider;
     }
 }

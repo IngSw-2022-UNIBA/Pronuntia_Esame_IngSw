@@ -2,20 +2,16 @@
 
 namespace app\controllers;
 
-use app\controllers\UtentiController;
+use app\models\TerapiaAssegnata;
 use app\models\TerapiaAssegnataSearch;
-use app\models\Utenti;
-use app\models\Bambini;
-use app\models\BambiniSearch;
-use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * BambiniController implements the CRUD actions for Bambini model.
+ * TerapiaAssegnataController implements the CRUD actions for TerapiaAssegnata model.
  */
-class BambiniController extends Controller
+class TerapiaAssegnataController extends Controller
 {
     /**
      * @inheritDoc
@@ -36,13 +32,13 @@ class BambiniController extends Controller
     }
 
     /**
-     * Lists all Bambini models.
+     * Lists all TerapiaAssegnata models.
      *
      * @return string
      */
     public function actionIndex()
     {
-        $searchModel = new BambiniSearch();
+        $searchModel = new TerapiaAssegnataSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -52,39 +48,30 @@ class BambiniController extends Controller
     }
 
     /**
-     * Displays a single Bambini model.
-     * @param int $idUtente Id Utente
+     * Displays a single TerapiaAssegnata model.
+     * @param int $idTerapia Id Terapia
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($idUtente)
+    public function actionView($idTerapia)
     {
         return $this->render('view', [
-            'model' => $this->findModel($idUtente),
-        ]);
-    }
-
-    public function actionViewlog($idUtente)
-    {
-        return $this->render('viewlog', [
-            'model' => $this->findModel($idUtente),
+            'model' => $this->findModel($idTerapia),
         ]);
     }
 
     /**
-     * Creates a new Bambini model.
+     * Creates a new TerapiaAssegnata model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
-        $model = new Bambini();
+        $model = new TerapiaAssegnata();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                $utente = new Utenti();
-                $utente->setTipo(5);
-                return $this->redirect(['view', 'idUtente' => $model->idUtente]);
+                return $this->redirect(['view', 'idTerapia' => $model->idTerapia]);
             }
         } else {
             $model->loadDefaultValues();
@@ -96,18 +83,18 @@ class BambiniController extends Controller
     }
 
     /**
-     * Updates an existing Bambini model.
+     * Updates an existing TerapiaAssegnata model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param int $idUtente Id Utente
+     * @param int $idTerapia Id Terapia
      * @return string|\yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($idUtente)
+    public function actionUpdate($idTerapia)
     {
-        $model = $this->findModel($idUtente);
+        $model = $this->findModel($idTerapia);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'idUtente' => $model->idUtente]);
+            return $this->redirect(['view', 'idTerapia' => $model->idTerapia]);
         }
 
         return $this->render('update', [
@@ -116,46 +103,32 @@ class BambiniController extends Controller
     }
 
     /**
-     * Deletes an existing Bambini model.
+     * Deletes an existing TerapiaAssegnata model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param int $idUtente Id Utente
+     * @param int $idTerapia Id Terapia
      * @return \yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($idUtente)
+    public function actionDelete($idTerapia)
     {
-        $this->findModel($idUtente)->delete();
+        $this->findModel($idTerapia)->delete();
 
-        $modelutente = Utenti::findOne(['idUtente' => $idUtente]);
-        $modelutente->delete($idUtente);
-
-        return $this->goHome();
+        return $this->redirect(['index']);
     }
 
     /**
-     * Finds the Bambini model based on its primary key value.
+     * Finds the TerapiaAssegnata model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param int $idUtente Id Utente
-     * @return Bambini the loaded model
+     * @param int $idTerapia Id Terapia
+     * @return TerapiaAssegnata the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($idUtente)
+    protected function findModel($idTerapia)
     {
-        if (($model = Bambini::findOne(['idUtente' => $idUtente])) !== null) {
+        if (($model = TerapiaAssegnata::findOne(['idTerapia' => $idTerapia])) !== null) {
             return $model;
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
-    }
-
-    public function actionTerapiebambino($idBambino)
-    {
-        $searchModel = new TerapiaAssegnataSearch();
-        $dataProvider = $searchModel->searchTerapie($this->request->queryParams, $idBambino);
-
-        return $this->render('terapiebambino', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
     }
 }

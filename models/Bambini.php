@@ -48,6 +48,7 @@ class Bambini extends \yii\db\ActiveRecord
             'idUtente' => 'Id Utente',
             'nome' => 'Nome',
             'cognome' => 'Cognome',
+
         ];
     }
 
