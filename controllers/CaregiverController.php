@@ -48,6 +48,17 @@ class CaregiverController extends Controller
         ]);
     }
 
+    public function actionCaregiversdelbambino($idBambino)
+    {
+        $searchModel = new CaregiverSearch();
+        $dataProvider = $searchModel->searchCaregiversdelbambino($this->request->queryParams, $idBambino);
+
+        return $this->render('caregiversdelbambino', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
     /**
      * Displays a single Caregiver model.
      * @param int $idUtente Id Utente

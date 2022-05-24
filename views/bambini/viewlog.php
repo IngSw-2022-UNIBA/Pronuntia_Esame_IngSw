@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a('Terapie', ['bambini/terapiebambino','idBambino'=> $model->idUtente], ['class' => 'btn btn-secondary']) ?>
         <?= Html::a('Elimina dalla lista', ['bambini/deletelog','idUtente'=> $model->idUtente], ['class' => 'btn btn-danger']) ?>
-        <?= Html::a('Caregivers TODO', ['caregiver/index'], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Caregivers', ['caregiver/caregiversdelbambino', 'idBambino'=> $model->idUtente], ['class' => 'btn btn-primary']) ?>
     </p>
 
     <?= DetailView::widget([
