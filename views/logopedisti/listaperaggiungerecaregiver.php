@@ -9,19 +9,20 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\BambiniSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
+/* @var $idBambino */
 
-$this->title = 'Bambinis';
+$this->title = 'title';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="bambini-index">
 
-    <h1><?= Html::encode('Lista bambini') ?></h1>
-
-    <p>
-        <?= Html::a('Aggiungi Bambino alla lista', ['/logopedisti/listaperaggiungere'], ['class' => 'btn btn-success']) ?>
-    </p>
+    <h1><?= Html::encode('Seleziona') ?></h1>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+
+    <?php
+    echo $idBambino; // qui idBambino è correttamente funzionante e vale 2
+    ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -29,13 +30,12 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'idUtente',
             'nome',
             'cognome',
             [
                 'header' => '',
-                'content' => function($model) {
-                    return Html::a('Open', ['/bambini/viewlog', 'idUtente' => $model->idUtente], ['class' => 'btn btn-secondary']);
+                'content' => function($model, $idBambino) {                         // qui vale erroneamente come idUtente
+                    return Html::a('Aggiungi', ['caregiver/aggiungi' , 'idBambino' => $idBambino, 'idUtente' => $model->idUtente], ['class' => 'btn btn-primary']);
                 }
             ],
         ],

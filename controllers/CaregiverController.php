@@ -1,13 +1,19 @@
 <?php
 
 namespace app\controllers;
+
 use app\controllers\UtentiController;
 use app\models\Utenti;
 use app\models\Caregiver;
 use app\models\CaregiverSearch;
+use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+
+use app\models\TerapiaAssegnataSearch;
+use app\models\Bambini;
+use app\models\BambiniSearch;
 
 /**
  * CaregiverController implements the CRUD actions for Caregiver model.
@@ -48,17 +54,6 @@ class CaregiverController extends Controller
         ]);
     }
 
-    public function actionCaregiversdelbambino($idBambino)
-    {
-        $searchModel = new CaregiverSearch();
-        $dataProvider = $searchModel->searchCaregiversdelbambino($this->request->queryParams, $idBambino);
-
-        return $this->render('caregiversdelbambino', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
-    }
-
     /**
      * Displays a single Caregiver model.
      * @param int $idUtente Id Utente
@@ -68,6 +63,13 @@ class CaregiverController extends Controller
     public function actionView($idUtente)
     {
         return $this->render('view', [
+            'model' => $this->findModel($idUtente),
+        ]);
+    }
+
+    public function actionViewlog($idUtente)
+    {
+        return $this->render('viewlog', [
             'model' => $this->findModel($idUtente),
         ]);
     }
@@ -150,4 +152,35 @@ class CaregiverController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+    public function actionDeletebambino($idUtente)
+    {
+        $model = $this->findModel($idUtente);
+        $model->idBambino = 'NULL';
+        $model->save();
+
+
+        return $this->redirect(['logopedisti/listabambini']);
+    }
+
+    public function actionCaregiversdelbambino($idBambino)
+    {
+        $searchModel = new CaregiverSearch();
+        $dataProvider = $searchModel->searchCaregiversdelbambino($this->request->queryParams, $idBambino);
+
+        return $this->render('caregiversdelbambino', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'idBambino' => $idBambino,
+        ]);
+    }
+
+    public function actionAggiungi($idBambino, $idUtente)
+    {
+        $model = $this->findModel($idUtente);
+        $model->idBambino = $idBambino;
+        $model->save();
+        return $this->goHome();
+    }
+
 }

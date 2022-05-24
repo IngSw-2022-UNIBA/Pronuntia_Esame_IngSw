@@ -11,16 +11,18 @@ use yii\widgets\Pjax;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\CaregiverSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
+/* @var $idBambino */
 
 $this->title = 'Caregivers';
 $this->params['breadcrumbs'][] = $this->title;
+
 ?>
 <div class="caregiver-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Caregiver', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Aggiungi un Caregiver al bambino', ['logopedisti/listaperaggiungerecaregiver', 'idBambino' => $idBambino], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php Pjax::begin(); ?>
@@ -35,9 +37,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'nome',
             'cognome',
             [
-                'header' => 'Button',
+                'header' => '',
                 'content' => function($model) {
-                    return Html::a('Apri', ['/caregiver/view', 'idUtente' => $model->idUtente], ['class' => 'btn btn-secondary']);
+                    return Html::a('Apri', ['/caregiver/viewlog', 'idUtente' => $model->idUtente], ['class' => 'btn btn-secondary']);
                 }
             ],
         ],

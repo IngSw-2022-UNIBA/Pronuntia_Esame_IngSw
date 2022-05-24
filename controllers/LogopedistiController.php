@@ -4,6 +4,7 @@ namespace app\controllers;
 use app\controllers\UtentiController;
 use app\controllers\SiteController;
 use app\models\BambiniSearch;
+use app\models\CaregiverSearch;
 use app\models\Logopedisti;
 use app\models\Utenti;
 use app\models\LogopedistiSearch;
@@ -11,6 +12,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
+/* @var $idBambino */
 
 /**
  * LogopedistiController implements the CRUD actions for Logopedisti model.
@@ -170,4 +172,17 @@ class LogopedistiController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
+
+    public function actionListaperaggiungerecaregiver($idBambino)
+    {
+        $searchModel = new CaregiverSearch();
+        $dataProvider = $searchModel->searchCaregiverssenzabambino($this->request->queryParams);
+
+        return $this->render('listaperaggiungerecaregiver', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'idBambino' => $idBambino,
+        ]);
+    }
+
 }

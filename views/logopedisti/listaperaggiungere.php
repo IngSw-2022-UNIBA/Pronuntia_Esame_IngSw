@@ -10,7 +10,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\BambiniSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Bambinis';
+$this->title = 'Bambini';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="bambini-index">
@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'nome',
             'cognome',
             [
-                'header' => 'Button',
+                'header' => '',
                 'content' => function($model) {
                     return Html::a('Aggiungi', ['bambini/aggiungi' , 'idUtente' => $model->idUtente], ['class' => 'btn btn-primary']);
                 }
