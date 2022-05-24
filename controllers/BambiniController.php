@@ -71,6 +71,13 @@ class BambiniController extends Controller
         ]);
     }
 
+    public function actionViewlogaggiungi($idUtente)
+    {
+        return $this->render('viewlogaggiungi', [
+            'model' => $this->findModel($idUtente),
+        ]);
+    }
+
     /**
      * Creates a new Bambini model.
      * If creation is successful, the browser will be redirected to the 'view' page.
@@ -132,6 +139,15 @@ class BambiniController extends Controller
         return $this->goHome();
     }
 
+    public function actionAggiungi($idUtente)
+    {
+        $model = $this->findModel($idUtente);
+        $model->idLogopedista = Yii::$app->user->id;
+        $model->save();
+
+        return $this->redirect(['logopedisti/listaperaggiungere']);
+    }
+
     /**
      * Finds the Bambini model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
@@ -157,5 +173,15 @@ class BambiniController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
+    }
+
+    public function actionDeletelog($idUtente)
+    {
+        $model = $this->findModel($idUtente);
+        $model->idLogopedista = 'NULL';
+        $model->save();
+
+
+        return $this->redirect(['logopedisti/listabambini']);
     }
 }

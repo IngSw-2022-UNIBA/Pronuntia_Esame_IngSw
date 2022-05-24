@@ -159,4 +159,15 @@ class LogopedistiController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
+
+    public function actionListaperaggiungere()
+    {
+        $searchModel = new BambiniSearch();
+        $dataProvider = $searchModel->searchBambiniSenzaLog($this->request->queryParams);
+
+        return $this->render('listaperaggiungere', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
 }

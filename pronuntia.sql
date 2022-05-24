@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="js/vendor/codemirror/lib/codemirror.css?v=5.1.3">
     <link rel="stylesheet" type="text/css" href="js/vendor/codemirror/addon/hint/show-hint.css?v=5.1.3">
     <link rel="stylesheet" type="text/css" href="js/vendor/codemirror/addon/lint/lint.css?v=5.1.3">
-    <link rel="stylesheet" type="text/css" href="./themes/pmahomme/css/theme.css?v=5.1.3&nocache=1036761051ltr&server=1">
+    <link rel="stylesheet" type="text/css" href="./themes/pmahomme/css/theme.css?v=5.1.3&nocache=2708965869ltr&server=1">
     <link rel="stylesheet" type="text/css" href="./themes/pmahomme/css/printview.css?v=5.1.3" media="print" id="printcss">
     <title>localhost / 127.0.0.1 | phpMyAdmin 5.1.3</title>
     <script data-cfasync="false" type="text/javascript" src="js/vendor/jquery/jquery.min.js?v=5.1.3"></script>
@@ -56,7 +56,7 @@
 
 <script data-cfasync="false" type="text/javascript">
 // <![CDATA[
-CommonParams.setAll({common_query:"",opendb_url:"index.php?route=/database/structure",lang:"it",server:"1",table:"",db:"",token:"7123292f522e5a743c76567b514e7979",text_dir:"ltr",show_databases_navigation_as_tree:true,pma_text_default_tab:"Mostra",pma_text_left_default_tab:"Struttura",pma_text_left_default_tab2:false,LimitChars:"50",pftext:"P",confirm:true,LoginCookieValidity:"1440",session_gc_maxlifetime:"1440",logged_in:true,is_https:false,rootPath:"/phpmyadmin/",arg_separator:"&",PMA_VERSION:"5.1.3",auth_type:"config",user:"root"});
+CommonParams.setAll({common_query:"",opendb_url:"index.php?route=/database/structure",lang:"it",server:"1",table:"",db:"",token:"3a497774394f255b3b4061275124667d",text_dir:"ltr",show_databases_navigation_as_tree:true,pma_text_default_tab:"Mostra",pma_text_left_default_tab:"Struttura",pma_text_left_default_tab2:false,LimitChars:"50",pftext:"P",confirm:true,LoginCookieValidity:"1440",session_gc_maxlifetime:"1440",logged_in:true,is_https:false,rootPath:"/phpmyadmin/",arg_separator:"&",PMA_VERSION:"5.1.3",auth_type:"config",user:"root"});
 var firstDayOfCalendar = '0';
 var themeImagePath = '.\/themes\/pmahomme\/img\/';
 var mysqlDocTemplate = '.\/url.php\u003Furl\u003Dhttps\u00253A\u00252F\u00252Fdev.mysql.com\u00252Fdoc\u00252Frefman\u00252F8.0\u00252Fen\u00252F\u002525s.html';
@@ -260,7 +260,7 @@ $(function() {
       </div>
       <div id="pma_navigation_tree" class="list_container synced highlight autoexpand">
 
-  <div class="pma_quick_warp"><div class="drop_list"><button title="Tabelle recenti" class="drop_button btn">Recente</button><ul id="pma_recent_list"><li class="warp_link"><a href="index.php?route=/table/recent-favorite&db=pronuntia&table=utenti">`pronuntia`.`utenti`</a></li><li class="warp_link"><a href="index.php?route=/table/recent-favorite&db=pronuntia&table=terapie_assegnate">`pronuntia`.`terapie_assegnate`</a></li><li class="warp_link"><a href="index.php?route=/table/recent-favorite&db=pronuntia&table=es_della_batteria">`pronuntia`.`es_della_batteria`</a></li><li class="warp_link"><a href="index.php?route=/table/recent-favorite&db=pronuntia&table=batterie_di_es">`pronuntia`.`batterie_di_es`</a></li><li class="warp_link"><a href="index.php?route=/table/recent-favorite&db=pronuntia&table=librerie_esercizi">`pronuntia`.`librerie_esercizi`</a></li><li class="warp_link"><a href="index.php?route=/table/recent-favorite&db=pronuntia&table=bambini">`pronuntia`.`bambini`</a></li><li class="warp_link"><a href="index.php?route=/table/recent-favorite&db=pronuntia&table=curato_da">`pronuntia`.`curato_da`</a></li><li class="warp_link"><a href="index.php?route=/table/recent-favorite&db=pronuntia&table=caregiver">`pronuntia`.`caregiver`</a></li><li class="warp_link"><a href="index.php?route=/table/recent-favorite&db=pronuntia&table=logopedisti">`pronuntia`.`logopedisti`</a></li></ul></div><div class="drop_list"><button title="Tabelle preferite" class="drop_button btn">Preferiti</button><ul id="pma_favorite_list"><li class="warp_link">Non ci sono tabelle preferite.</li></ul></div><div class="clearfloat"></div></div>
+  <div class="pma_quick_warp"><div class="drop_list"><button title="Tabelle recenti" class="drop_button btn">Recente</button><ul id="pma_recent_list"><li class="warp_link"><a href="index.php?route=/table/recent-favorite&db=pronuntia&table=bambini">`pronuntia`.`bambini`</a></li><li class="warp_link"><a href="index.php?route=/table/recent-favorite&db=pronuntia&table=logopedisti">`pronuntia`.`logopedisti`</a></li><li class="warp_link"><a href="index.php?route=/table/recent-favorite&db=pronuntia&table=caregiver">`pronuntia`.`caregiver`</a></li><li class="warp_link"><a href="index.php?route=/table/recent-favorite&db=pronuntia&table=utenti">`pronuntia`.`utenti`</a></li><li class="warp_link"><a href="index.php?route=/table/recent-favorite&db=pronuntia&table=terapie_assegnate">`pronuntia`.`terapie_assegnate`</a></li><li class="warp_link"><a href="index.php?route=/table/recent-favorite&db=pronuntia&table=es_della_batteria">`pronuntia`.`es_della_batteria`</a></li><li class="warp_link"><a href="index.php?route=/table/recent-favorite&db=pronuntia&table=batterie_di_es">`pronuntia`.`batterie_di_es`</a></li><li class="warp_link"><a href="index.php?route=/table/recent-favorite&db=pronuntia&table=librerie_esercizi">`pronuntia`.`librerie_esercizi`</a></li><li class="warp_link"><a href="index.php?route=/table/recent-favorite&db=pronuntia&table=curato_da">`pronuntia`.`curato_da`</a></li></ul></div><div class="drop_list"><button title="Tabelle preferite" class="drop_button btn">Preferiti</button><ul id="pma_favorite_list"><li class="warp_link">Non ci sono tabelle preferite.</li></ul></div><div class="clearfloat"></div></div>
 
 <div class="clearfloat"></div>
 
@@ -284,7 +284,7 @@ $(function() {
                   <div id="pma_navigation_settings"><div class="page_settings"><form method="post" action="index.php&#x3F;route&#x3D;&#x25;2Fexport&amp;server&#x3D;1" class="config-form disableAjax">
   <input type="hidden" name="tab_hash" value="">
       <input type="hidden" name="check_page_refresh" id="check_page_refresh" value="">
-    <input type="hidden" name="token" value="7123292f522e5a743c76567b514e7979">
+    <input type="hidden" name="token" value="3a497774394f255b3b4061275124667d">
   <input type="hidden" name="submit_save" value="Navi">
 <ul class="tabs responsivetable row">
       <li><a href="#Navi_panel">Pannello di navigazione</a></li>
@@ -600,7 +600,7 @@ $.extend(defaultValues, {
                             <span class="query">SELECT * FROM `bambini`</span>
                         </div>
                                             <div class="message history collapsed hide select"
-                            targetdb="pronuntia" targettable="batterie_di_es">
+                            targetdb="pronuntia" targettable="logopedisti">
                             <div class="action_content">
                     <span class="action collapse">
             Riduci
@@ -635,10 +635,10 @@ $.extend(defaultValues, {
                             : <span>Durante la sessione corrente</span>
                     </span>
             </div>
-                            <span class="query">SELECT * FROM `batterie_di_es`</span>
+                            <span class="query">SELECT * FROM `logopedisti`</span>
                         </div>
                                             <div class="message history collapsed hide select"
-                            targetdb="pronuntia" targettable="curato_da">
+                            targetdb="pronuntia" targettable="caregiver">
                             <div class="action_content">
                     <span class="action collapse">
             Riduci
@@ -673,48 +673,10 @@ $.extend(defaultValues, {
                             : <span>Durante la sessione corrente</span>
                     </span>
             </div>
-                            <span class="query">SELECT * FROM `curato_da`</span>
-                        </div>
-                                            <div class="message history collapsed hide"
-                            targetdb="pronuntia" targettable="curato_da">
-                            <div class="action_content">
-                    <span class="action collapse">
-            Riduci
-                    </span>
-                            <span class="action expand">
-            Espandi
-                    </span>
-                            <span class="action requery">
-            Re-query
-                    </span>
-                            <span class="action edit">
-            Modifica
-                    </span>
-                            <span class="action explain">
-            Spiega
-                    </span>
-                            <span class="action profiling">
-            Profiling
-                    </span>
-                            <span class="action bookmark">
-            Segnalibro
-                    </span>
-                            <span class="text failed">
-            Query fallita
-                    </span>
-                            <span class="text targetdb">
-            Database
-                            : <span>pronuntia</span>
-                    </span>
-                            <span class="text query_time">
-            Tempo in coda
-                            : <span>Durante la sessione corrente</span>
-                    </span>
-            </div>
-                            <span class="query">drop TABLE curato_da;</span>
+                            <span class="query">SELECT * FROM `caregiver`</span>
                         </div>
                                             <div class="message history collapsed hide select"
-                            targetdb="pronuntia" targettable="batterie_di_es">
+                            targetdb="pronuntia" targettable="bambini">
                             <div class="action_content">
                     <span class="action collapse">
             Riduci
@@ -749,10 +711,10 @@ $.extend(defaultValues, {
                             : <span>Durante la sessione corrente</span>
                     </span>
             </div>
-                            <span class="query">SELECT * FROM `batterie_di_es`</span>
+                            <span class="query">SELECT * FROM `bambini`</span>
                         </div>
                                             <div class="message history collapsed hide select"
-                            targetdb="pronuntia" targettable="terapie_assegnate">
+                            targetdb="pronuntia" targettable="caregiver">
                             <div class="action_content">
                     <span class="action collapse">
             Riduci
@@ -787,10 +749,10 @@ $.extend(defaultValues, {
                             : <span>Durante la sessione corrente</span>
                     </span>
             </div>
-                            <span class="query">SELECT * FROM `terapie_assegnate`</span>
+                            <span class="query">SELECT * FROM `caregiver`</span>
                         </div>
                                             <div class="message history collapsed hide select"
-                            targetdb="pronuntia" targettable="terapie_assegnate">
+                            targetdb="pronuntia" targettable="bambini">
                             <div class="action_content">
                     <span class="action collapse">
             Riduci
@@ -825,7 +787,197 @@ $.extend(defaultValues, {
                             : <span>Durante la sessione corrente</span>
                     </span>
             </div>
-                            <span class="query">SELECT * FROM `terapie_assegnate`</span>
+                            <span class="query">SELECT * FROM `bambini`</span>
+                        </div>
+                                            <div class="message history collapsed hide select"
+                            targetdb="pronuntia" targettable="bambini">
+                            <div class="action_content">
+                    <span class="action collapse">
+            Riduci
+                    </span>
+                            <span class="action expand">
+            Espandi
+                    </span>
+                            <span class="action requery">
+            Re-query
+                    </span>
+                            <span class="action edit">
+            Modifica
+                    </span>
+                            <span class="action explain">
+            Spiega
+                    </span>
+                            <span class="action profiling">
+            Profiling
+                    </span>
+                            <span class="action bookmark">
+            Segnalibro
+                    </span>
+                            <span class="text failed">
+            Query fallita
+                    </span>
+                            <span class="text targetdb">
+            Database
+                            : <span>pronuntia</span>
+                    </span>
+                            <span class="text query_time">
+            Tempo in coda
+                            : <span>Durante la sessione corrente</span>
+                    </span>
+            </div>
+                            <span class="query">SELECT * from bambini WHERE idLogopedista = null;</span>
+                        </div>
+                                            <div class="message history collapsed hide select"
+                            targetdb="pronuntia" targettable="bambini">
+                            <div class="action_content">
+                    <span class="action collapse">
+            Riduci
+                    </span>
+                            <span class="action expand">
+            Espandi
+                    </span>
+                            <span class="action requery">
+            Re-query
+                    </span>
+                            <span class="action edit">
+            Modifica
+                    </span>
+                            <span class="action explain">
+            Spiega
+                    </span>
+                            <span class="action profiling">
+            Profiling
+                    </span>
+                            <span class="action bookmark">
+            Segnalibro
+                    </span>
+                            <span class="text failed">
+            Query fallita
+                    </span>
+                            <span class="text targetdb">
+            Database
+                            : <span>pronuntia</span>
+                    </span>
+                            <span class="text query_time">
+            Tempo in coda
+                            : <span>Durante la sessione corrente</span>
+                    </span>
+            </div>
+                            <span class="query">SELECT * FROM `bambini`</span>
+                        </div>
+                                            <div class="message history collapsed hide select"
+                            targetdb="pronuntia" targettable="bambini">
+                            <div class="action_content">
+                    <span class="action collapse">
+            Riduci
+                    </span>
+                            <span class="action expand">
+            Espandi
+                    </span>
+                            <span class="action requery">
+            Re-query
+                    </span>
+                            <span class="action edit">
+            Modifica
+                    </span>
+                            <span class="action explain">
+            Spiega
+                    </span>
+                            <span class="action profiling">
+            Profiling
+                    </span>
+                            <span class="action bookmark">
+            Segnalibro
+                    </span>
+                            <span class="text failed">
+            Query fallita
+                    </span>
+                            <span class="text targetdb">
+            Database
+                            : <span>pronuntia</span>
+                    </span>
+                            <span class="text query_time">
+            Tempo in coda
+                            : <span>Durante la sessione corrente</span>
+                    </span>
+            </div>
+                            <span class="query">SELECT * FROM `bambini` WHERE idLogopedista = NULL;</span>
+                        </div>
+                                            <div class="message history collapsed hide select"
+                            targetdb="pronuntia" targettable="bambini">
+                            <div class="action_content">
+                    <span class="action collapse">
+            Riduci
+                    </span>
+                            <span class="action expand">
+            Espandi
+                    </span>
+                            <span class="action requery">
+            Re-query
+                    </span>
+                            <span class="action edit">
+            Modifica
+                    </span>
+                            <span class="action explain">
+            Spiega
+                    </span>
+                            <span class="action profiling">
+            Profiling
+                    </span>
+                            <span class="action bookmark">
+            Segnalibro
+                    </span>
+                            <span class="text failed">
+            Query fallita
+                    </span>
+                            <span class="text targetdb">
+            Database
+                            : <span>pronuntia</span>
+                    </span>
+                            <span class="text query_time">
+            Tempo in coda
+                            : <span>Durante la sessione corrente</span>
+                    </span>
+            </div>
+                            <span class="query">SELECT * FROM `bambini`</span>
+                        </div>
+                                            <div class="message history collapsed hide select"
+                            targetdb="pronuntia" targettable="caregiver">
+                            <div class="action_content">
+                    <span class="action collapse">
+            Riduci
+                    </span>
+                            <span class="action expand">
+            Espandi
+                    </span>
+                            <span class="action requery">
+            Re-query
+                    </span>
+                            <span class="action edit">
+            Modifica
+                    </span>
+                            <span class="action explain">
+            Spiega
+                    </span>
+                            <span class="action profiling">
+            Profiling
+                    </span>
+                            <span class="action bookmark">
+            Segnalibro
+                    </span>
+                            <span class="text failed">
+            Query fallita
+                    </span>
+                            <span class="text targetdb">
+            Database
+                            : <span>pronuntia</span>
+                    </span>
+                            <span class="text query_time">
+            Tempo in coda
+                            : <span>Durante la sessione corrente</span>
+                    </span>
+            </div>
+                            <span class="query">SELECT * FROM `caregiver`</span>
                         </div>
                                             <div class="message history collapsed hide select"
                             targetdb="pronuntia" targettable="bambini">
@@ -942,7 +1094,7 @@ $.extend(defaultValues, {
                             <span class="query">SELECT * FROM `bambini`</span>
                         </div>
                                             <div class="message history collapsed hide select"
-                            targetdb="pronuntia" targettable="terapie_assegnate">
+                            targetdb="pronuntia" targettable="bambini">
                             <div class="action_content">
                     <span class="action collapse">
             Riduci
@@ -977,10 +1129,10 @@ $.extend(defaultValues, {
                             : <span>Durante la sessione corrente</span>
                     </span>
             </div>
-                            <span class="query">SELECT * FROM `terapie_assegnate`</span>
+                            <span class="query">SELECT * FROM `bambini`</span>
                         </div>
                                             <div class="message history collapsed hide select"
-                            targetdb="pronuntia" targettable="terapie_assegnate">
+                            targetdb="pronuntia" targettable="bambini">
                             <div class="action_content">
                     <span class="action collapse">
             Riduci
@@ -1015,10 +1167,10 @@ $.extend(defaultValues, {
                             : <span>Durante la sessione corrente</span>
                     </span>
             </div>
-                            <span class="query">SELECT * FROM `terapie_assegnate`</span>
+                            <span class="query">SELECT * FROM `bambini`</span>
                         </div>
                                             <div class="message history collapsed hide select"
-                            targetdb="pronuntia" targettable="librerie_esercizi">
+                            targetdb="pronuntia" targettable="bambini">
                             <div class="action_content">
                     <span class="action collapse">
             Riduci
@@ -1053,86 +1205,10 @@ $.extend(defaultValues, {
                             : <span>Durante la sessione corrente</span>
                     </span>
             </div>
-                            <span class="query">SELECT * FROM `librerie_esercizi`</span>
-                        </div>
-                                            <div class="message history collapsed hide"
-                            targetdb="pronuntia" targettable="librerie_esercizi">
-                            <div class="action_content">
-                    <span class="action collapse">
-            Riduci
-                    </span>
-                            <span class="action expand">
-            Espandi
-                    </span>
-                            <span class="action requery">
-            Re-query
-                    </span>
-                            <span class="action edit">
-            Modifica
-                    </span>
-                            <span class="action explain">
-            Spiega
-                    </span>
-                            <span class="action profiling">
-            Profiling
-                    </span>
-                            <span class="action bookmark">
-            Segnalibro
-                    </span>
-                            <span class="text failed">
-            Query fallita
-                    </span>
-                            <span class="text targetdb">
-            Database
-                            : <span>pronuntia</span>
-                    </span>
-                            <span class="text query_time">
-            Tempo in coda
-                            : <span>Durante la sessione corrente</span>
-                    </span>
-            </div>
-                            <span class="query">INSERT INTO `librerie_esercizi` (`idEsercizio`, `testo`) VALUES (NULL, &#039;leggi questo rigo&#039;);</span>
-                        </div>
-                                            <div class="message history collapsed hide"
-                            targetdb="pronuntia" targettable="librerie_esercizi">
-                            <div class="action_content">
-                    <span class="action collapse">
-            Riduci
-                    </span>
-                            <span class="action expand">
-            Espandi
-                    </span>
-                            <span class="action requery">
-            Re-query
-                    </span>
-                            <span class="action edit">
-            Modifica
-                    </span>
-                            <span class="action explain">
-            Spiega
-                    </span>
-                            <span class="action profiling">
-            Profiling
-                    </span>
-                            <span class="action bookmark">
-            Segnalibro
-                    </span>
-                            <span class="text failed">
-            Query fallita
-                    </span>
-                            <span class="text targetdb">
-            Database
-                            : <span>pronuntia</span>
-                    </span>
-                            <span class="text query_time">
-            Tempo in coda
-                            : <span>Durante la sessione corrente</span>
-                    </span>
-            </div>
-                            <span class="query">INSERT INTO `librerie_esercizi` (`idEsercizio`, `testo`) VALUES (NULL, &#039;fai lo spelling&#039;);</span>
+                            <span class="query">SELECT * FROM `bambini`</span>
                         </div>
                                             <div class="message history collapsed hide select"
-                            targetdb="pronuntia" targettable="terapie_assegnate">
+                            targetdb="pronuntia" targettable="logopedisti">
                             <div class="action_content">
                     <span class="action collapse">
             Riduci
@@ -1167,10 +1243,10 @@ $.extend(defaultValues, {
                             : <span>Durante la sessione corrente</span>
                     </span>
             </div>
-                            <span class="query">SELECT * FROM `terapie_assegnate`</span>
+                            <span class="query">SELECT * FROM `logopedisti`</span>
                         </div>
                                             <div class="message history collapsed hide select"
-                            targetdb="pronuntia" targettable="es_della_batteria">
+                            targetdb="pronuntia" targettable="bambini">
                             <div class="action_content">
                     <span class="action collapse">
             Riduci
@@ -1205,10 +1281,10 @@ $.extend(defaultValues, {
                             : <span>Durante la sessione corrente</span>
                     </span>
             </div>
-                            <span class="query">SELECT * FROM `es_della_batteria`</span>
+                            <span class="query">SELECT * FROM `bambini`</span>
                         </div>
                                             <div class="message history collapsed hide select"
-                            targetdb="pronuntia" targettable="batterie_di_es">
+                            targetdb="pronuntia" targettable="bambini">
                             <div class="action_content">
                     <span class="action collapse">
             Riduci
@@ -1243,48 +1319,10 @@ $.extend(defaultValues, {
                             : <span>Durante la sessione corrente</span>
                     </span>
             </div>
-                            <span class="query">SELECT * FROM `batterie_di_es`</span>
-                        </div>
-                                            <div class="message history collapsed hide"
-                            targetdb="pronuntia" targettable="batterie_di_es">
-                            <div class="action_content">
-                    <span class="action collapse">
-            Riduci
-                    </span>
-                            <span class="action expand">
-            Espandi
-                    </span>
-                            <span class="action requery">
-            Re-query
-                    </span>
-                            <span class="action edit">
-            Modifica
-                    </span>
-                            <span class="action explain">
-            Spiega
-                    </span>
-                            <span class="action profiling">
-            Profiling
-                    </span>
-                            <span class="action bookmark">
-            Segnalibro
-                    </span>
-                            <span class="text failed">
-            Query fallita
-                    </span>
-                            <span class="text targetdb">
-            Database
-                            : <span>pronuntia</span>
-                    </span>
-                            <span class="text query_time">
-            Tempo in coda
-                            : <span>Durante la sessione corrente</span>
-                    </span>
-            </div>
-                            <span class="query">INSERT INTO `batterie_di_es` (`idBatteria`, `nome`, `descrizione`, `categoria`, `idLogopedista`) VALUES (NULL, &#039;batteria dislessici&#039;, &#039;questa è una prova ecc ecc&#039;, &#039;dislessici&#039;, &#039;1&#039;);</span>
+                            <span class="query">SELECT * FROM `bambini`</span>
                         </div>
                                             <div class="message history collapsed hide select"
-                            targetdb="pronuntia" targettable="es_della_batteria">
+                            targetdb="pronuntia" targettable="bambini">
                             <div class="action_content">
                     <span class="action collapse">
             Riduci
@@ -1319,48 +1357,10 @@ $.extend(defaultValues, {
                             : <span>Durante la sessione corrente</span>
                     </span>
             </div>
-                            <span class="query">SELECT * FROM `es_della_batteria`</span>
-                        </div>
-                                            <div class="message history collapsed hide"
-                            targetdb="pronuntia" targettable="es_della_batteria">
-                            <div class="action_content">
-                    <span class="action collapse">
-            Riduci
-                    </span>
-                            <span class="action expand">
-            Espandi
-                    </span>
-                            <span class="action requery">
-            Re-query
-                    </span>
-                            <span class="action edit">
-            Modifica
-                    </span>
-                            <span class="action explain">
-            Spiega
-                    </span>
-                            <span class="action profiling">
-            Profiling
-                    </span>
-                            <span class="action bookmark">
-            Segnalibro
-                    </span>
-                            <span class="text failed">
-            Query fallita
-                    </span>
-                            <span class="text targetdb">
-            Database
-                            : <span>pronuntia</span>
-                    </span>
-                            <span class="text query_time">
-            Tempo in coda
-                            : <span>Durante la sessione corrente</span>
-                    </span>
-            </div>
-                            <span class="query">INSERT INTO `es_della_batteria` (`idBatteria`, `idEsercizio`) VALUES (&#039;1&#039;, &#039;2&#039;), (&#039;1&#039;, &#039;1&#039;);</span>
+                            <span class="query">SELECT * FROM `bambini`</span>
                         </div>
                                             <div class="message history collapsed hide select"
-                            targetdb="pronuntia" targettable="terapie_assegnate">
+                            targetdb="pronuntia" targettable="bambini">
                             <div class="action_content">
                     <span class="action collapse">
             Riduci
@@ -1395,48 +1395,10 @@ $.extend(defaultValues, {
                             : <span>Durante la sessione corrente</span>
                     </span>
             </div>
-                            <span class="query">SELECT * FROM `terapie_assegnate`</span>
-                        </div>
-                                            <div class="message history collapsed hide"
-                            targetdb="pronuntia" targettable="terapie_assegnate">
-                            <div class="action_content">
-                    <span class="action collapse">
-            Riduci
-                    </span>
-                            <span class="action expand">
-            Espandi
-                    </span>
-                            <span class="action requery">
-            Re-query
-                    </span>
-                            <span class="action edit">
-            Modifica
-                    </span>
-                            <span class="action explain">
-            Spiega
-                    </span>
-                            <span class="action profiling">
-            Profiling
-                    </span>
-                            <span class="action bookmark">
-            Segnalibro
-                    </span>
-                            <span class="text failed">
-            Query fallita
-                    </span>
-                            <span class="text targetdb">
-            Database
-                            : <span>pronuntia</span>
-                    </span>
-                            <span class="text query_time">
-            Tempo in coda
-                            : <span>Durante la sessione corrente</span>
-                    </span>
-            </div>
-                            <span class="query">INSERT INTO `terapie_assegnate` (`idTerapia`, `idBatteria`, `idBambino`, `data`, `Diagnosi`) VALUES (NULL, &#039;1&#039;, &#039;2&#039;, &#039;2022-05-01&#039;, &#039;la tua diagnosi è questa&#039;);</span>
+                            <span class="query">SELECT * FROM `bambini`</span>
                         </div>
                                             <div class="message history collapsed hide select"
-                            targetdb="pronuntia" targettable="utenti">
+                            targetdb="pronuntia" targettable="bambini">
                             <div class="action_content">
                     <span class="action collapse">
             Riduci
@@ -1471,10 +1433,10 @@ $.extend(defaultValues, {
                             : <span>Durante la sessione corrente</span>
                     </span>
             </div>
-                            <span class="query">SELECT * FROM `utenti`</span>
+                            <span class="query">SELECT * FROM `bambini`</span>
                         </div>
-                                            <div class="message history collapsed hide"
-                            targetdb="pronuntia" targettable="utenti">
+                                            <div class="message history collapsed hide select"
+                            targetdb="pronuntia" targettable="bambini">
                             <div class="action_content">
                     <span class="action collapse">
             Riduci
@@ -1509,7 +1471,7 @@ $.extend(defaultValues, {
                             : <span>Durante la sessione corrente</span>
                     </span>
             </div>
-                            <span class="query">ALTER TABLE `utenti` DROP `var`;</span>
+                            <span class="query">SELECT * FROM `bambini`</span>
                         </div>
                                                 </div><!-- console_message_container -->
             <div class="query_input">

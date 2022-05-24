@@ -15,11 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="bambini-index">
 
-    <h1><?= Html::encode('Lista bambini') ?></h1>
-
-    <p>
-        <?= Html::a('Aggiungi Bambino alla lista', ['/logopedisti/listaperaggiungere'], ['class' => 'btn btn-success']) ?>
-    </p>
+    <h1><?= Html::encode('Seleziona') ?></h1>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
@@ -29,13 +25,12 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'idUtente',
             'nome',
             'cognome',
             [
                 'header' => 'Button',
                 'content' => function($model) {
-                    return Html::a('Open', ['/bambini/viewlog', 'idUtente' => $model->idUtente], ['class' => 'btn btn-secondary']);
+                    return Html::a('Aggiungi', ['bambini/aggiungi' , 'idUtente' => $model->idUtente], ['class' => 'btn btn-primary']);
                 }
             ],
         ],

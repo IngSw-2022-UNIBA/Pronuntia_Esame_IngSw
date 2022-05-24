@@ -10,6 +10,7 @@ use Yii;
  * @property int $idUtente
  * @property string $nome
  * @property string $cognome
+ * @property int $idLogopedista
  *
  * @property CuratoDa[] $curatoDas
  * @property Utenti $idUtente0

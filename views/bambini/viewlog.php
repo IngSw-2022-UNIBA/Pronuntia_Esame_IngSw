@@ -17,13 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a('Terapie', ['bambini/terapiebambino','idBambino'=> $model->idUtente], ['class' => 'btn btn-secondary']) ?>
-        <?= Html::a('Delete TODO', ['delete', 'idUtente' => $model->idUtente], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
+        <?= Html::a('Elimina dalla lista', ['bambini/deletelog','idUtente'=> $model->idUtente], ['class' => 'btn btn-danger']) ?>
         <?= Html::a('Caregivers TODO', ['caregiver/index'], ['class' => 'btn btn-primary']) ?>
     </p>
 
