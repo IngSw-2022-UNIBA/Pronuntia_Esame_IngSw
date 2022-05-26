@@ -32,9 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'header' => '',
                 'content' => function($model) use ($idBambino) { // se inverto i parametri non funziona
-                    $model->idBambino = $idBambino;
-                    $model->save();
-                    return Html::a('Aggiungi', ['caregiver/aggiungi', 'bambino' => $idBambino], ['class' => 'btn btn-primary']);
+                    return Html::a('Aggiungi', ['caregiver/aggiungi', 'bambino' => $idBambino, 'idUtente' => $model->idUtente], ['class' => 'btn btn-primary']);
                 }
             ],
         ],

@@ -176,8 +176,11 @@ class CaregiverController extends Controller
         ]);
     }
 
-    public function actionAggiungi($bambino)
+    public function actionAggiungi($bambino, $idUtente)
     {
+        $model = $this->findModel($idUtente);
+        $model->idBambino = $bambino;
+        $model->save();
         return $this->redirect(['caregiver/caregiversdelbambino', 'idBambino' => $bambino]);
     }
 
