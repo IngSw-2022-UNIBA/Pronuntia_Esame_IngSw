@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 25, 2022 alle 11:42
+-- Creato il: Mag 26, 2022 alle 19:14
 -- Versione del server: 10.4.24-MariaDB
 -- Versione PHP: 7.4.29
 
@@ -39,21 +39,29 @@ CREATE TABLE `bambini` (
 --
 
 INSERT INTO `bambini` (`idUtente`, `nome`, `cognome`, `idLogopedista`) VALUES
-(2, 'bambinetto1', 'biricchino', 1);
+(2, 'bambinetto1', 'biricchino', 1),
+(4, 'martino', 'briccchino', 1);
 
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `batterie_di_es`
+-- Struttura della tabella `batterie`
 --
 
-CREATE TABLE `batterie_di_es` (
+CREATE TABLE `batterie` (
   `idBatteria` int(11) NOT NULL,
   `nome` varchar(25) NOT NULL,
   `descrizione` mediumtext NOT NULL,
   `categoria` varchar(55) NOT NULL,
   `idLogopedista` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dump dei dati per la tabella `batterie`
+--
+
+INSERT INTO `batterie` (`idBatteria`, `nome`, `descrizione`, `categoria`, `idLogopedista`) VALUES
+(1, 'batteria dislessici', 'esercizi pensati per chi non sa pronunciare la s', 'dislessici', 1);
 
 -- --------------------------------------------------------
 
@@ -73,7 +81,41 @@ CREATE TABLE `caregiver` (
 --
 
 INSERT INTO `caregiver` (`idUtente`, `nome`, `cognome`, `idBambino`) VALUES
-(3, 'Mamma', 'Pancina', 0);
+(3, 'Mamma', 'Pancina', 2),
+(5, 'Mammina', 'arrabbiata', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `esercizi`
+--
+
+CREATE TABLE `esercizi` (
+  `idEsercizio` int(11) NOT NULL,
+  `testo` longtext NOT NULL,
+  `link` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dump dei dati per la tabella `esercizi`
+--
+
+INSERT INTO `esercizi` (`idEsercizio`, `testo`, `link`) VALUES
+(1, 'eseguilo', 'https://learningapps.org/watch?v=p8qaap7ba20'),
+(2, 'fallo!', 'https://learningapps.org/watch?app=16782029'),
+(3, 'vai!', 'https://learningapps.org/watch?app=9534140');
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `esercizifatti`
+--
+
+CREATE TABLE `esercizifatti` (
+  `idTerapia` int(11) NOT NULL,
+  `idEsercizio` int(11) NOT NULL,
+  `stato` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -86,16 +128,13 @@ CREATE TABLE `es_della_batteria` (
   `idEsercizio` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
-
 --
--- Struttura della tabella `librerie_esercizi`
+-- Dump dei dati per la tabella `es_della_batteria`
 --
 
-CREATE TABLE `librerie_esercizi` (
-  `idEsercizio` int(11) NOT NULL,
-  `testo` longtext NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+INSERT INTO `es_della_batteria` (`idBatteria`, `idEsercizio`) VALUES
+(1, 1),
+(1, 2);
 
 -- --------------------------------------------------------
 
@@ -114,7 +153,8 @@ CREATE TABLE `logopedisti` (
 --
 
 INSERT INTO `logopedisti` (`idUtente`, `nome`, `cognome`) VALUES
-(1, 'mario', 'rossi');
+(1, 'mario', 'rossi'),
+(6, 'luca', 'giurato');
 
 -- --------------------------------------------------------
 
@@ -129,6 +169,14 @@ CREATE TABLE `terapie_assegnate` (
   `data` date NOT NULL,
   `Diagnosi` longtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dump dei dati per la tabella `terapie_assegnate`
+--
+
+INSERT INTO `terapie_assegnate` (`idTerapia`, `idBatteria`, `idBambino`, `data`, `Diagnosi`) VALUES
+(1, 1, 2, '2022-05-24', 'questa è la diagnosi!'),
+(2, 1, 2, '2020-02-20', 'prova prova prova');
 
 -- --------------------------------------------------------
 
@@ -150,7 +198,10 @@ CREATE TABLE `utenti` (
 INSERT INTO `utenti` (`idUtente`, `email`, `password`, `tipoUtente`) VALUES
 (1, 'a@a.it', 'aaaa', 4),
 (2, 'b@b.it', 'bbbb', 5),
-(3, 'c@c.it', 'cccc', 6);
+(3, 'c@c.it', 'cccc', 6),
+(4, 'bb@bb.it', 'bbbb', 5),
+(5, 'cc@cc.it', 'cccc', 6),
+(6, 'aa@aa.it', 'aaaa', 4);
 
 --
 -- Indici per le tabelle scaricate
@@ -163,9 +214,9 @@ ALTER TABLE `bambini`
   ADD PRIMARY KEY (`idUtente`);
 
 --
--- Indici per le tabelle `batterie_di_es`
+-- Indici per le tabelle `batterie`
 --
-ALTER TABLE `batterie_di_es`
+ALTER TABLE `batterie`
   ADD PRIMARY KEY (`idBatteria`),
   ADD KEY `idLogopedista` (`idLogopedista`);
 
@@ -176,17 +227,24 @@ ALTER TABLE `caregiver`
   ADD PRIMARY KEY (`idUtente`);
 
 --
+-- Indici per le tabelle `esercizi`
+--
+ALTER TABLE `esercizi`
+  ADD PRIMARY KEY (`idEsercizio`);
+
+--
+-- Indici per le tabelle `esercizifatti`
+--
+ALTER TABLE `esercizifatti`
+  ADD PRIMARY KEY (`idTerapia`,`idEsercizio`) USING BTREE,
+  ADD KEY `idEsercizio` (`idEsercizio`);
+
+--
 -- Indici per le tabelle `es_della_batteria`
 --
 ALTER TABLE `es_della_batteria`
   ADD PRIMARY KEY (`idBatteria`,`idEsercizio`),
   ADD KEY `idEsercizio` (`idEsercizio`);
-
---
--- Indici per le tabelle `librerie_esercizi`
---
-ALTER TABLE `librerie_esercizi`
-  ADD PRIMARY KEY (`idEsercizio`);
 
 --
 -- Indici per le tabelle `logopedisti`
@@ -213,28 +271,28 @@ ALTER TABLE `utenti`
 --
 
 --
--- AUTO_INCREMENT per la tabella `batterie_di_es`
+-- AUTO_INCREMENT per la tabella `batterie`
 --
-ALTER TABLE `batterie_di_es`
-  MODIFY `idBatteria` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `batterie`
+  MODIFY `idBatteria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT per la tabella `librerie_esercizi`
+-- AUTO_INCREMENT per la tabella `esercizi`
 --
-ALTER TABLE `librerie_esercizi`
-  MODIFY `idEsercizio` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `esercizi`
+  MODIFY `idEsercizio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT per la tabella `terapie_assegnate`
 --
 ALTER TABLE `terapie_assegnate`
-  MODIFY `idTerapia` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idTerapia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT per la tabella `utenti`
 --
 ALTER TABLE `utenti`
-  MODIFY `idUtente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idUtente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Limiti per le tabelle scaricate
@@ -247,10 +305,10 @@ ALTER TABLE `bambini`
   ADD CONSTRAINT `bambini_ibfk_1` FOREIGN KEY (`idUtente`) REFERENCES `utenti` (`idUtente`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Limiti per la tabella `batterie_di_es`
+-- Limiti per la tabella `batterie`
 --
-ALTER TABLE `batterie_di_es`
-  ADD CONSTRAINT `batterie_di_es_ibfk_1` FOREIGN KEY (`idLogopedista`) REFERENCES `logopedisti` (`idUtente`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `batterie`
+  ADD CONSTRAINT `batterie_ibfk_1` FOREIGN KEY (`idLogopedista`) REFERENCES `logopedisti` (`idUtente`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Limiti per la tabella `caregiver`
@@ -259,11 +317,18 @@ ALTER TABLE `caregiver`
   ADD CONSTRAINT `caregiver_ibfk_1` FOREIGN KEY (`idUtente`) REFERENCES `utenti` (`idUtente`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Limiti per la tabella `esercizifatti`
+--
+ALTER TABLE `esercizifatti`
+  ADD CONSTRAINT `esercizifatti_ibfk_1` FOREIGN KEY (`idEsercizio`) REFERENCES `esercizi` (`idEsercizio`),
+  ADD CONSTRAINT `esercizifatti_ibfk_2` FOREIGN KEY (`idTerapia`) REFERENCES `terapie_assegnate` (`idTerapia`);
+
+--
 -- Limiti per la tabella `es_della_batteria`
 --
 ALTER TABLE `es_della_batteria`
-  ADD CONSTRAINT `es_della_batteria_ibfk_1` FOREIGN KEY (`idBatteria`) REFERENCES `batterie_di_es` (`idBatteria`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `es_della_batteria_ibfk_2` FOREIGN KEY (`idEsercizio`) REFERENCES `librerie_esercizi` (`idEsercizio`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `es_della_batteria_ibfk_1` FOREIGN KEY (`idBatteria`) REFERENCES `batterie` (`idBatteria`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `es_della_batteria_ibfk_2` FOREIGN KEY (`idEsercizio`) REFERENCES `esercizi` (`idEsercizio`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Limiti per la tabella `logopedisti`
@@ -275,7 +340,7 @@ ALTER TABLE `logopedisti`
 -- Limiti per la tabella `terapie_assegnate`
 --
 ALTER TABLE `terapie_assegnate`
-  ADD CONSTRAINT `terapie_assegnate_ibfk_1` FOREIGN KEY (`idBatteria`) REFERENCES `batterie_di_es` (`idBatteria`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `terapie_assegnate_ibfk_1` FOREIGN KEY (`idBatteria`) REFERENCES `batterie` (`idBatteria`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `terapie_assegnate_ibfk_2` FOREIGN KEY (`idBambino`) REFERENCES `bambini` (`idUtente`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 

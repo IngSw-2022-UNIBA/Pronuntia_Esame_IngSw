@@ -34,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'header' => '',
                 'content' => function($model) {
-                    return Html::a('Esercizi', ['/bambini/index'], ['class' => 'btn btn-primary']);
+                    return Html::a('Esercizi', ['/esercizi/esercizibambino', 'idBatteria' => $model->idBatteria], ['class' => 'btn btn-primary']);
                 }
             ],
         ],

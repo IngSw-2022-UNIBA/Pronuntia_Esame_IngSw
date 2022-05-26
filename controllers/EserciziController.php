@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\Esercizi;
 use app\models\EserciziSearch;
+use app\models\TerapiaAssegnataSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -131,4 +132,23 @@ class EserciziController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+    public function actionEsercizibambino($idBatteria)
+    {
+        $searchModel = new EserciziSearch();
+        $dataProvider = $searchModel->searchEsercizidellabatteria($this->request->queryParams, $idBatteria);
+
+        return $this->render('esercizibambino', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    public function actionViewesercizio($idEsercizio)
+    {
+        return $this->render('viewesercizio', [
+            'model' => $this->findModel($idEsercizio),
+        ]);
+    }
+
 }
