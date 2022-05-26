@@ -11,8 +11,7 @@ use Yii;
  * @property string $nome
  * @property string $cognome
  *
- * @property BatterieDiEs[] $batterieDiEs
- * @property CuratoDa[] $curatoDas
+ * @property Batterie[] $batterieDiEs
  * @property Utenti $idUtente0
  */
 class Logopedisti extends \yii\db\ActiveRecord
@@ -58,18 +57,10 @@ class Logopedisti extends \yii\db\ActiveRecord
      */
     public function getBatterieDiEs()
     {
-        return $this->hasMany(BatterieDiEs::className(), ['idLogopedista' => 'idUtente']);
+        return $this->hasMany(Batterie::className(), ['idLogopedista' => 'idUtente']);
     }
 
-    /**
-     * Gets query for [[CuratoDas]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getCuratoDas()
-    {
-        return $this->hasMany(CuratoDa::className(), ['idLogopedista' => 'idUtente']);
-    }
+
 
     /**
      * Gets query for [[IdUtente0]].

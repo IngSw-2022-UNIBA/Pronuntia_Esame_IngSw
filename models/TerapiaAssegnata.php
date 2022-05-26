@@ -14,7 +14,7 @@ use Yii;
  * @property string $Diagnosi
  *
  * @property Bambini $idBambino0
- * @property BatterieDiEs $idBatteria0
+ * @property Batterie $idBatteria0
  */
 class TerapiaAssegnata extends \yii\db\ActiveRecord
 {
@@ -36,7 +36,7 @@ class TerapiaAssegnata extends \yii\db\ActiveRecord
             [['idBatteria', 'idBambino'], 'integer'],
             [['data'], 'safe'],
             [['Diagnosi'], 'string'],
-            [['idBatteria'], 'exist', 'skipOnError' => true, 'targetClass' => BatterieDiEs::className(), 'targetAttribute' => ['idBatteria' => 'idBatteria']],
+            [['idBatteria'], 'exist', 'skipOnError' => true, 'targetClass' => Batterie::className(), 'targetAttribute' => ['idBatteria' => 'idBatteria']],
             [['idBambino'], 'exist', 'skipOnError' => true, 'targetClass' => Bambini::className(), 'targetAttribute' => ['idBambino' => 'idUtente']],
         ];
     }
@@ -72,6 +72,6 @@ class TerapiaAssegnata extends \yii\db\ActiveRecord
      */
     public function getIdBatteria0()
     {
-        return $this->hasOne(BatterieDiEs::className(), ['idBatteria' => 'idBatteria']);
+        return $this->hasOne(Batterie::className(), ['idBatteria' => 'idBatteria']);
     }
 }

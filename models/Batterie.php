@@ -5,7 +5,7 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "batterie_di_es".
+ * This is the model class for table "batterie".
  *
  * @property int $idBatteria
  * @property string $nome
@@ -14,18 +14,18 @@ use Yii;
  * @property int $idLogopedista
  *
  * @property EsDellaBatteria[] $esDellaBatterias
- * @property LibrerieEsercizi[] $idEsercizios
+ * @property Esercizi[] $idEsercizios
  * @property Logopedisti $idLogopedista0
  * @property TerapieAssegnate[] $terapieAssegnates
  */
-class BatterieDiEs extends \yii\db\ActiveRecord
+class Batterie extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'batterie_di_es';
+        return 'batterie';
     }
 
     /**
@@ -74,7 +74,7 @@ class BatterieDiEs extends \yii\db\ActiveRecord
      */
     public function getIdEsercizios()
     {
-        return $this->hasMany(LibrerieEsercizi::className(), ['idEsercizio' => 'idEsercizio'])->viaTable('es_della_batteria', ['idBatteria' => 'idBatteria']);
+        return $this->hasMany(Esercizi::className(), ['idEsercizio' => 'idEsercizio'])->viaTable('es_della_batteria', ['idBatteria' => 'idBatteria']);
     }
 
     /**

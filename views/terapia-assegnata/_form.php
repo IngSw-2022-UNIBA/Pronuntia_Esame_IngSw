@@ -1,5 +1,8 @@
 <?php
 
+use app\models\Bambini;
+use app\models\Batterie;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -10,11 +13,17 @@ use yii\widgets\ActiveForm;
 
 <div class="terapia-assegnata-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin();
+    $logopedista = Yii::$app->user->id;
+    ?>
 
-    <?= $form->field($model, 'idBatteria')->textInput() ?>
+    <?= $form->field($model, 'idBatteria')->dropDownList(
+        ArrayHelper::map(Batterie::find()->where("idLogopedista = '$logopedista'")->all(), 'idBatteria', 'nome'), ['prompt'=>'Seleziona']);
+    ?>
 
-    <?= $form->field($model, 'idBambino')->textInput() ?>
+    <?= $form->field($model, 'idBambino')->dropDownList(
+        ArrayHelper::map(Bambini::find()->where("idLogopedista = '$logopedista'")->all(), 'idUtente', 'nome'), ['prompt'=>'Seleziona']);
+    ?>
 
     <?= $form->field($model, 'data')->textInput() ?>
 
