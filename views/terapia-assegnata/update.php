@@ -6,8 +6,6 @@ use yii\helpers\Html;
 /* @var $model app\models\TerapiaAssegnata */
 
 $this->title = 'Update Terapia Assegnata: ' . $model->idTerapia;
-$this->params['breadcrumbs'][] = ['label' => 'Terapia Assegnatas', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->idTerapia, 'url' => ['view', 'idTerapia' => $model->idTerapia]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="terapia-assegnata-update">

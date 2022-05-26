@@ -115,12 +115,26 @@ $log = new Utenti();
                     .'</li>'
                 )
             ),
+
             Yii::$app->user->isGuest ? (
                 '<li>'
                 .'</li>'
             ) : (
             $log->isBambinoConf(Yii::$app->user->identity->tipoUtente) ? (
-            ['label' => 'Esercizi', 'url' => ['/bambini/viewesercizi', 'idUtente'=> Yii::$app->user->id]]
+            ['label' => 'Lista terapie', 'url' => ['/bambini/terapiepersonali']]
+            ) : (
+                '<li>'
+                .'</li>'
+            )
+            ),
+
+
+            Yii::$app->user->isGuest ? (
+                '<li>'
+                .'</li>'
+            ) : (
+            $log->isBambinoConf(Yii::$app->user->identity->tipoUtente) ? (
+            ['label' => 'Esercizio esempio', 'url' => ['/bambini/viewesercizi', 'idUtente'=> Yii::$app->user->id]]
             ) : (
                 '<li>'
                 .'</li>'

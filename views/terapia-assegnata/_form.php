@@ -21,10 +21,6 @@ use yii\widgets\ActiveForm;
         ArrayHelper::map(Batterie::find()->where("idLogopedista = '$logopedista'")->all(), 'idBatteria', 'nome'), ['prompt'=>'Seleziona']);
     ?>
 
-    <?= $form->field($model, 'idBambino')->dropDownList(
-        ArrayHelper::map(Bambini::find()->where("idLogopedista = '$logopedista'")->all(), 'idUtente', 'nome'), ['prompt'=>'Seleziona']);
-    ?>
-
     <?= $form->field($model, 'data')->textInput() ?>
 
     <?= $form->field($model, 'Diagnosi')->textarea(['rows' => 6]) ?>

@@ -183,6 +183,17 @@ class BambiniController extends Controller
         ]);
     }
 
+    public function actionTerapiepersonali()
+    {
+        $searchModel = new TerapiaAssegnataSearch();
+        $dataProvider = $searchModel->searchTerapiepersonali($this->request->queryParams);
+
+        return $this->render('terapiepersonali', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
     public function actionDeletelog($idUtente)
     {
         $model = $this->findModel($idUtente);

@@ -65,10 +65,10 @@ class TerapiaAssegnataController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
-    public function actionCreate()
+    public function actionCreate($bambino)
     {
         $model = new TerapiaAssegnata();
-
+        $model->idBambino= $bambino;
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
                 return $this->redirect(['view', 'idTerapia' => $model->idTerapia]);

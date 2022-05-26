@@ -15,10 +15,10 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="terapia-assegnata-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1><?= Html::encode("Elenco delle terapie del bambino") ?></h1>
 
     <p>
-        <?= Html::a('Create Terapia Assegnata', ['terapia-assegnata/create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Crea una nuova terapia', ['terapia-assegnata/create', 'bambino' => 2], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -33,9 +33,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'data',
             'Diagnosi:ntext',
             [
-                'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, TerapiaAssegnata $model, $key, $index, $column) {
-                    return Url::toRoute(['/terapia-assegnata/', 'idTerapia' => $model->idTerapia]);
+                'header' => '',
+                'content' => function($model){
+                    return Html::a('Modifica', ['terapia-assegnata/update', 'idTerapia' => $model->idTerapia], ['class' => 'btn btn-primary']);
                 }
             ],
         ],

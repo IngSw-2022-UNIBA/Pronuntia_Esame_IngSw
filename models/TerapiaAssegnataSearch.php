@@ -112,4 +112,39 @@ class TerapiaAssegnataSearch extends TerapiaAssegnata
 
         return $dataProvider;
     }
+
+    public function searchTerapiepersonali($params)
+    {
+        $bambino = Yii::$app->user->id;
+        $query = TerapiaAssegnata::find()->select('*')->from('terapie_assegnate')
+            ->where("idBambino='$bambino'");
+
+        //-----
+
+        // add conditions that should always apply here
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
+        // grid filtering conditions
+        $query->andFilterWhere([
+            'idTerapia' => $this->idTerapia,
+            'idBatteria' => $this->idBatteria,
+            'idBambino' => $this->idBambino,
+            'data' => $this->data,
+        ]);
+
+        $query->andFilterWhere(['like', 'Diagnosi', $this->Diagnosi]);
+
+        return $dataProvider;
+    }
 }
