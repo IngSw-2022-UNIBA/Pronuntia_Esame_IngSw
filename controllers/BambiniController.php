@@ -64,6 +64,14 @@ class BambiniController extends Controller
         ]);
     }
 
+    public function actionViewesercizi($idUtente)
+    {
+        return $this->render('viewesercizi', [
+            'model' => $this->findModel($idUtente),
+        ]);
+    }
+
+
     public function actionViewlog($idUtente)
     {
         return $this->render('viewlog', [
@@ -145,7 +153,7 @@ class BambiniController extends Controller
         $model->idLogopedista = Yii::$app->user->id;
         $model->save();
 
-        return $this->redirect(['logopedisti/listaperaggiungere']);
+        return $this->redirect(['logopedisti/listabambini']);
     }
 
     /**
