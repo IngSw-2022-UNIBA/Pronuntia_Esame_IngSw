@@ -156,11 +156,12 @@ class CaregiverController extends Controller
     public function actionDeletebambino($idUtente)
     {
         $model = $this->findModel($idUtente);
+        $bambino = $model->idBambino;
         $model->idBambino = 'NULL';
         $model->save();
 
 
-        return $this->redirect(['logopedisti/listabambini']);
+        return $this->redirect(['caregiver/caregiversdelbambino', 'idBambino' => $bambino]);
     }
 
     public function actionCaregiversdelbambino($idBambino)
@@ -175,12 +176,9 @@ class CaregiverController extends Controller
         ]);
     }
 
-    public function actionAggiungi($idBambino, $idUtente)
+    public function actionAggiungi($bambino)
     {
-        $model = $this->findModel($idUtente);
-        $model->idBambino = $idBambino;
-        $model->save();
-        return $this->goHome();
+        return $this->redirect(['caregiver/caregiversdelbambino', 'idBambino' => $bambino]);
     }
 
 }

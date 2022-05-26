@@ -1,6 +1,7 @@
 <?php
 
 use app\models\Bambini;
+use app\models\Caregiver;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
@@ -20,10 +21,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <?php
-    echo $idBambino; // qui idBambino è correttamente funzionante e vale 2
-    ?>
-
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -34,12 +31,15 @@ $this->params['breadcrumbs'][] = $this->title;
             'cognome',
             [
                 'header' => '',
-                'content' => function($model, $idBambino) {                         // qui vale erroneamente come idUtente
-                    return Html::a('Aggiungi', ['caregiver/aggiungi' , 'idBambino' => $idBambino, 'idUtente' => $model->idUtente], ['class' => 'btn btn-primary']);
+                'content' => function($model) use ($idBambino) { // se inverto i parametri non funziona
+                    $model->idBambino = $idBambino;
+                    $model->save();
+                    return Html::a('Aggiungi', ['caregiver/aggiungi', 'bambino' => $idBambino], ['class' => 'btn btn-primary']);
                 }
             ],
         ],
     ]); ?>
+
 
 
 </div>

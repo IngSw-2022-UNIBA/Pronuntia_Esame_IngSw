@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 25, 2022 alle 11:42
+-- Creato il: Mag 21, 2022 alle 12:57
 -- Versione del server: 10.4.24-MariaDB
 -- Versione PHP: 7.4.29
 
@@ -26,20 +26,24 @@ SET time_zone = "+00:00";
 --
 -- Struttura della tabella `bambini`
 --
+DROP DATABASE IF EXISTS pronuntia;
+
+CREATE DATABASE pronuntia;
+
+USE pronuntia;
 
 CREATE TABLE `bambini` (
   `idUtente` int(11) NOT NULL,
   `nome` varchar(25) NOT NULL,
-  `cognome` varchar(25) NOT NULL,
-  `idLogopedista` int(11) DEFAULT NULL
+  `cognome` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dump dei dati per la tabella `bambini`
 --
 
-INSERT INTO `bambini` (`idUtente`, `nome`, `cognome`, `idLogopedista`) VALUES
-(2, 'bambinetto1', 'biricchino', 1);
+INSERT INTO `bambini` (`idUtente`, `nome`, `cognome`) VALUES
+(2, 'bambinetto1', 'biricchino');
 
 -- --------------------------------------------------------
 
@@ -64,16 +68,35 @@ CREATE TABLE `batterie_di_es` (
 CREATE TABLE `caregiver` (
   `idUtente` int(11) NOT NULL,
   `nome` varchar(25) NOT NULL,
-  `cognome` varchar(25) NOT NULL,
-  `idBambino` int(11) DEFAULT NULL
+  `cognome` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dump dei dati per la tabella `caregiver`
 --
 
-INSERT INTO `caregiver` (`idUtente`, `nome`, `cognome`, `idBambino`) VALUES
-(3, 'Mamma', 'Pancina', 0);
+INSERT INTO `caregiver` (`idUtente`, `nome`, `cognome`) VALUES
+(3, 'Mamma', 'Pancina');
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `curato_da`
+--
+
+CREATE TABLE `curato_da` (
+  `data` date NOT NULL,
+  `idLogopedista` int(11) NOT NULL,
+  `idCaregiver` int(11) NOT NULL,
+  `idBambino` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dump dei dati per la tabella `curato_da`
+--
+
+INSERT INTO `curato_da` (`data`, `idLogopedista`, `idCaregiver`, `idBambino`) VALUES
+('2022-06-06', 1, 3, 2);
 
 -- --------------------------------------------------------
 
@@ -126,8 +149,7 @@ CREATE TABLE `terapie_assegnate` (
   `idTerapia` int(11) NOT NULL,
   `idBatteria` int(11) NOT NULL,
   `idBambino` int(11) NOT NULL,
-  `data` date NOT NULL,
-  `Diagnosi` longtext NOT NULL
+  `data` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -174,6 +196,14 @@ ALTER TABLE `batterie_di_es`
 --
 ALTER TABLE `caregiver`
   ADD PRIMARY KEY (`idUtente`);
+
+--
+-- Indici per le tabelle `curato_da`
+--
+ALTER TABLE `curato_da`
+  ADD PRIMARY KEY (`idLogopedista`,`idCaregiver`,`idBambino`),
+  ADD KEY `curato_da_ibfk_2` (`idCaregiver`),
+  ADD KEY `curato_da_ibfk_3` (`idBambino`);
 
 --
 -- Indici per le tabelle `es_della_batteria`
@@ -257,6 +287,14 @@ ALTER TABLE `batterie_di_es`
 --
 ALTER TABLE `caregiver`
   ADD CONSTRAINT `caregiver_ibfk_1` FOREIGN KEY (`idUtente`) REFERENCES `utenti` (`idUtente`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limiti per la tabella `curato_da`
+--
+ALTER TABLE `curato_da`
+  ADD CONSTRAINT `curato_da_ibfk_1` FOREIGN KEY (`idLogopedista`) REFERENCES `logopedisti` (`idUtente`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `curato_da_ibfk_2` FOREIGN KEY (`idCaregiver`) REFERENCES `caregiver` (`idUtente`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `curato_da_ibfk_3` FOREIGN KEY (`idBambino`) REFERENCES `bambini` (`idUtente`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Limiti per la tabella `es_della_batteria`
