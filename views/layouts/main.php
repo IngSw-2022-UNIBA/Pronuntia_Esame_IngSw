@@ -115,6 +115,17 @@ $log = new Utenti();
                     .'</li>'
                 )
             ),
+            Yii::$app->user->isGuest ? (
+                '<li>'
+                .'</li>'
+            ) : (
+            $log->isBambinoConf(Yii::$app->user->identity->tipoUtente) ? (
+            ['label' => 'Esercizi', 'url' => ['/bambini/viewesercizi', 'idUtente'=> Yii::$app->user->id]]
+            ) : (
+                '<li>'
+                .'</li>'
+            )
+            ),
 
             // Caregiver --------------------------------------------------------------------------------------
             Yii::$app->user->isGuest ? (
