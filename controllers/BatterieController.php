@@ -47,6 +47,17 @@ class BatterieController extends Controller
         ]);
     }
 
+    public function actionBatteriedellog($idLogopedista)
+    {
+        $searchModel = new BatterieSearch();
+        $dataProvider = $searchModel->searchperlog($this->request->queryParams, $idLogopedista);
+
+        return $this->render('batteriedellog', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
     /**
      * Displays a single Batterie model.
      * @param int $idBatteria Id Batteria

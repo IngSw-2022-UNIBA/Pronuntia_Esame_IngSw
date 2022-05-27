@@ -2,9 +2,9 @@
 
 namespace app\models;
 
+use app\models\Batterie;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Batterie;
 
 /**
  * BatterieSearch represents the model behind the search form of `app\models\Batterie`.
@@ -41,6 +41,36 @@ class BatterieSearch extends Batterie
     public function search($params)
     {
         $query = Batterie::find();
+
+        // add conditions that should always apply here
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
+        // grid filtering conditions
+        $query->andFilterWhere([
+            'idBatteria' => $this->idBatteria,
+            'idLogopedista' => $this->idLogopedista,
+        ]);
+
+        $query->andFilterWhere(['like', 'nome', $this->nome])
+            ->andFilterWhere(['like', 'descrizione', $this->descrizione])
+            ->andFilterWhere(['like', 'categoria', $this->categoria]);
+
+        return $dataProvider;
+    }
+    public function searchperlog($params, $idLogopedista)
+    {
+        $query = Batterie::find()->where("idLogopedista = '$idLogopedista'");
 
         // add conditions that should always apply here
 

@@ -91,6 +91,18 @@ $log = new Utenti();
             )
             ),
 
+            Yii::$app->user->isGuest ? (
+                '<li>'
+                .'</li>'
+            ) : (
+            $log->isLogopedistaConf(Yii::$app->user->identity->tipoUtente) ? (
+            ['label' => 'Lista batterie', 'url' => ['/batterie/batteriedellog', 'idLogopedista'=> Yii::$app->user->id]]
+            ) : (
+                '<li>'
+                .'</li>'
+            )
+            ),
+
             // Bambino --------------------------------------------------------------------------------------
             Yii::$app->user->isGuest ? (
                 '<li>'

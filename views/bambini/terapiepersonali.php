@@ -17,9 +17,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode("Le mie terapie") ?></h1>
 
-    <p>
-        <?= Html::a('Crea una nuova terapia', ['terapia-assegnata/create'], ['class' => 'btn btn-success']) ?>
-    </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 

@@ -10,16 +10,13 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\BatterieSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Batteries';
+$this->title = 'Batterie personali';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="batterie-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a('Create Batterie', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
@@ -33,13 +30,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'nome',
             'descrizione:ntext',
             'categoria',
-            'idLogopedista',
-            [
-                'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, Batterie $model, $key, $index, $column) {
-                    return Url::toRoute([$action, 'idBatteria' => $model->idBatteria]);
-                 }
-            ],
         ],
     ]); ?>
 
