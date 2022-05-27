@@ -2,18 +2,17 @@
 
 namespace app\controllers;
 
-use app\models\Esercizi;
 use app\models\Esercizifatti;
-use app\models\EserciziSearch;
-use app\models\TerapiaAssegnataSearch;
+use app\models\EsercizifattiSearch;
+use app\models\TerapiaAssegnata;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * EserciziController implements the CRUD actions for Esercizi model.
+ * EsercizifattiController implements the CRUD actions for Esercizifatti model.
  */
-class EserciziController extends Controller
+class EsercizifattiController extends Controller
 {
     /**
      * @inheritDoc
@@ -34,13 +33,13 @@ class EserciziController extends Controller
     }
 
     /**
-     * Lists all Esercizi models.
+     * Lists all Esercizifatti models.
      *
      * @return string
      */
     public function actionIndex()
     {
-        $searchModel = new EserciziSearch();
+        $searchModel = new EsercizifattiSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -50,30 +49,31 @@ class EserciziController extends Controller
     }
 
     /**
-     * Displays a single Esercizi model.
+     * Displays a single Esercizifatti model.
+     * @param int $idTerapia Id Terapia
      * @param int $idEsercizio Id Esercizio
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($idEsercizio)
+    public function actionView($idTerapia, $idEsercizio)
     {
         return $this->render('view', [
-            'model' => $this->findModel($idEsercizio),
+            'model' => $this->findModel($idTerapia, $idEsercizio),
         ]);
     }
 
     /**
-     * Creates a new Esercizi model.
+     * Creates a new Esercizifatti model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
-        $model = new Esercizi();
+        $model = new Esercizifatti();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'idEsercizio' => $model->idEsercizio]);
+                return $this->redirect(['view', 'idTerapia' => $model->idTerapia, 'idEsercizio' => $model->idEsercizio]);
             }
         } else {
             $model->loadDefaultValues();
@@ -85,18 +85,19 @@ class EserciziController extends Controller
     }
 
     /**
-     * Updates an existing Esercizi model.
+     * Updates an existing Esercizifatti model.
      * If update is successful, the browser will be redirected to the 'view' page.
+     * @param int $idTerapia Id Terapia
      * @param int $idEsercizio Id Esercizio
      * @return string|\yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($idEsercizio)
+    public function actionUpdate($idTerapia, $idEsercizio)
     {
-        $model = $this->findModel($idEsercizio);
+        $model = $this->findModel($idTerapia, $idEsercizio);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'idEsercizio' => $model->idEsercizio]);
+            return $this->redirect(['view', 'idTerapia' => $model->idTerapia, 'idEsercizio' => $model->idEsercizio]);
         }
 
         return $this->render('update', [
@@ -105,67 +106,84 @@ class EserciziController extends Controller
     }
 
     /**
-     * Deletes an existing Esercizi model.
+     * Deletes an existing Esercizifatti model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
+     * @param int $idTerapia Id Terapia
      * @param int $idEsercizio Id Esercizio
      * @return \yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($idEsercizio)
+    public function actionDelete($idTerapia, $idEsercizio)
     {
-        $this->findModel($idEsercizio)->delete();
+        $this->findModel($idTerapia, $idEsercizio)->delete();
 
         return $this->redirect(['index']);
     }
 
     /**
-     * Finds the Esercizi model based on its primary key value.
+     * Finds the Esercizifatti model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
+     * @param int $idTerapia Id Terapia
      * @param int $idEsercizio Id Esercizio
-     * @return Esercizi the loaded model
+     * @return Esercizifatti the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($idEsercizio)
+    protected function findModel($idTerapia, $idEsercizio)
     {
-        if (($model = Esercizi::findOne(['idEsercizio' => $idEsercizio])) !== null) {
+        if (($model = Esercizifatti::findOne(['idTerapia' => $idTerapia, 'idEsercizio' => $idEsercizio])) !== null) {
             return $model;
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 
-    public function actionEsercizibambino($idBatteria, $idTerapia)
+
+    public function actionBene($idEsercizio, $idTerapia)
     {
-        $searchModel = new EserciziSearch();
-        $dataProvider = $searchModel->searchEsercizidellabatteria($this->request->queryParams, $idBatteria, $idTerapia);
-
-        return $this->render('esercizibambino', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-            'idTerapia' => $idTerapia,
-        ]);
-    }
-
-    public function actionViewesercizio($idEsercizio, $idTerapia)
-    {
-
         $exists = Esercizifatti::find()->where( " idEsercizio = '$idEsercizio' and idTerapia = '$idTerapia' ")->exists();
 
         if($exists) {
             //it exists
-            $model1 = Esercizifatti::findOne(['idTerapia' => $idTerapia, 'idEsercizio' => $idEsercizio]);
-
-            return $this->render('viewesercizio', [
-                'model' => $this->findModel($idEsercizio),
-                'idTerapia' => $idTerapia,
-                'stato' => $model1->stato,
-            ]);
+            $model = $this->findModel($idTerapia, $idEsercizio);
+        } else {
+            $model = new Esercizifatti();
+            $model->idTerapia = $idTerapia;
+            $model->idEsercizio = $idEsercizio;
         }
 
-        return $this->render('viewesercizio', [
-            'model' => $this->findModel($idEsercizio),
+        $model->stato = 1;
+        $model->save();
+
+        $terapia = $model = TerapiaAssegnata::findOne(['idTerapia' => $idTerapia]);
+
+
+        return $this->redirect(['esercizi/esercizibambino',
+            'idBatteria' => $terapia->idBatteria,
             'idTerapia' => $idTerapia,
-            'stato' => 2,
+        ]);
+    }
+    public function actionMale($idEsercizio, $idTerapia)
+    {
+        $exists = Esercizifatti::find()->where( " idEsercizio = '$idEsercizio' and idTerapia = '$idTerapia' ")->exists();
+
+        if($exists) {
+            //it exists
+            $model = $this->findModel($idTerapia, $idEsercizio);
+        } else {
+            $model = new Esercizifatti();
+            $model->idTerapia = $idTerapia;
+            $model->idEsercizio = $idEsercizio;
+        }
+
+        $model->stato = 0;
+        $model->save();
+
+        $terapia = $model = TerapiaAssegnata::findOne(['idTerapia' => $idTerapia]);
+
+
+        return $this->redirect(['esercizi/esercizibambino',
+            'idBatteria' => $terapia->idBatteria,
+            'idTerapia' => $idTerapia,
         ]);
     }
 }

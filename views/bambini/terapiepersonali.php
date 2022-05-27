@@ -12,6 +12,7 @@ use yii\grid\GridView;
 
 $this->title = 'Terapia Assegnatas';
 $this->params['breadcrumbs'][] = $this->title;
+
 ?>
 <div class="terapia-assegnata-index">
 
@@ -30,8 +31,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'Diagnosi:ntext',
             [
                 'header' => '',
-                'content' => function($model) {
-                    return Html::a('Esercizi', ['/esercizi/esercizibambino', 'idBatteria' => $model->idBatteria], ['class' => 'btn btn-primary']);
+                'content' => function($model){
+                    return Html::a('Esercizi', ['/esercizi/esercizibambino', 'idBatteria' => $model->idBatteria, 'idTerapia' => $model->idTerapia], ['class' => 'btn btn-primary']);
                 }
             ],
         ],

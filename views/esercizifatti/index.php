@@ -1,23 +1,24 @@
 <?php
 
-use app\models\Esercizi;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\EserciziSearch */
+/* @var $searchModel app\models\EsercizifattiSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-/* @var $idTerapia */
 
-$this->title = 'Esercizi';
+$this->title = 'Esercizifattis';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="esercizi-index">
+<div class="esercizifatti-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
+    <p>
+        <?= Html::a('Create Esercizifatti', ['create'], ['class' => 'btn btn-success']) ?>
+    </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
@@ -27,12 +28,14 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'testo:ntext',
+            'idTerapia',
+            'idEsercizio',
+            'stato',
             [
-                'header' => '',
-                'content' => function($model) use($idTerapia){
-                    return Html::a('avvia', ['esercizi/viewesercizio', 'idEsercizio' => $model->idEsercizio, 'idTerapia' => $idTerapia], ['class' => 'btn btn-primary']);
-                }
+                'class' => ActionColumn::className(),
+                'urlCreator' => function ($action, Esercizifatti $model, $key, $index, $column) {
+                    return Url::toRoute([$action, 'idTerapia' => $model->idTerapia, 'idEsercizio' => $model->idEsercizio]);
+                 }
             ],
         ],
     ]); ?>
