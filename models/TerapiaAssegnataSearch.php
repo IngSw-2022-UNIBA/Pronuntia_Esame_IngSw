@@ -79,7 +79,8 @@ class TerapiaAssegnataSearch extends TerapiaAssegnata
      */
     public function searchTerapie($params, $idBambino)
     {
-        $logopedista = Yii::$app->user->id;
+        $logopedista = Bambini::findOne(['idUtente' => $idBambino])->idLogopedista;
+
         $query = TerapiaAssegnata::find()->select('*')->from('terapie_assegnate')
             ->join("JOIN", "bambini", "terapie_assegnate.idBambino = bambini.idUtente")
             ->where("bambini.idLogopedista='$logopedista' AND terapie_assegnate.idBambino='$idBambino'");

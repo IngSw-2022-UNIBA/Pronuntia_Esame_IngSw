@@ -204,4 +204,16 @@ class BambiniController extends Controller
         return $this->redirect(['logopedisti/listabambini']);
     }
 
+
+    public function actionViewcar($idUtente)
+    {
+        if($idUtente == 0){
+            Yii::$app->session->setFlash('info', 'nessun bambino trovato, vai nel tuo profilo -> modifica e seleziona il desiderato');
+            return $this->goHome();
+        }
+        return $this->render('viewcar', [
+            'model' => $this->findModel($idUtente),
+        ]);
+    }
+
 }

@@ -12,7 +12,6 @@ use Yii;
  * @property string $cognome
  * @property int $idBambino
  *
- * @property CuratoDa[] $curatoDas
  * @property Utenti $idUtente0
  */
 class Caregiver extends \yii\db\ActiveRecord
@@ -31,7 +30,7 @@ class Caregiver extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['idUtente', 'nome', 'cognome'], 'required'],
+            [['idUtente', 'nome', 'cognome', 'idBambino'], 'required'],
             [['idUtente'], 'integer'],
             [['nome', 'cognome'], 'string', 'max' => 25],
             [['idUtente'], 'unique'],
@@ -56,10 +55,7 @@ class Caregiver extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getCuratoDas()
-    {
-        return $this->hasMany(CuratoDa::className(), ['idCaregiver' => 'idUtente']);
-    }
+
 
     /**
      * Gets query for [[IdUtente0]].

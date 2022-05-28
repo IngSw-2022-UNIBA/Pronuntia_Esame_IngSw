@@ -4,7 +4,7 @@
 /** @var string $content */
 
 use app\assets\AppAsset;
-use app\models\Utenti;
+use app\models\Caregiver;use app\models\Utenti;
 use app\widgets\Alert;
 use yii\bootstrap4\Breadcrumbs;
 use yii\bootstrap4\Html;
@@ -32,6 +32,7 @@ $log = new Utenti();
 
 <header>
     <?php
+
     NavBar::begin([
         'brandLabel' => 'Homepage',
         'brandUrl' => Yii::$app->homeUrl,
@@ -163,6 +164,27 @@ $log = new Utenti();
                 '<li>'
                 .'</li>'
             )
+            ),
+
+
+            Yii::$app->user->isGuest ? (
+                '<li>'
+                .'</li>'
+            ) : (
+                $log->isCaregiverConf(Yii::$app->user->identity->tipoUtente) ? (
+                    ['label' => 'Bambino seguito', 'url' => ['/bambini/viewcar', 'idUtente' => Caregiver::findOne(['idUtente' => Yii::$app->user->id])->idBambino]]
+                ) : (
+                    '<li>'
+                    .'</li>'
+                )
+            ),
+
+            // guest --------------------------------------------------------------------------------------
+            Yii::$app->user->isGuest ? (
+            ['label' => 'Svolgi un pre test', 'url' => ['index']]
+            ) : (
+                '<li>'
+                .'</li>'
             ),
 
         ],
