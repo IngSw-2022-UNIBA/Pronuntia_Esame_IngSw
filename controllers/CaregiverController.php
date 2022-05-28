@@ -136,6 +136,15 @@ class CaregiverController extends Controller
         return $this->goHome();
     }
 
+    public function actionDeletebambinoo()
+    {
+        $model = $this->findModel(Yii::$app->user->id);
+        $model->idBambino = 0;
+        $model->save();
+
+        return $this->goHome();
+    }
+
 
     /**
      * Finds the Caregiver model based on its primary key value.

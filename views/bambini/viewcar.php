@@ -16,8 +16,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Terapie', ['bambini/terapiebambino','idBambino'=> $model->idUtente], ['class' => 'btn btn-secondary']) ?>
-        <?= Html::a('Elimina dalla lista', ['caregiver/deletebambino','idUtente'=> $model->idUtente], ['class' => 'btn btn-danger']) ?>
+        <?= Html::a('Terapie', ['bambini/terapiebambinocar','idBambino'=> $model->idUtente], ['class' => 'btn btn-secondary']) ?>
+        <?= Html::a('Elimina dalla lista', ['caregiver/deletebambinoo'], ['class' => 'btn btn-danger']) ?>
     </p>
 
     <?= DetailView::widget([

@@ -183,6 +183,17 @@ class BambiniController extends Controller
         ]);
     }
 
+    public function actionTerapiebambinocar($idBambino)
+    {
+        $searchModel = new TerapiaAssegnataSearch();
+        $dataProvider = $searchModel->searchTerapie($this->request->queryParams, $idBambino);
+
+        return $this->render('terapiebambinocar', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
     public function actionTerapiepersonali()
     {
         $searchModel = new TerapiaAssegnataSearch();
