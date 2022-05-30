@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 26, 2022 alle 19:14
+-- Creato il: Mag 29, 2022 alle 20:54
 -- Versione del server: 10.4.24-MariaDB
 -- Versione PHP: 7.4.29
 
@@ -26,8 +26,6 @@ SET time_zone = "+00:00";
 --
 -- Struttura della tabella `bambini`
 --
-CREATE DATABASE pronuntia;
-USE pronuntia;
 
 CREATE TABLE `bambini` (
   `idUtente` int(11) NOT NULL,
@@ -63,7 +61,8 @@ CREATE TABLE `batterie` (
 --
 
 INSERT INTO `batterie` (`idBatteria`, `nome`, `descrizione`, `categoria`, `idLogopedista`) VALUES
-(1, 'batteria dislessici', 'esercizi pensati per chi non sa pronunciare la s', 'dislessici', 1);
+(1, 'batteria dislessici', 'esercizi pensati per chi non sa pronunciare la s', 'dislessici', 1),
+(2, 'batteria autistici', 'questa è la descrizione', 'autistici', 7);
 
 -- --------------------------------------------------------
 
@@ -75,7 +74,7 @@ CREATE TABLE `caregiver` (
   `idUtente` int(11) NOT NULL,
   `nome` varchar(25) NOT NULL,
   `cognome` varchar(25) NOT NULL,
-  `idBambino` int(11) DEFAULT NULL
+  `idBambino` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -83,8 +82,9 @@ CREATE TABLE `caregiver` (
 --
 
 INSERT INTO `caregiver` (`idUtente`, `nome`, `cognome`, `idBambino`) VALUES
-(3, 'Mamma', 'Pancina', 2),
-(5, 'Mammina', 'arrabbiata', 2);
+(3, 'Mamma', 'Pancina', 0),
+(5, 'Mammina', 'arrabbiata', 2),
+(8, 'papa', 'nervoso', 2);
 
 -- --------------------------------------------------------
 
@@ -119,6 +119,14 @@ CREATE TABLE `esercizifatti` (
   `stato` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dump dei dati per la tabella `esercizifatti`
+--
+
+INSERT INTO `esercizifatti` (`idTerapia`, `idEsercizio`, `stato`) VALUES
+(1, 1, 1),
+(1, 2, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -136,7 +144,10 @@ CREATE TABLE `es_della_batteria` (
 
 INSERT INTO `es_della_batteria` (`idBatteria`, `idEsercizio`) VALUES
 (1, 1),
-(1, 2);
+(1, 2),
+(2, 1),
+(2, 2),
+(2, 3);
 
 -- --------------------------------------------------------
 
@@ -156,7 +167,8 @@ CREATE TABLE `logopedisti` (
 
 INSERT INTO `logopedisti` (`idUtente`, `nome`, `cognome`) VALUES
 (1, 'mario', 'rossi'),
-(6, 'luca', 'giurato');
+(6, 'luca', 'giurato'),
+(7, 'fra', 'panza');
 
 -- --------------------------------------------------------
 
@@ -203,7 +215,9 @@ INSERT INTO `utenti` (`idUtente`, `email`, `password`, `tipoUtente`) VALUES
 (3, 'c@c.it', 'cccc', 6),
 (4, 'bb@bb.it', 'bbbb', 5),
 (5, 'cc@cc.it', 'cccc', 6),
-(6, 'aa@aa.it', 'aaaa', 4);
+(6, 'aa@aa.it', 'aaaa', 4),
+(7, 'aaa@aaa.it', 'aaaa', 4),
+(8, 'ccc@ccc.it', 'cccc', 6);
 
 --
 -- Indici per le tabelle scaricate
@@ -276,7 +290,7 @@ ALTER TABLE `utenti`
 -- AUTO_INCREMENT per la tabella `batterie`
 --
 ALTER TABLE `batterie`
-  MODIFY `idBatteria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idBatteria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT per la tabella `esercizi`
@@ -294,7 +308,7 @@ ALTER TABLE `terapie_assegnate`
 -- AUTO_INCREMENT per la tabella `utenti`
 --
 ALTER TABLE `utenti`
-  MODIFY `idUtente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idUtente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Limiti per le tabelle scaricate
