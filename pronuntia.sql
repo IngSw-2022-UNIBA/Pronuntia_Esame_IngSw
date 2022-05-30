@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 29, 2022 alle 20:54
+-- Creato il: Mag 30, 2022 alle 18:18
 -- Versione del server: 10.4.24-MariaDB
 -- Versione PHP: 7.4.29
 
@@ -26,6 +26,9 @@ SET time_zone = "+00:00";
 --
 -- Struttura della tabella `bambini`
 --
+drop database pronuntia;
+create database pronuntia;
+use pronuntia;
 
 CREATE TABLE `bambini` (
   `idUtente` int(11) NOT NULL,
@@ -82,7 +85,7 @@ CREATE TABLE `caregiver` (
 --
 
 INSERT INTO `caregiver` (`idUtente`, `nome`, `cognome`, `idBambino`) VALUES
-(3, 'Mamma', 'Pancina', 0),
+(3, 'Mamma', 'Pancina', 2),
 (5, 'Mammina', 'arrabbiata', 2),
 (8, 'papa', 'nervoso', 2);
 
@@ -169,6 +172,29 @@ INSERT INTO `logopedisti` (`idUtente`, `nome`, `cognome`) VALUES
 (1, 'mario', 'rossi'),
 (6, 'luca', 'giurato'),
 (7, 'fra', 'panza');
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `pretest`
+--
+
+CREATE TABLE `pretest` (
+  `idPretest` int(11) NOT NULL,
+  `domanda1` mediumtext NOT NULL,
+  `domanda2` mediumtext NOT NULL,
+  `domanda3` mediumtext NOT NULL,
+  `telefono` varchar(25) NOT NULL,
+  `idLogopedista` int(11) NOT NULL,
+  `stato` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dump dei dati per la tabella `pretest`
+--
+
+INSERT INTO `pretest` (`idPretest`, `domanda1`, `domanda2`, `domanda3`, `telefono`, `idLogopedista`, `stato`) VALUES
+(3, 'si, molte purtroppo', 'si, quando legge soprattutto', 'no, di 10 mesi', '39444842251', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -269,6 +295,13 @@ ALTER TABLE `logopedisti`
   ADD PRIMARY KEY (`idUtente`);
 
 --
+-- Indici per le tabelle `pretest`
+--
+ALTER TABLE `pretest`
+  ADD PRIMARY KEY (`idPretest`),
+  ADD KEY `idLogopedista` (`idLogopedista`);
+
+--
 -- Indici per le tabelle `terapie_assegnate`
 --
 ALTER TABLE `terapie_assegnate`
@@ -297,6 +330,12 @@ ALTER TABLE `batterie`
 --
 ALTER TABLE `esercizi`
   MODIFY `idEsercizio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT per la tabella `pretest`
+--
+ALTER TABLE `pretest`
+  MODIFY `idPretest` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT per la tabella `terapie_assegnate`
@@ -351,6 +390,12 @@ ALTER TABLE `es_della_batteria`
 --
 ALTER TABLE `logopedisti`
   ADD CONSTRAINT `logopedisti_ibfk_1` FOREIGN KEY (`idUtente`) REFERENCES `utenti` (`idUtente`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limiti per la tabella `pretest`
+--
+ALTER TABLE `pretest`
+  ADD CONSTRAINT `pretest_ibfk_1` FOREIGN KEY (`idLogopedista`) REFERENCES `logopedisti` (`idUtente`);
 
 --
 -- Limiti per la tabella `terapie_assegnate`
