@@ -104,6 +104,18 @@ $log = new Utenti();
             )
             ),
 
+            Yii::$app->user->isGuest ? (
+                '<li>'
+                .'</li>'
+            ) : (
+            $log->isLogopedistaConf(Yii::$app->user->identity->tipoUtente) ? (
+            ['label' => 'Pretest da analizzare', 'url' => ['/pretest/index']]
+            ) : (
+                '<li>'
+                .'</li>'
+            )
+            ),
+
             // Bambino --------------------------------------------------------------------------------------
             Yii::$app->user->isGuest ? (
                 '<li>'
@@ -181,7 +193,7 @@ $log = new Utenti();
 
             // guest --------------------------------------------------------------------------------------
             Yii::$app->user->isGuest ? (
-            ['label' => 'Svolgi un pre test', 'url' => ['index']]
+            ['label' => 'Svolgi un pre test', 'url' => ['pretest/create']]
             ) : (
                 '<li>'
                 .'</li>'
