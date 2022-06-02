@@ -224,4 +224,23 @@ class EserciziController extends Controller
             'stato' => 2,
         ]);
     }
+
+    public function actionVieweserciziolog($idEsercizio)
+    {
+
+        $exists = Esercizifatti::find()->where( " idEsercizio = '$idEsercizio'")->exists();
+
+        if($exists) {
+            //it exists
+            $model1 = Esercizifatti::findOne(['idEsercizio' => $idEsercizio]);
+
+            return $this->render('vieweserciziolog', [
+                'model' => $this->findModel($idEsercizio),
+            ]);
+        }
+
+        return $this->render('vieweserciziolog', [
+            'model' => $this->findModel($idEsercizio),
+        ]);
+    }
 }

@@ -17,6 +17,7 @@ use Yii;
 class Caregiver extends \yii\db\ActiveRecord
 {
     public $passwordBambino;
+    public $emailBambino;
 
     /**
      * {@inheritdoc}
@@ -34,7 +35,7 @@ class Caregiver extends \yii\db\ActiveRecord
         return [                        // se metto nei required passwordbambino non va la registrazione
             [['idUtente', 'nome', 'cognome'], 'required'],
             [['idUtente'], 'integer'],
-            [['nome', 'cognome', 'passwordBambino'], 'string', 'max' => 25],
+            [['nome', 'cognome', 'passwordBambino', 'emailBambino'], 'string', 'max' => 25],
             [['idUtente'], 'unique'],
             [['idUtente'], 'exist', 'skipOnError' => true, 'targetClass' => Utenti::className(), 'targetAttribute' => ['idUtente' => 'idUtente']],
         ];

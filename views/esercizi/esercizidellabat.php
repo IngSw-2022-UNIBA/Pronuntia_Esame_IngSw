@@ -38,6 +38,13 @@ $this->params['breadcrumbs'][] = $this->title;
                     return Html::a('Rimuovi', ['/esercizi/rimuovidallabat', 'idBatteria' => $idBatteria, 'idEsercizio' => $model->idEsercizio], ['class' => 'btn btn-danger']);
                 }
             ],
+
+            [
+                'header' => '',
+                'content' => function($model){
+                    return Html::a('Prova', ['/esercizi/vieweserciziolog', 'idEsercizio' => $model->idEsercizio], ['class' => 'btn btn-secondary']);
+                }
+            ],
         ],
     ]); ?>
 

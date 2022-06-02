@@ -91,9 +91,10 @@ class CaregiverController extends Controller
                 $utente->setTipo(6);
 
                 // cercare l'id del bambino con quella password e metterlo nel model e salvare
-                $modelutente = UtentiSearch::find()->where(['password' => $model->passwordBambino])->one();
-                $model->idBambino = $modelutente->idUtente;
-                $model->save();
+                if($modelutente = UtentiSearch::find()->where(['password' => $model->passwordBambino, 'email' => $model->emailBambino])->one()){
+                    $model->idBambino = $modelutente->idUtente;
+                    $model->save();
+                }
 
                 return $this->redirect(['view', 'idUtente' => $model->idUtente]);
             }
@@ -120,9 +121,11 @@ class CaregiverController extends Controller
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
 
             // cercare l'id del bambino con quella password e metterlo nel model e salvare
-            $modelutente = UtentiSearch::find()->where(['password' => $model->passwordBambino])->one();
-            $model->idBambino = $modelutente->idUtente;
-            $model->save();
+            if($modelutente = UtentiSearch::find()->where(['password' => $model->passwordBambino, 'email' => $model->emailBambino])->one()){
+                $model->idBambino = $modelutente->idUtente;
+                $model->save();
+            }
+
 
             return $this->redirect(['view', 'idUtente' => $model->idUtente]);
         }

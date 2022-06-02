@@ -6,8 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Caregiver */
 
-$this->title = $model->idUtente;
-$this->params['breadcrumbs'][] = ['label' => 'Caregivers', 'url' => ['index']];
+$this->title = "Il tuo profilo";
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
