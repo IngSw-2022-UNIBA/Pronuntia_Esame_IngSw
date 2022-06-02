@@ -18,7 +18,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'categoria')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'idLogopedista')->textInput() ?>
+    <?= $form->field($model, 'idLogopedista')->hiddenInput(array('value'=>Yii::$app->user->id))?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

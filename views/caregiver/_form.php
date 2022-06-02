@@ -20,9 +20,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'cognome')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'idBambino')->dropDownList(
-        ArrayHelper::map(Bambini::find()->all(), 'idUtente', 'nome'), ['prompt'=>'Seleziona']);
-    ?>
+    <?= $form->field($model, 'passwordBambino')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

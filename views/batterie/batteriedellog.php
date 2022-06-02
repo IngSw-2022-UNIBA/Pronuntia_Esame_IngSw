@@ -18,6 +18,10 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
 
+    <p>
+        <?= Html::a('Crea batteria', ['create'], ['class' => 'btn btn-success']) ?>
+    </p>
+
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
@@ -26,10 +30,21 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'idBatteria',
             'nome',
             'descrizione:ntext',
             'categoria',
+            [
+                'class' => ActionColumn::className(),
+                'urlCreator' => function ($action, Batterie $model, $key, $index, $column) {
+                    return Url::toRoute([$action, 'idBatteria' => $model->idBatteria]);
+                }
+            ],
+            [
+                'header' => '',
+                'content' => function($model) {
+                    return Html::a('Esercizi', ['/esercizi/esercizidellabat', 'idBatteria' => $model->idBatteria], ['class' => 'btn btn-primary']);
+                }
+            ],
         ],
     ]); ?>
 

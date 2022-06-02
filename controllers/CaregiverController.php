@@ -6,6 +6,7 @@ use app\controllers\UtentiController;
 use app\models\Utenti;
 use app\models\Caregiver;
 use app\models\CaregiverSearch;
+use app\models\UtentiSearch;
 use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -88,6 +89,12 @@ class CaregiverController extends Controller
                 // Imposto il tipo utente a 6 che significa utente registrato con conferma
                 $utente = new Utenti();
                 $utente->setTipo(6);
+
+                // cercare l'id del bambino con quella password e metterlo nel model e salvare
+                $modelutente = UtentiSearch::find()->where(['password' => $model->passwordBambino])->one();
+                $model->idBambino = $modelutente->idUtente;
+                $model->save();
+
                 return $this->redirect(['view', 'idUtente' => $model->idUtente]);
             }
         } else {
@@ -111,6 +118,12 @@ class CaregiverController extends Controller
         $model = $this->findModel($idUtente);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+
+            // cercare l'id del bambino con quella password e metterlo nel model e salvare
+            $modelutente = UtentiSearch::find()->where(['password' => $model->passwordBambino])->one();
+            $model->idBambino = $modelutente->idUtente;
+            $model->save();
+
             return $this->redirect(['view', 'idUtente' => $model->idUtente]);
         }
 

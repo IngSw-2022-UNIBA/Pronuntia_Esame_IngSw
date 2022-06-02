@@ -12,12 +12,13 @@ use Yii;
  * @property string $cognome
  * @property int $idLogopedista
  *
- * @property CuratoDa[] $curatoDas
+ *
  * @property Utenti $idUtente0
- * @property TerapieAssegnate[] $terapieAssegnates
  */
 class Bambini extends \yii\db\ActiveRecord
 {
+
+
     /**
      * {@inheritdoc}
      */
@@ -49,19 +50,12 @@ class Bambini extends \yii\db\ActiveRecord
             'idUtente' => 'Id Utente',
             'nome' => 'Nome',
             'cognome' => 'Cognome',
+            'toCar' => 'Passa al caregiver',
 
         ];
     }
 
-    /**
-     * Gets query for [[CuratoDas]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getCuratoDas()
-    {
-        return $this->hasMany(CuratoDa::className(), ['idBambino' => 'idUtente']);
-    }
+
 
     /**
      * Gets query for [[IdUtente0]].
@@ -73,13 +67,5 @@ class Bambini extends \yii\db\ActiveRecord
         return $this->hasOne(Utenti::className(), ['idUtente' => 'idUtente']);
     }
 
-    /**
-     * Gets query for [[TerapieAssegnates]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getTerapieAssegnates()
-    {
-        return $this->hasMany(TerapieAssegnate::className(), ['idBambino' => 'idUtente']);
-    }
+
 }

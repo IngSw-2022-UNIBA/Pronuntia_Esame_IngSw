@@ -49,6 +49,18 @@ class EserciziController extends Controller
         ]);
     }
 
+    public function actionEsercizidellabat($idBatteria)
+    {
+        $searchModel = new EserciziSearch();
+        $dataProvider = $searchModel->searchEsercizidellabat($this->request->queryParams, $idBatteria);
+
+        return $this->render('esercizidellabat', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'idBatteria' => $idBatteria,
+        ]);
+    }
+
     /**
      * Displays a single Esercizi model.
      * @param int $idEsercizio Id Esercizio

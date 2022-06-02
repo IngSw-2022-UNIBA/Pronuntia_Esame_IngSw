@@ -99,7 +99,7 @@ class BambiniController extends Controller
             if ($model->load($this->request->post()) && $model->save()) {
                 $utente = new Utenti();
                 $utente->setTipo(5);
-                return $this->redirect(['view', 'idUtente' => $model->idUtente]);
+                return $this->redirect(['view',  'idUtente' => $model->idUtente]);
             }
         } else {
             $model->loadDefaultValues();
@@ -109,6 +109,7 @@ class BambiniController extends Controller
             'model' => $model,
         ]);
     }
+
 
     /**
      * Updates an existing Bambini model.

@@ -84,6 +84,7 @@ class UtentiController extends Controller
         ]);
     }
 
+
     /**
      * Updates an existing Utenti model.
      * If update is successful, the browser will be redirected to the 'view' page.
