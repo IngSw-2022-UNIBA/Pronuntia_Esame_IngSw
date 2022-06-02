@@ -6,7 +6,6 @@ use yii\helpers\Html;
 /* @var $model app\models\Batterie */
 
 $this->title = 'Create Batterie';
-$this->params['breadcrumbs'][] = ['label' => 'Batteries', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="batterie-create">

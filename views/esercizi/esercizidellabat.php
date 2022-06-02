@@ -42,7 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'header' => '',
                 'content' => function($model) use($idBatteria){
-                    return Html::a('Rimuovi', ['/esercizi/Rimuovidallabat', 'idBatteria' => $idBatteria, 'idEsercizio' => $model->idEsercizio], ['class' => 'btn btn-primary']);
+                    return Html::a('Rimuovi', ['/esercizi/rimuovidallabat', 'idBatteria' => $idBatteria, 'idEsercizio' => $model->idEsercizio], ['class' => 'btn btn-primary']);
                 }
             ],
         ],

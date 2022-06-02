@@ -6,6 +6,7 @@ use app\models\Esercizi;
 use app\models\Esercizifatti;
 use app\models\EserciziSearch;
 use app\models\TerapiaAssegnataSearch;
+use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -128,6 +129,23 @@ class EserciziController extends Controller
         $this->findModel($idEsercizio)->delete();
 
         return $this->redirect(['index']);
+    }
+
+    public function actionRimuovidallabat($idBatteria, $idEsercizio)
+    {
+        $connection = Yii::$app->getDb();
+        $command = $connection->createCommand("DELETE FROM es_della_batteria WHERE idBatteria = '$idBatteria'  AND idEsercizio = '$idEsercizio'", [':start_date' => '1970-01-01']);
+        $result = $command->queryAll();
+
+        //--------------------------------------
+        $searchModel = new EserciziSearch();
+        $dataProvider = $searchModel->searchEsercizidellabat($this->request->queryParams, $idBatteria);
+
+        return $this->render('esercizidellabat', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'idBatteria' => $idBatteria,
+        ]);
     }
 
     /**
