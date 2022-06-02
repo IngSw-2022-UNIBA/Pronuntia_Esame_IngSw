@@ -11,16 +11,13 @@ use yii\grid\GridView;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 /* @var $idBatteria */
 
-$this->title = 'Esercizis';
+$this->title = 'Aggiungi un esercizio';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="esercizi-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a('Create Esercizi', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
