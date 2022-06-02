@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Aggiungi Esercizi', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Aggiungi Esercizi', ['index', 'idBatteria' => $idBatteria], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -30,19 +30,12 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'idEsercizio',
             'testo:ntext',
             'link',
             [
-                'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, Esercizi $model, $key, $index, $column) {
-                    return Url::toRoute([$action, 'idEsercizio' => $model->idEsercizio]);
-                 }
-            ],
-            [
                 'header' => '',
                 'content' => function($model) use($idBatteria){
-                    return Html::a('Rimuovi', ['/esercizi/rimuovidallabat', 'idBatteria' => $idBatteria, 'idEsercizio' => $model->idEsercizio], ['class' => 'btn btn-primary']);
+                    return Html::a('Rimuovi', ['/esercizi/rimuovidallabat', 'idBatteria' => $idBatteria, 'idEsercizio' => $model->idEsercizio], ['class' => 'btn btn-danger']);
                 }
             ],
         ],

@@ -9,6 +9,7 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\EserciziSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
+/* @var $idBatteria */
 
 $this->title = 'Esercizis';
 $this->params['breadcrumbs'][] = $this->title;
@@ -29,14 +30,13 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'idEsercizio',
             'testo:ntext',
             'link',
             [
-                'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, Esercizi $model, $key, $index, $column) {
-                    return Url::toRoute([$action, 'idEsercizio' => $model->idEsercizio]);
-                 }
+                'header' => '',
+                'content' => function($model) use($idBatteria){
+                    return Html::a('Aggiungi', ['/esercizi/aggiungiabat', 'idBatteria' => $idBatteria, 'idEsercizio' => $model->idEsercizio], ['class' => 'btn btn-primary']);
+                }
             ],
         ],
     ]); ?>

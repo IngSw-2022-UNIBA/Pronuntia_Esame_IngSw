@@ -39,15 +39,21 @@ class EserciziController extends Controller
      *
      * @return string
      */
-    public function actionIndex()
+    public function actionIndex($idBatteria)
     {
         $searchModel = new EserciziSearch();
-        $dataProvider = $searchModel->search($this->request->queryParams);
+        $dataProvider = $searchModel->searchnotinbat($this->request->queryParams, $idBatteria);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'idBatteria' => $idBatteria,
         ]);
+
+
+
+
+
     }
 
     public function actionEsercizidellabat($idBatteria)
@@ -142,6 +148,26 @@ class EserciziController extends Controller
         $dataProvider = $searchModel->searchEsercizidellabat($this->request->queryParams, $idBatteria);
 
         return $this->render('esercizidellabat', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'idBatteria' => $idBatteria,
+        ]);
+    }
+
+    public function actionAggiungiabat($idBatteria, $idEsercizio)
+    {
+        $connection = Yii::$app->getDb();
+        $command = $connection->createCommand("INSERT INTO `es_della_batteria` (`idBatteria`, `idEsercizio`) VALUES ('$idBatteria', '$idEsercizio')", [':start_date' => '1970-01-01']);
+        $result = $command->queryAll();
+
+
+
+        //--------------------------------------
+
+        $searchModel = new EserciziSearch();
+        $dataProvider = $searchModel->searchnotinbat($this->request->queryParams, $idBatteria);
+
+        return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'idBatteria' => $idBatteria,

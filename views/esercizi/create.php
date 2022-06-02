@@ -6,7 +6,6 @@ use yii\helpers\Html;
 /* @var $model app\models\Esercizi */
 
 $this->title = 'Create Esercizi';
-$this->params['breadcrumbs'][] = ['label' => 'Esercizis', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="esercizi-create">

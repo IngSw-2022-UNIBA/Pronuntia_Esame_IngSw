@@ -67,6 +67,35 @@ class EserciziSearch extends Esercizi
         return $dataProvider;
     }
 
+    public function searchnotinbat($params, $idBatteria)
+    {
+        $query = Esercizi::find()->select('*')->from('es_della_batteria, esercizi')->where("es_della_batteria.idEsercizio = esercizi.idEsercizio and esercizi.idEsercizio NOT IN (SELECT idEsercizio from es_della_batteria where idBatteria = '$idBatteria')");
+
+        // add conditions that should always apply here
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
+        // grid filtering conditions
+        $query->andFilterWhere([
+            'idEsercizio' => $this->idEsercizio,
+        ]);
+
+        $query->andFilterWhere(['like', 'testo', $this->testo])
+            ->andFilterWhere(['like', 'link', $this->link]);
+
+        return $dataProvider;
+    }
+
     public function searchEsercizidellabatteria($params, $idBatteria, $idTerapia)
     {
 
