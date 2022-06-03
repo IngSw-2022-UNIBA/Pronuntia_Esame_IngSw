@@ -247,4 +247,9 @@ class BambiniController extends Controller
             'media' => $media,
         ]);
     }
+
+    public function actionAvatar()
+    {
+        return $this->render('avatar');
+    }
 }

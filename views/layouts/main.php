@@ -153,6 +153,18 @@ $log = new Utenti();
             )
             ),
 
+            Yii::$app->user->isGuest ? (
+                '<li>'
+                .'</li>'
+            ) : (
+            $log->isBambinoConf(Yii::$app->user->identity->tipoUtente) ? (
+            ['label' => 'Avatar', 'url' => ['/bambini/avatar']]
+            ) : (
+                '<li>'
+                .'</li>'
+            )
+            ),
+
             // Caregiver --------------------------------------------------------------------------------------
             Yii::$app->user->isGuest ? (
                 '<li>'
