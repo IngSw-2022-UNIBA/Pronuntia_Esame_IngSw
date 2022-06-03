@@ -7,10 +7,11 @@ use yii\widgets\DetailView;
 /* @var $model app\models\Bambini */
 
 $this->title = $model->idUtente;
-$this->params['breadcrumbs'][] = $this->title;
+$this->params['breadcrumbs'][] = $model->nome;
 \yii\web\YiiAsset::register($this);
 
 $var_avatar = "https://sketchfab.com/models/1a7ac5e5268f4fbd88dacc9601c2ca4d/embed?autostart=1";
+
 $nome = $model->nome;
 $cognome = $model->cognome;
 ?>
