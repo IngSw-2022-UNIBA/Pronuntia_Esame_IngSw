@@ -16,7 +16,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
 $media = $media*100;
 
-if($media < 34){
+if($media==0){
+    $testo = "Numero di esercizi non sufficiente!";
+} elseif($media < 34){
     $testo = "Il Bambino sta andando abbastanza male!";
 }elseif ($media < 67){
     $testo = "Il Bambino sta andando abbastanza bene!";
@@ -29,8 +31,19 @@ if($media < 34){
 <h1><?= Html::encode($this->title) ?></h1>
 <h1></h1>
 
+<?php
+if($media < 1){
+    $test_ok = 1;
+    $test_no = 1;
+}else {
+    $test_ok = $fattibene;
+    $test_no = $fattimale;
+}
+?>
+
 <html lang="it">
 <head>
+    <title>Grafico statistiche</title>
     <meta charset="utf-8">
     <script src="https://d3js.org/d3.v4.js"></script>
     <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
@@ -38,8 +51,6 @@ if($media < 34){
 <body>
 <!-- Crea il div dove il grafico verrà posto -->
 <div id="grafico_donut"></div>
-
-
 <script>
     // imposta dimensioni e margini del grafico
     var width = 450
@@ -58,8 +69,8 @@ if($media < 34){
 
 
     // Inseriamo i dati
-    var data = {Superati : <?= Html::encode($fattibene) ?> ,
-                Falliti : <?= Html::encode($fattimale) ?>
+    var data = {Superati : <?= Html::encode($test_ok) ?> ,
+                Falliti : <?= Html::encode($test_no) ?>
     }
 
 
@@ -136,17 +147,14 @@ if($media < 34){
 
 <div class="bambini-view">
 
-
+    <h1 style="background-color:powderblue;"><?= Html::encode($testo) ?></h1>
+    <br><br>
     <h3>Il numero di esercizi fatti bene è: <?= Html::encode($fattibene) ?></h3>
 
     <h3>Il numero di esercizi fatti male è: <?= Html::encode($fattimale) ?></h3>
 
     <h2>La percentuale di successo degli esercizi è del: <?= Html::encode($media) ?> %</h2>
-
-    <h1><br><br></h1>
-    <h1 style="background-color:powderblue;"><?= Html::encode($testo) ?></h1>
-
-
+    
 </div>
 
 
