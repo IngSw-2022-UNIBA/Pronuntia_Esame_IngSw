@@ -35,6 +35,12 @@ $this->params['breadcrumbs'][] = $this->title;
                     return Html::a('Esercizi', ['/esercizi/esercizibambino', 'idBatteria' => $model->idBatteria, 'idTerapia' => $model->idTerapia], ['class' => 'btn btn-primary']);
                 }
             ],
+            [
+                'header' => '',
+                'content' => function($model){
+                    return Html::a('Statistiche', ['bambini/statistiche', 'idTerapia' => $model->idTerapia], ['class' => 'btn btn-secondary']);
+                }
+            ],
         ],
     ]); ?>
 
