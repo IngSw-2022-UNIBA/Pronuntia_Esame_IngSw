@@ -38,6 +38,12 @@ $this->params['breadcrumbs'][] = $this->title;
                     return Html::a('Modifica', ['terapia-assegnata/update', 'idTerapia' => $model->idTerapia], ['class' => 'btn btn-primary']);
                 }
             ],
+            [
+                'header' => '',
+                'content' => function($model){
+                    return Html::a('Statistiche', ['bambini/statistiche', 'idTerapia' => $model->idTerapia], ['class' => 'btn btn-secondary']);
+                }
+            ],
         ],
     ]); ?>
 

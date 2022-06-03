@@ -3,6 +3,8 @@
 namespace app\controllers;
 
 use app\controllers\UtentiController;
+use app\models\Esercizifatti;
+use app\models\EsercizifattiSearch;
 use app\models\TerapiaAssegnataSearch;
 use app\models\Utenti;
 use app\models\Bambini;
@@ -228,4 +230,21 @@ class BambiniController extends Controller
         ]);
     }
 
+    public function actionStatistiche($idTerapia)
+    {
+        // query per esetrapolare dei dati
+
+        $fattibene = Yii::$app->db->createCommand('select count(*) from bambini, terapie_assegnate, esercizifatti where bambini.idUtente = terapie_assegnate.idBambino and esercizifatti.idTerapia = terapie_assegnate.idTerapia and terapie_assegnate.idTerapia = :id and esercizifatti.stato = 1')->bindValue(':id', $_GET['idTerapia'])->queryScalar();
+
+        $fattimale = Yii::$app->db->createCommand('select count(*) from bambini, terapie_assegnate, esercizifatti where bambini.idUtente = terapie_assegnate.idBambino and esercizifatti.idTerapia = terapie_assegnate.idTerapia and terapie_assegnate.idTerapia = :id and esercizifatti.stato = 0')->bindValue(':id', $_GET['idTerapia'])->queryScalar();
+
+        $media = Yii::$app->db->createCommand('select avg(esercizifatti.stato) from bambini, terapie_assegnate, esercizifatti where bambini.idUtente = terapie_assegnate.idBambino and esercizifatti.idTerapia = terapie_assegnate.idTerapia and terapie_assegnate.idTerapia = :id')->bindValue(':id', $_GET['idTerapia'])->queryScalar();
+
+        // devo passare i dati alla view
+        return $this->render('statistiche', [
+            'fattibene' => $fattibene,
+            'fattimale' => $fattimale,
+            'media' => $media,
+        ]);
+    }
 }

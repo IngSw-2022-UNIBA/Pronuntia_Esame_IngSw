@@ -28,6 +28,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'idBatteria',
             'data',
             'Diagnosi:ntext',
+            [
+                'header' => '',
+                'content' => function($model){
+                    return Html::a('Statistiche', ['bambini/statistiche', 'idTerapia' => $model->idTerapia], ['class' => 'btn btn-secondary']);
+                }
+            ],
         ],
     ]); ?>
 
