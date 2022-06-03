@@ -8,7 +8,7 @@ $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 
 
-$var = "https://sketchfab.com/models/1a7ac5e5268f4fbd88dacc9601c2ca4d/embed"; 
+$var = "https://sketchfab.com/models/1a7ac5e5268f4fbd88dacc9601c2ca4d/embed?autostart=1";
 ?>
 
 <iframe id="frame" style="border:0px;

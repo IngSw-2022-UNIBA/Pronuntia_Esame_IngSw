@@ -154,7 +154,7 @@ if($media < 1){
     <h3>Il numero di esercizi fatti male è: <?= Html::encode($fattimale) ?></h3>
 
     <h2>La percentuale di successo degli esercizi è del: <?= Html::encode($media) ?> %</h2>
-    
+
 </div>
 
 
