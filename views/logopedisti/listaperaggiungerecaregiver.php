@@ -12,7 +12,7 @@ use yii\grid\GridView;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 /* @var $idBambino */
 
-$this->title = 'title';
+$this->title = 'Seleziona un caregiver';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="bambini-index">
