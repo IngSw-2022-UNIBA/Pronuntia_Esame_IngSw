@@ -23,6 +23,13 @@ SET time_zone = "+00:00";
 
 -- --------------------------------------------------------
 
+
+DROP DATABASE IF EXISTS pronuntia;
+
+CREATE DATABASE pronuntia;
+
+USE pronuntia;
+
 --
 -- Struttura della tabella `bambini`
 --
