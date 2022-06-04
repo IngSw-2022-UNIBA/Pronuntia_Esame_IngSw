@@ -11,6 +11,7 @@ use Yii;
  * @property string $nome
  * @property string $cognome
  *
+ *
  * @property Batterie[] $batterieDiEs
  * @property Utenti $idUtente0
  */

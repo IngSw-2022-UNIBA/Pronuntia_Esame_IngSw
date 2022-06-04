@@ -41,6 +41,7 @@ class Utenti extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
             [['email'], 'string', 'max' => 55],
             ['email','email'],
             [['password'], 'string', 'max' => 25],
+            [['email'], 'unique'],
             ['password_repeat', 'compare', 'compareAttribute' => 'password'],
         ];
     }

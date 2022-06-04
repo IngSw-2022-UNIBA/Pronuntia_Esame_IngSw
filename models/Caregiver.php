@@ -11,6 +11,8 @@ use Yii;
  * @property string $nome
  * @property string $cognome
  * @property int $idBambino
+ * @property string $CF
+ * @property string $dataDiNascita
  *
  * @property Utenti $idUtente0
  */
@@ -33,9 +35,9 @@ class Caregiver extends \yii\db\ActiveRecord
     public function rules()
     {
         return [                        // se metto nei required passwordbambino non va la registrazione
-            [['idUtente', 'nome', 'cognome'], 'required'],
+            [['idUtente', 'nome', 'cognome', 'dataDiNascita', 'CF'], 'required'],
             [['idUtente'], 'integer'],
-            [['nome', 'cognome', 'passwordBambino', 'emailBambino'], 'string', 'max' => 25],
+            [['nome', 'cognome', 'passwordBambino', 'emailBambino', 'dataDiNascita', 'CF'], 'string', 'max' => 25],
             [['idUtente'], 'unique'],
             [['idUtente'], 'exist', 'skipOnError' => true, 'targetClass' => Utenti::className(), 'targetAttribute' => ['idUtente' => 'idUtente']],
         ];
@@ -50,7 +52,9 @@ class Caregiver extends \yii\db\ActiveRecord
             'idUtente' => 'Id Utente',
             'nome' => 'Nome',
             'cognome' => 'Cognome',
-        ];
+            'dataDiNascita' => 'Data di nascita',
+            'CF' => 'Codice fiscale',
+        ]; // devo modificare le view
     }
 
     /**

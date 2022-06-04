@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\jui\DatePicker;
 use yii\widgets\ActiveForm;
 
 
@@ -19,6 +20,14 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'nome')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'cognome')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'dataDiNascita')->widget(\yii\jui\DatePicker::classname(), [
+    'language' => 'it',
+    'dateFormat' => 'yyyy-MM-dd',
+    'clientOptions' => [ 'changeMonth' => true, 'changeYear' => true],
+    ]) ?>
+
+    <?= $form->field($model, 'CF')->textInput(['maxlength' => true, 'style' => 'text-transform: uppercase']) ?>
 
 
     <div class="form-group">

@@ -11,6 +11,9 @@ use Yii;
  * @property string $nome
  * @property string $cognome
  * @property int $idLogopedista
+ * @property string $dataDiNascita
+ * @property string $CF
+ * @property string $notePersonali
  *
  *
  * @property Utenti $idUtente0
@@ -33,9 +36,9 @@ class Bambini extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['idUtente', 'nome', 'cognome'], 'required'],
+            [['idUtente', 'nome', 'cognome', 'dataDiNascita', 'CF'], 'required'],
             [['idUtente'], 'integer'],
-            [['nome', 'cognome'], 'string', 'max' => 25],
+            [['nome', 'cognome', 'dataDiNascita', 'CF', 'notePersonali'], 'string', 'max' => 25],
             [['idUtente'], 'unique'],
             [['idUtente'], 'exist', 'skipOnError' => true, 'targetClass' => Utenti::className(), 'targetAttribute' => ['idUtente' => 'idUtente']],
         ];
@@ -51,6 +54,9 @@ class Bambini extends \yii\db\ActiveRecord
             'nome' => 'Nome',
             'cognome' => 'Cognome',
             'toCar' => 'Passa al caregiver',
+            'dataDiNascita' => 'Data di nascita',
+            'CF' => 'Codice fiscale',
+            'notePersonali' => 'Note personali',
 
         ];
     }

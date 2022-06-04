@@ -17,8 +17,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a('Terapie', ['bambini/terapiebambino','idBambino'=> $model->idUtente], ['class' => 'btn btn-secondary']) ?>
+        <?= Html::a('Aggiorna profilo', ['bambini/update', 'idUtente'=> $model->idUtente], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Elimina dalla lista', ['bambini/deletelog','idUtente'=> $model->idUtente], ['class' => 'btn btn-danger']) ?>
-        <?= Html::a('Caregivers', ['caregiver/caregiversdelbambino', 'idBambino'=> $model->idUtente], ['class' => 'btn btn-primary']) ?>
+
     </p>
 
     <?= DetailView::widget([
@@ -27,7 +28,15 @@ $this->params['breadcrumbs'][] = $this->title;
             'idUtente',
             'nome',
             'cognome',
+            'CF',
+            'dataDiNascita',
+            'notePersonali',
         ],
     ]) ?>
+
+    <p>
+        <?= Html::a('Caregivers', ['caregiver/caregiversdelbambino', 'idBambino'=> $model->idUtente], ['class' => 'btn btn-primary']) ?>
+
+    </p>
 
 </div>

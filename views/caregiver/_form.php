@@ -20,9 +20,21 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'cognome')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'passwordBambino')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'dataDiNascita')->widget(\yii\jui\DatePicker::classname(), [
+        'language' => 'it',
+        'dateFormat' => 'yyyy-MM-dd',
+        'clientOptions' => [ 'changeMonth' => true, 'changeYear' => true],
+    ]) ?>
+
+    <?= $form->field($model, 'CF')->textInput(['maxlength' => true, 'style' => 'text-transform: uppercase']) ?>
 
     <?= $form->field($model, 'emailBambino')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'passwordBambino')->textInput(['maxlength' => true]) ?>
+
+
+
+
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

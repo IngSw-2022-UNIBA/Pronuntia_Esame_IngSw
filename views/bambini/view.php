@@ -63,7 +63,7 @@ $cognome = $model->cognome;
                         <hr>
                         <p><i class="w3-left"></i> <?= Html::encode($nome) ?> </p>
                         <p><i class="w3-left"></i> <?= Html::encode($cognome) ?> </p>
-                        <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> April 1, 1988</p>
+                        <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i><?= Html::encode($model->dataDiNascita) ?></p>
                     </div>
                 </div>
                 <br>
@@ -76,7 +76,7 @@ $cognome = $model->cognome;
           <i class="fa fa-remove"></i>
         </span>
                     <p><strong>Hey!</strong></p>
-                    <p>Se abbiamo tempo questo si sfrutta, senò eliminiamo</p>
+                    <p><?= Html::encode($model->notePersonali) ?></p>
                 </div>
 
 
@@ -105,6 +105,9 @@ $cognome = $model->cognome;
                         'idUtente',
                         'nome',
                         'cognome',
+                        'CF',
+
+
                     ],
                 ]) ?>
                 </div>
