@@ -25,6 +25,8 @@ SET time_zone = "+00:00";
 -- Dump dei dati per la tabella `bambini`
 --
 
+USE pronuntia;
+
 INSERT INTO `bambini` (`idUtente`, `nome`, `cognome`, `idLogopedista`, `dataDiNascita`, `CF`, `notePersonali`) VALUES
 (1, 'martino', 'briccchino', 0, '2022-06-07', 'mrdmsnd03e223efdfds', ''),
 (2, 'bambinetto1', 'biricchino', 1, '2022-06-01', 'erwrewwr', ''),
