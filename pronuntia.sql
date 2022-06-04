@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Giu 04, 2022 alle 11:12
+-- Creato il: Giu 04, 2022 alle 12:32
 -- Versione del server: 10.4.24-MariaDB
 -- Versione PHP: 7.4.29
 
@@ -173,17 +173,21 @@ INSERT INTO `es_della_batteria` (`idBatteria`, `idEsercizio`) VALUES
 CREATE TABLE `logopedisti` (
   `idUtente` int(11) NOT NULL,
   `nome` varchar(25) NOT NULL,
-  `cognome` varchar(25) NOT NULL
+  `cognome` varchar(25) NOT NULL,
+  `matricola` int(11) NOT NULL,
+  `inizioServizio` date NOT NULL,
+  `specializzazione` varchar(25) NOT NULL,
+  `CF` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dump dei dati per la tabella `logopedisti`
 --
 
-INSERT INTO `logopedisti` (`idUtente`, `nome`, `cognome`) VALUES
-(1, 'mario', 'rossi'),
-(6, 'luca', 'giurato'),
-(7, 'fra', 'panza');
+INSERT INTO `logopedisti` (`idUtente`, `nome`, `cognome`, `matricola`, `inizioServizio`, `specializzazione`, `CF`) VALUES
+(1, 'mario', 'rossi', 111, '2022-06-24', 'spec.1', 'dfgdf'),
+(6, 'luca', 'giurato', 222, '2022-06-02', 'spec.2', 'qwerty'),
+(7, 'fra', 'panza', 333, '2022-06-22', 'spec.3', 'zcvbnbm');
 
 -- --------------------------------------------------------
 
