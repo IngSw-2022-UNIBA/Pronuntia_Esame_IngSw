@@ -10,6 +10,10 @@ use Yii;
  * @property int $idUtente
  * @property string $nome
  * @property string $cognome
+ * @property int $matricola
+ * @property string $inizioServizio
+ * @property string $specializzazione
+ * @property string $CF
  *
  *
  * @property Batterie[] $batterieDiEs
@@ -31,9 +35,9 @@ class Logopedisti extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['idUtente', 'nome', 'cognome'], 'required'],
-            [['idUtente'], 'integer'],
-            [['nome', 'cognome'], 'string', 'max' => 25],
+            [['idUtente', 'nome', 'cognome', 'matricola', 'inizioServizio', 'specializzazione', 'CF'], 'required'],
+            [['idUtente', 'matricola'], 'integer'],
+            [['nome', 'cognome', 'inizioServizio', 'specializzazione', 'CF'], 'string', 'max' => 25],
             [['idUtente'], 'unique'],
             [['idUtente'], 'exist', 'skipOnError' => true, 'targetClass' => Utenti::className(), 'targetAttribute' => ['idUtente' => 'idUtente']],
         ];
@@ -48,6 +52,10 @@ class Logopedisti extends \yii\db\ActiveRecord
             'idUtente' => 'Id Utente',
             'nome' => 'Nome',
             'cognome' => 'Cognome',
+            'matricola' => 'Matricola',
+            'inizioServizio' => 'Inizio servizio',
+            'specializzazione' => 'Specializzazione',
+            'CF' => 'Codice fiscale',
         ];
     }
 

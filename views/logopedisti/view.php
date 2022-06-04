@@ -31,6 +31,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'idUtente',
             'nome',
             'cognome',
+            'matricola',
+            'inizioServizio',
+            'specializzazione',
+            'CF',
         ],
     ]) ?>
 
