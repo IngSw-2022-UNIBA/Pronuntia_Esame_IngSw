@@ -133,6 +133,19 @@ class BambiniController extends Controller
         ]);
     }
 
+    public function actionUpdate2($idUtente)
+    {
+        $model = $this->findModel($idUtente);
+
+        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+            return $this->goHome();
+        }
+
+        return $this->render('update2', [
+            'model' => $model,
+        ]);
+    }
+
     /**
      * Deletes an existing Bambini model.
      * If deletion is successful, the browser will be redirected to the 'index' page.

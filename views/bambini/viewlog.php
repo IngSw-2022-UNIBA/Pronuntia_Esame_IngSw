@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a('Terapie', ['bambini/terapiebambino','idBambino'=> $model->idUtente], ['class' => 'btn btn-secondary']) ?>
-        <?= Html::a('Aggiorna profilo', ['bambini/update', 'idUtente'=> $model->idUtente], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Aggiorna profilo', ['bambini/update2', 'idUtente'=> $model->idUtente], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Elimina dalla lista', ['bambini/deletelog','idUtente'=> $model->idUtente], ['class' => 'btn btn-danger']) ?>
 
     </p>
