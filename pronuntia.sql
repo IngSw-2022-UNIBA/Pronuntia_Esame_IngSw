@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 30, 2022 alle 18:18
+-- Creato il: Giu 04, 2022 alle 11:12
 -- Versione del server: 10.4.24-MariaDB
 -- Versione PHP: 7.4.29
 
@@ -26,24 +26,28 @@ SET time_zone = "+00:00";
 --
 -- Struttura della tabella `bambini`
 --
-drop database pronuntia;
-create database pronuntia;
-use pronuntia;
 
 CREATE TABLE `bambini` (
   `idUtente` int(11) NOT NULL,
   `nome` varchar(25) NOT NULL,
   `cognome` varchar(25) NOT NULL,
-  `idLogopedista` int(11) DEFAULT NULL
+  `idLogopedista` int(11) DEFAULT NULL,
+  `dataDiNascita` date DEFAULT NULL,
+  `CF` varchar(25) DEFAULT NULL,
+  `notePersonali` varchar(250) DEFAULT 'Qui appariranno i consigli del tuo logopedista'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dump dei dati per la tabella `bambini`
 --
 
-INSERT INTO `bambini` (`idUtente`, `nome`, `cognome`, `idLogopedista`) VALUES
-(2, 'bambinetto1', 'biricchino', 1),
-(4, 'martino', 'briccchino', 1);
+INSERT INTO `bambini` (`idUtente`, `nome`, `cognome`, `idLogopedista`, `dataDiNascita`, `CF`, `notePersonali`) VALUES
+(1, 'martino', 'briccchino', 0, '2022-06-07', 'mrdmsnd03e223efdfds', ''),
+(2, 'bambinetto1', 'biricchino', 1, '2022-06-01', 'erwrewwr', ''),
+(10, 'franco', 'losa', 1, '2022-06-08', 'adsdadasdadas', ''),
+(15, 'martino', 'rana', 1, '2004-04-26', 'mrdmsnd03e223e', 'dislessico e autistico'),
+(16, 'mas', 'pag', 1, '2022-06-05', 'asdfghjkl', NULL),
+(17, 'mart', 'sssin', NULL, '2022-06-22', 'mrdaffe223e', 'Qui appariranno i consigli del tuo logopedista');
 
 -- --------------------------------------------------------
 
@@ -65,7 +69,8 @@ CREATE TABLE `batterie` (
 
 INSERT INTO `batterie` (`idBatteria`, `nome`, `descrizione`, `categoria`, `idLogopedista`) VALUES
 (1, 'batteria dislessici', 'esercizi pensati per chi non sa pronunciare la s', 'dislessici', 1),
-(2, 'batteria autistici', 'questa è la descrizione', 'autistici', 7);
+(2, 'batteria autistici', 'questa è la descrizione', 'autistici', 7),
+(3, 'infami', 'esercizi per gli infami', 'nani', 1);
 
 -- --------------------------------------------------------
 
@@ -77,17 +82,21 @@ CREATE TABLE `caregiver` (
   `idUtente` int(11) NOT NULL,
   `nome` varchar(25) NOT NULL,
   `cognome` varchar(25) NOT NULL,
-  `idBambino` int(11) NOT NULL
+  `idBambino` int(11) DEFAULT NULL,
+  `CF` varchar(25) DEFAULT NULL,
+  `dataDiNascita` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dump dei dati per la tabella `caregiver`
 --
 
-INSERT INTO `caregiver` (`idUtente`, `nome`, `cognome`, `idBambino`) VALUES
-(3, 'Mamma', 'Pancina', 2),
-(5, 'Mammina', 'arrabbiata', 2),
-(8, 'papa', 'nervoso', 2);
+INSERT INTO `caregiver` (`idUtente`, `nome`, `cognome`, `idBambino`, `CF`, `dataDiNascita`) VALUES
+(3, 'Mamma', 'Pancina', 15, 'asdads', '2022-06-14'),
+(5, 'Mammina', 'arrabbiata', 2, NULL, NULL),
+(8, 'papa', 'nervoso', 2, NULL, NULL),
+(9, 'Mammone', 'panzona', 10, NULL, NULL),
+(13, 'Martino', 'Pagano', 10, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -128,7 +137,10 @@ CREATE TABLE `esercizifatti` (
 
 INSERT INTO `esercizifatti` (`idTerapia`, `idEsercizio`, `stato`) VALUES
 (1, 1, 1),
-(1, 2, 0);
+(1, 2, 0),
+(1, 3, 1),
+(2, 1, 1),
+(2, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -147,7 +159,7 @@ CREATE TABLE `es_della_batteria` (
 
 INSERT INTO `es_della_batteria` (`idBatteria`, `idEsercizio`) VALUES
 (1, 1),
-(1, 2),
+(1, 3),
 (2, 1),
 (2, 2),
 (2, 3);
@@ -243,7 +255,14 @@ INSERT INTO `utenti` (`idUtente`, `email`, `password`, `tipoUtente`) VALUES
 (5, 'cc@cc.it', 'cccc', 6),
 (6, 'aa@aa.it', 'aaaa', 4),
 (7, 'aaa@aaa.it', 'aaaa', 4),
-(8, 'ccc@ccc.it', 'cccc', 6);
+(8, 'ccc@ccc.it', 'cccc', 6),
+(9, 'm@c.it', 'cccc', 6),
+(10, 'm@b.it', 'bbbbbb', 5),
+(12, 'martino@c.it', 'ccccc', 3),
+(13, 'mm@c.it', 'cccc', 6),
+(15, 'test@b.it', 'bbbb', 5),
+(16, 'massii@b.it', 'bbbb', 5),
+(17, 'massiiiii@b.it', 'bbbb', 5);
 
 --
 -- Indici per le tabelle scaricate
@@ -266,7 +285,8 @@ ALTER TABLE `batterie`
 -- Indici per le tabelle `caregiver`
 --
 ALTER TABLE `caregiver`
-  ADD PRIMARY KEY (`idUtente`);
+  ADD PRIMARY KEY (`idUtente`),
+  ADD UNIQUE KEY `CF` (`CF`);
 
 --
 -- Indici per le tabelle `esercizi`
@@ -313,7 +333,8 @@ ALTER TABLE `terapie_assegnate`
 -- Indici per le tabelle `utenti`
 --
 ALTER TABLE `utenti`
-  ADD PRIMARY KEY (`idUtente`);
+  ADD PRIMARY KEY (`idUtente`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- AUTO_INCREMENT per le tabelle scaricate
@@ -323,7 +344,7 @@ ALTER TABLE `utenti`
 -- AUTO_INCREMENT per la tabella `batterie`
 --
 ALTER TABLE `batterie`
-  MODIFY `idBatteria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idBatteria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT per la tabella `esercizi`
@@ -335,7 +356,7 @@ ALTER TABLE `esercizi`
 -- AUTO_INCREMENT per la tabella `pretest`
 --
 ALTER TABLE `pretest`
-  MODIFY `idPretest` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idPretest` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT per la tabella `terapie_assegnate`
@@ -347,7 +368,7 @@ ALTER TABLE `terapie_assegnate`
 -- AUTO_INCREMENT per la tabella `utenti`
 --
 ALTER TABLE `utenti`
-  MODIFY `idUtente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `idUtente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Limiti per le tabelle scaricate
