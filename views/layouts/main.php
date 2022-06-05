@@ -34,10 +34,10 @@ $log = new Utenti();
     <?php
 
     NavBar::begin([
-        'brandLabel' => 'Homepage',
+        'brandLabel' => 'Home',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar navbar-expand-md navbar-dark bg-dark fixed-top',
+            'class' => 'navbar navbar-expand-md navbar-dark bg-info fixed-top',
         ],
     ]);
     echo Nav::widget([
@@ -69,8 +69,8 @@ $log = new Utenti();
             ),
 
             Yii::$app->user->isGuest ? (
-                '<li>'
-                .'</li>'
+                    '<li>'
+                    .'</li>'
             ) : (
                 $log->isLogopedistaConf(Yii::$app->user->identity->tipoUtente) ? (
                     ['label' => 'Il tuo profilo', 'url' => ['/logopedisti/view', 'idUtente'=> Yii::$app->user->id]]
@@ -211,6 +211,12 @@ $log = new Utenti();
                 .'</li>'
             ),
 
+            Yii::$app->user->isGuest ? (
+            ['label' => 'Chi Siamo', 'url' => ['/site/about']]
+            ) : (
+                '<li>'
+                .'</li>'
+            ),
         ],
     ]);
     NavBar::end();
