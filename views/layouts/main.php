@@ -43,18 +43,7 @@ $log = new Utenti();
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav'],
         'items' => [
-            Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/site/login']]
-            ) : (
-                '<li>'
-                . Html::beginForm(['/site/logout'], 'post', ['class' => 'form-inline'])
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->email . ')',
-                    ['class' => 'btn btn-link logout']
-                )
-                . Html::endForm()
-                . '</li>'
-                ),
+
 
             // Logopedista --------------------------------------------------------------------------------------
             Yii::$app->user->isGuest ? (
@@ -216,6 +205,19 @@ $log = new Utenti();
             ) : (
                 '<li>'
                 .'</li>'
+            ),
+
+            Yii::$app->user->isGuest ? (
+            ['label' => 'Login', 'url' => ['/site/login']]
+            ) : (
+                '<li>'
+                . Html::beginForm(['/site/logout'], 'post', ['class' => 'form-inline'])
+                . Html::submitButton(
+                    'Logout (' . Yii::$app->user->identity->email . ')',
+                    ['class' => 'btn btn-link logout']
+                )
+                . Html::endForm()
+                . '</li>'
             ),
         ],
     ]);

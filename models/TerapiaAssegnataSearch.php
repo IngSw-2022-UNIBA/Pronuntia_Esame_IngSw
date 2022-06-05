@@ -81,9 +81,8 @@ class TerapiaAssegnataSearch extends TerapiaAssegnata
     {
         $logopedista = Bambini::findOne(['idUtente' => $idBambino])->idLogopedista;
 
-        $query = TerapiaAssegnata::find()->select('*')->from('terapie_assegnate')
-            ->join("JOIN", "bambini", "terapie_assegnate.idBambino = bambini.idUtente")
-            ->where("bambini.idLogopedista='$logopedista' AND terapie_assegnate.idBambino='$idBambino'");
+        $query = TerapiaAssegnata::find()->select('*')->from('terapie_assegnate, bambini, batterie')
+            ->where("bambini.idLogopedista='$logopedista' AND terapie_assegnate.idBambino='$idBambino' and terapie_assegnate.idBambino = bambini.idUtente and terapie_assegnate.idBatteria = batterie.idBatteria and batterie.idLogopedista = '$logopedista'");
 
         //-----
 

@@ -21,7 +21,7 @@ if($stato == 1){
     $testo = "Esercizio già svolto corettamente";
 }
 ?>
-
+<br><br><br><br>
 <h1><?= Html::encode($testo) ?></h1>
 
 <iframe id="frame" style="border:0px;width:100%;height:500px" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>

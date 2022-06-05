@@ -9,7 +9,6 @@ use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model app\models\TerapiaAssegnata */
 /* @var $form yii\widgets\ActiveForm  */
-/* @var $bambino  */
 ?>
 
 <div class="terapia-assegnata-form">
@@ -26,7 +25,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'Diagnosi')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'idBambino')->hiddenInput(array('value'=>$bambino))?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

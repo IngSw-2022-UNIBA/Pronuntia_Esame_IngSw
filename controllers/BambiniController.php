@@ -167,7 +167,7 @@ class BambiniController extends Controller
     {
         $model = $this->findModel($idUtente);
         $model->idLogopedista = Yii::$app->user->id;
-        $model->save();
+        $model->save($runValidation = false);
 
         return $this->redirect(['logopedisti/listabambini']);
     }
@@ -196,6 +196,7 @@ class BambiniController extends Controller
         return $this->render('terapiebambino', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'idBambino' => $idBambino,
         ]);
     }
 
@@ -225,7 +226,7 @@ class BambiniController extends Controller
     {
         $model = $this->findModel($idUtente);
         $model->idLogopedista = 'NULL';
-        $model->save();
+        $model->save($runValidation = false);
 
 
         return $this->redirect(['logopedisti/listabambini']);

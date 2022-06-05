@@ -4,6 +4,7 @@ use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\TerapiaAssegnata */
+/* @var $bambino app\models\TerapiaAssegnata */
 
 $this->title = 'Create Terapia Assegnata';
 $this->params['breadcrumbs'][] = $this->title;
@@ -14,6 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= $this->render('_form', [
         'model' => $model,
+        'bambino' => $bambino,
     ]) ?>
 
 </div>

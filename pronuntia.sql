@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Giu 04, 2022 alle 12:32
+-- Creato il: Giu 05, 2022 alle 15:52
 -- Versione del server: 10.4.24-MariaDB
 -- Versione PHP: 7.4.29
 
@@ -42,12 +42,12 @@ CREATE TABLE `bambini` (
 --
 
 INSERT INTO `bambini` (`idUtente`, `nome`, `cognome`, `idLogopedista`, `dataDiNascita`, `CF`, `notePersonali`) VALUES
-(1, 'martino', 'briccchino', 0, '2022-06-07', 'mrdmsnd03e223efdfds', ''),
-(2, 'bambinetto1', 'biricchino', 1, '2022-06-01', 'erwrewwr', ''),
-(10, 'franco', 'losa', 1, '2022-06-08', 'adsdadasdadas', ''),
-(15, 'martino', 'rana', 1, '2004-04-26', 'mrdmsnd03e223e', 'dislessico e autistico'),
-(16, 'mas', 'pag', 1, '2022-06-05', 'asdfghjkl', NULL),
-(17, 'mart', 'sssin', NULL, '2022-06-22', 'mrdaffe223e', 'Qui appariranno i consigli del tuo logopedista');
+(1, 'martino', 'briccchino', 1, '2022-06-07', 'mrdmsnd03e223efdfds', ''),
+(2, 'bambinetto1', 'biricchino', 19, '2022-06-01', 'erwrewwr', ''),
+(10, 'franco', 'losa', 19, '2022-06-08', 'adsdadasdadas', 'dislessico e stupido'),
+(15, 'martino', 'cosimo', 1, '2004-04-26', 'mrdmsnd03e223e', 'scame e autistico'),
+(16, 'mas', 'pag', 0, '2022-06-05', 'asd', 'asd'),
+(18, 'Martino', 'Pagano', 1, '2012-06-01', 'asd', 'asd');
 
 -- --------------------------------------------------------
 
@@ -70,7 +70,8 @@ CREATE TABLE `batterie` (
 INSERT INTO `batterie` (`idBatteria`, `nome`, `descrizione`, `categoria`, `idLogopedista`) VALUES
 (1, 'batteria dislessici', 'esercizi pensati per chi non sa pronunciare la s', 'dislessici', 1),
 (2, 'batteria autistici', 'questa è la descrizione', 'autistici', 7),
-(3, 'infami', 'esercizi per gli infami', 'nani', 1);
+(3, 'infami', 'esercizi per gli infami', 'nani', 1),
+(4, 'mia', 'mia', 'cioa', 21);
 
 -- --------------------------------------------------------
 
@@ -92,11 +93,12 @@ CREATE TABLE `caregiver` (
 --
 
 INSERT INTO `caregiver` (`idUtente`, `nome`, `cognome`, `idBambino`, `CF`, `dataDiNascita`) VALUES
-(3, 'Mamma', 'Pancina', 15, 'asdads', '2022-06-14'),
+(3, 'Mamma', 'Pancina', 18, 'asdads', '2022-06-14'),
 (5, 'Mammina', 'arrabbiata', 2, NULL, NULL),
 (8, 'papa', 'nervoso', 2, NULL, NULL),
-(9, 'Mammone', 'panzona', 10, NULL, NULL),
-(13, 'Martino', 'Pagano', 10, NULL, NULL);
+(9, 'Mammone', 'panzona', 1, 'asdfg', '2022-06-01'),
+(13, 'Martino', 'Pagano', 10, NULL, NULL),
+(20, 'Martino', 'Pagano', 18, 'aaaaaaaaaaaaaa', '2022-06-01');
 
 -- --------------------------------------------------------
 
@@ -140,7 +142,13 @@ INSERT INTO `esercizifatti` (`idTerapia`, `idEsercizio`, `stato`) VALUES
 (1, 2, 0),
 (1, 3, 1),
 (2, 1, 1),
-(2, 3, 1);
+(2, 3, 1),
+(3, 1, 1),
+(3, 3, 0),
+(5, 2, 1),
+(5, 3, 1),
+(9, 2, 1),
+(9, 3, 0);
 
 -- --------------------------------------------------------
 
@@ -162,7 +170,11 @@ INSERT INTO `es_della_batteria` (`idBatteria`, `idEsercizio`) VALUES
 (1, 3),
 (2, 1),
 (2, 2),
-(2, 3);
+(2, 3),
+(3, 2),
+(3, 3),
+(4, 1),
+(4, 2);
 
 -- --------------------------------------------------------
 
@@ -187,7 +199,9 @@ CREATE TABLE `logopedisti` (
 INSERT INTO `logopedisti` (`idUtente`, `nome`, `cognome`, `matricola`, `inizioServizio`, `specializzazione`, `CF`) VALUES
 (1, 'mario', 'rossi', 111, '2022-06-24', 'spec.1', 'dfgdf'),
 (6, 'luca', 'giurato', 222, '2022-06-02', 'spec.2', 'qwerty'),
-(7, 'fra', 'panza', 333, '2022-06-22', 'spec.3', 'zcvbnbm');
+(7, 'fra', 'panza', 333, '2022-06-22', 'spec.3', 'zcvbnbm'),
+(19, 'martino', 'log', 1234, '2022-06-09', 'casi particolari', 'sadasadads'),
+(21, 'martino', 'logo', 2345, '2022-06-06', 'casi estremi', 'zxcvbnm,');
 
 -- --------------------------------------------------------
 
@@ -232,7 +246,14 @@ CREATE TABLE `terapie_assegnate` (
 
 INSERT INTO `terapie_assegnate` (`idTerapia`, `idBatteria`, `idBambino`, `data`, `Diagnosi`) VALUES
 (1, 1, 2, '2022-05-24', 'questa è la diagnosi!'),
-(2, 1, 2, '2020-02-20', 'prova prova prova');
+(2, 1, 2, '2020-02-20', 'prova prova prova'),
+(3, 1, 2, '2020-02-20', 'aaa'),
+(4, 1, 2, '2020-02-20', 'sa'),
+(5, 3, 18, '2020-02-20', 'prova'),
+(6, 3, 2, '2020-02-20', 'afdA'),
+(7, 3, 18, '2020-02-20', 'dfa'),
+(8, 4, 18, '2020-02-20', 'aSasSA'),
+(9, 3, 18, '2020-02-20', 'aaaaaaaaaaaaaaaa');
 
 -- --------------------------------------------------------
 
@@ -266,7 +287,10 @@ INSERT INTO `utenti` (`idUtente`, `email`, `password`, `tipoUtente`) VALUES
 (13, 'mm@c.it', 'cccc', 6),
 (15, 'test@b.it', 'bbbb', 5),
 (16, 'massii@b.it', 'bbbb', 5),
-(17, 'massiiiii@b.it', 'bbbb', 5);
+(18, 'martino@pagano.it', 'bbbb', 5),
+(19, 'martino@log.it', 'aaaa', 4),
+(20, 'martino@car.it', 'cccc', 6),
+(21, 'martino@logo.it', 'aaaa', 4);
 
 --
 -- Indici per le tabelle scaricate
@@ -348,7 +372,7 @@ ALTER TABLE `utenti`
 -- AUTO_INCREMENT per la tabella `batterie`
 --
 ALTER TABLE `batterie`
-  MODIFY `idBatteria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idBatteria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT per la tabella `esercizi`
@@ -360,19 +384,19 @@ ALTER TABLE `esercizi`
 -- AUTO_INCREMENT per la tabella `pretest`
 --
 ALTER TABLE `pretest`
-  MODIFY `idPretest` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idPretest` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT per la tabella `terapie_assegnate`
 --
 ALTER TABLE `terapie_assegnate`
-  MODIFY `idTerapia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idTerapia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT per la tabella `utenti`
 --
 ALTER TABLE `utenti`
-  MODIFY `idUtente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `idUtente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- Limiti per le tabelle scaricate

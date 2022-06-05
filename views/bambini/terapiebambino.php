@@ -9,6 +9,7 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\TerapiaAssegnataSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
+/* @var $idBambino */
 
 $this->title = 'Terapia Assegnata';
 $this->params['breadcrumbs'][] = $this->title;
@@ -18,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode("Elenco delle terapie del bambino") ?></h1>
 
     <p>
-        <?= Html::a('Crea una nuova terapia', ['terapia-assegnata/create', 'bambino' => 2], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Crea una nuova terapia', ['terapia-assegnata/create', 'bambino' => $idBambino], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>

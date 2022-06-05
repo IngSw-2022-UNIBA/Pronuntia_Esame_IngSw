@@ -79,6 +79,7 @@ class TerapiaAssegnataController extends Controller
 
         return $this->render('create', [
             'model' => $model,
+            'bambino' => $bambino,
         ]);
     }
 
