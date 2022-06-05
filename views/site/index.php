@@ -74,7 +74,7 @@ $this->title = 'Pronuntia';
         <div class="w3-card w3-container" style="min-height:280px">
             <h3>Terapia continua</h3>
 
-            <img src="<?= \Yii::getAlias('@web/immagini/all in one.jpg') ?>"
+            <img src="<?= \Yii::getAlias('@web/immagini/simbolo-h24.png') ?>"
                  style="height:200px; width:180px">
 
             <p>Dove vuoi</p>
