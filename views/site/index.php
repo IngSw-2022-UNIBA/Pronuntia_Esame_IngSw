@@ -17,7 +17,7 @@ $this->title = 'Pronuntia';
         body,h1 {font-family: "Raleway", sans-serif}
         body, html {height: 100%}
         .bgimg {
-            background-image: url('https://www.studiobondioli.it/wp-content/uploads/2015/03/sfondo-grande1.png');
+            background-image: url('<?= \Yii::getAlias('@web/immagini/sfondo home.png') ?>');
             min-height: 100%;
             background-position: center;
             background-size: cover;
@@ -42,8 +42,12 @@ $this->title = 'Pronuntia';
 
 <div class="w3-row-padding w3-center w3-margin-top">
     <div class="w3-third">
-        <div class="w3-card w3-container" style="min-height:360px">
-            <h3>Piattaforma ALL in One</h3><br>
+        <div class="w3-card w3-container" style="min-height:280px">
+            <h3>Piattaforma ALL in One</h3>
+
+            <img src="<?= \Yii::getAlias('@web/immagini/all in one.jpg') ?>"
+                 style="height:200px; width:180px">
+
             <p>Comunica con i tuoi utenti</p>
             <p>Segui i loro progressi</p>
             <p>Mantieni gli appunti</p>
@@ -52,18 +56,27 @@ $this->title = 'Pronuntia';
     </div>
 
     <div class="w3-third">
-        <div class="w3-card w3-container" style="min-height:360px">
-            <h3>User Frendly</h3><br>
+        <div class="w3-card w3-container" style="min-height:280px">
+            <h3>User Frendly</h3>
+
+            <img src="<?= \Yii::getAlias('@web/immagini/user friendly.jpg') ?>"
+                 style="height:200px; width:180px">
+
             <p>Semplice</p>
             <p>Veloce</p>
-            <p>Adatta anche ai più piccoli</p>
+            <p>Facile da utilizzare</p>
+            <p>Non ne farai più a meno</p>
+
         </div>
     </div>
 
     <div class="w3-third">
-        <div class="w3-card w3-container" style="min-height:360px">
-            <h3>Terapia continua</h3><br>
-            <p></p>
+        <div class="w3-card w3-container" style="min-height:280px">
+            <h3>Terapia continua</h3>
+
+            <img src="<?= \Yii::getAlias('@web/immagini/all in one.jpg') ?>"
+                 style="height:200px; width:180px">
+
             <p>Dove vuoi</p>
             <p>Quando vuoi</p>
             <p>Con chi vuoi </p>
