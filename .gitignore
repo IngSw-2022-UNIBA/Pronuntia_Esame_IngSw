@@ -37,3 +37,4 @@ config/db.php
 composer.lock
 composer.lock
 config/db.php
+config/db.php
