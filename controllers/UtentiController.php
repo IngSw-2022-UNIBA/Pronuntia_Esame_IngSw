@@ -5,6 +5,7 @@ use app\views\logopedisti\create;
 
 use app\models\Utenti;
 use app\models\UtentiSearch;
+use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -71,7 +72,11 @@ class UtentiController extends Controller
         $model = new Utenti();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
+
+
+            if ($model->load($this->request->post())  ) {
+                $model->password = Yii::$app->security->generatePasswordHash($model->password);
+                $model->save($runValidation = false);
                 //return LogopedistiController::actionForm();    //per aprire subito dopo il form del logopedista (ammettendo che si ha scelto come tipo il logopedista)
                 return $this->redirect(['site/login']);
             }

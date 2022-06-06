@@ -30,7 +30,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'emailBambino')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'passwordBambino')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'passwordBambino')->passwordInput() ?>
 
 
 

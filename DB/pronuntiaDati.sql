@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Giu 04, 2022 alle 12:13
+-- Creato il: Giu 06, 2022 alle 17:44
 -- Versione del server: 10.4.24-MariaDB
 -- Versione PHP: 7.4.29
 
@@ -25,55 +25,61 @@ SET time_zone = "+00:00";
 -- Dump dei dati per la tabella `bambini`
 --
 
-USE pronuntia;
-
 INSERT INTO `bambini` (`idUtente`, `nome`, `cognome`, `idLogopedista`, `dataDiNascita`, `CF`, `notePersonali`) VALUES
-(1, 'martino', 'briccchino', 0, '2022-06-07', 'mrdmsnd03e223efdfds', ''),
-(2, 'bambinetto1', 'biricchino', 1, '2022-06-01', 'erwrewwr', ''),
-(10, 'franco', 'losa', 1, '2022-06-08', 'adsdadasdadas', ''),
-(15, 'martino', 'rana', 1, '2004-04-26', 'mrdmsnd03e223e', 'dislessico e autistico'),
-(16, 'mas', 'pag', 1, '2022-06-05', 'asdfghjkl', NULL),
-(17, 'mart', 'sssin', NULL, '2022-06-22', 'mrdaffe223e', 'Qui appariranno i consigli del tuo logopedista');
+(5, 'Martino', 'Pagano', 4, '2022-06-03', 'martinobambinocf', 'Qui appariranno i consigli del tuo logopedista'),
+(6, 'Massimiliano', 'Murdaca', 4, '2012-06-19', 'massimilianobambinocf', 'Qui appariranno i consigli del tuo logopedista'),
+(7, 'Francesco', 'Panza', NULL, '2009-06-03', 'francescobambinocf', 'Qui appariranno i consigli del tuo logopedista');
 
 --
 -- Dump dei dati per la tabella `batterie`
 --
 
 INSERT INTO `batterie` (`idBatteria`, `nome`, `descrizione`, `categoria`, `idLogopedista`) VALUES
-(1, 'batteria dislessici', 'esercizi pensati per chi non sa pronunciare la s', 'dislessici', 1),
-(2, 'batteria autistici', 'questa è la descrizione', 'autistici', 7),
-(3, 'infami', 'esercizi per gli infami', 'nani', 1);
+(1, 'Batteria per vocali', 'Questa è una batteria per vocali', 'vocali', 4);
 
 --
 -- Dump dei dati per la tabella `caregiver`
 --
 
 INSERT INTO `caregiver` (`idUtente`, `nome`, `cognome`, `idBambino`, `CF`, `dataDiNascita`) VALUES
-(3, 'Mamma', 'Pancina', 15, 'asdads', '2022-06-14'),
-(5, 'Mammina', 'arrabbiata', 2, NULL, NULL),
-(8, 'papa', 'nervoso', 2, NULL, NULL),
-(9, 'Mammone', 'panzona', 10, NULL, NULL),
-(13, 'Martino', 'Pagano', 10, NULL, NULL);
+(8, 'Martino', 'Pagano', 6, 'martinocaregivercf', '1985-06-05'),
+(9, 'Massimiliano', 'Murdaca', 5, 'massimilianocaregivercf', '1990-06-14');
 
 --
 -- Dump dei dati per la tabella `esercizi`
 --
 
 INSERT INTO `esercizi` (`idEsercizio`, `testo`, `link`) VALUES
-(1, 'eseguilo', 'https://learningapps.org/watch?v=p8qaap7ba20'),
-(2, 'fallo!', 'https://learningapps.org/watch?app=16782029'),
-(3, 'vai!', 'https://learningapps.org/watch?app=9534140');
-
---
--- Dump dei dati per la tabella `esercizifatti`
---
-
-INSERT INTO `esercizifatti` (`idTerapia`, `idEsercizio`, `stato`) VALUES
-(1, 1, 1),
-(1, 2, 0),
-(1, 3, 1),
-(2, 1, 1),
-(2, 3, 1);
+(1, 'Gioca con le sillabe NA, NE, NI, NO, NU ', 'https://learningapps.org/view9413712'),
+(2, 'K mediana, ripeti a voce le immagini', 'https://learningapps.org/watch?v=p8qaap7ba20'),
+(3, 'Trova le coppie di lettere uguali', 'https://learningapps.org/watch?app=16782029'),
+(4, 'Parole con la S, ripeti a voce le immagini', 'https://learningapps.org/watch?app=9534140'),
+(5, 'Parole con GA GO GU, completa la parola', 'https://learningapps.org/view9867966'),
+(6, 'GIOCA Con i suoni duri e dolci GA, GO, GU, GE, GI', 'https://learningapps.org/view9791071'),
+(7, 'Gioca con le sillabe TA, TE, TI, TO, TU', 'https://learningapps.org/view9460741'),
+(8, 'Gioca con le sillabe FA, FE, FI, FO, FU', 'https://learningapps.org/view9422119'),
+(9, 'Gioca con le sillabe DA, DE, DI, DO, DU', 'https://learningapps.org/view9421193'),
+(10, 'Gioca con le sillabe ZA, ZE, ZI, ZO, ZU', 'https://learningapps.org/view9416843'),
+(11, 'Gioca con le sillabe PA, PE, PI, PO, PU', 'https://learningapps.org/view9414556'),
+(12, 'Gioca con le sillabe NA, NE, NI, NO, NU', 'https://learningapps.org/view9413712'),
+(13, 'Gioca con le sillabe LA, LE, LI, LO, LU', 'https://learningapps.org/view9411281'),
+(14, 'Gioca con le sillabe BA, BE, BI, BO, BU', 'https://learningapps.org/view9403881'),
+(15, 'Gioca con le sillabe RA, RE, RI, RO, RU', 'https://learningapps.org/view9403191'),
+(16, 'Gioca con le sillabe SA, SE, SI, SO, SU', 'https://learningapps.org/view9402278'),
+(17, 'Ripeti ad alta voce, e trova il nome', 'https://learningapps.org/view23737323'),
+(18, 'Trova il nome corretto', 'https://learningapps.org/view17503413'),
+(19, 'Trova il nome corretto', 'https://learningapps.org/view14057516'),
+(20, 'Sequenza per attività di narrazione (Non voglio dormire)', 'https://learningapps.org/view13304120'),
+(21, 'Sequenza per attività di narrazione (Festa di Compleanno)', 'https://learningapps.org/view13223436'),
+(22, 'Sequenza per attività di narrazione (Gita al mare)', 'https://learningapps.org/view13379551'),
+(23, 'A pesca con il papà-La comprensione del testo con le sequenze temporali', 'https://learningapps.org/view20936047'),
+(24, 'Cappuccetto Rosso-Riordino in sequenze', 'https://learningapps.org/view11086771'),
+(25, 'Memory Supereroi', 'https://learningapps.org/view13278812'),
+(26, 'Memory metafonologia Scritta (SILLABA INIZIALE)', 'https://learningapps.org/view9918181'),
+(27, 'Memory g mediana e iniziale', 'https://learningapps.org/view20874121'),
+(28, 'Parole segmentate', 'https://learningapps.org/view11037700'),
+(29, 'METAFONOLOGIA (Sillaba Iniziale)', 'https://learningapps.org/view12853537'),
+(30, 'Discriminazione /t/ /k/: Uguali o Diversi?', 'https://learningapps.org/view9812830');
 
 --
 -- Dump dei dati per la tabella `es_della_batteria`
@@ -81,55 +87,53 @@ INSERT INTO `esercizifatti` (`idTerapia`, `idEsercizio`, `stato`) VALUES
 
 INSERT INTO `es_della_batteria` (`idBatteria`, `idEsercizio`) VALUES
 (1, 1),
+(1, 2),
 (1, 3),
-(2, 1),
-(2, 2),
-(2, 3);
+(1, 4),
+(1, 5),
+(1, 6),
+(1, 7),
+(1, 8),
+(1, 9),
+(1, 10),
+(1, 11),
+(1, 12),
+(1, 13),
+(1, 14),
+(1, 15),
+(1, 30);
 
 --
 -- Dump dei dati per la tabella `logopedisti`
 --
 
 INSERT INTO `logopedisti` (`idUtente`, `nome`, `cognome`, `matricola`, `inizioServizio`, `specializzazione`, `CF`) VALUES
-(1, 'mario', 'rossi', 111, '2022-06-24', 'spec.1', 'dfgdf'),
-(6, 'luca', 'giurato', 222, '2022-06-02', 'spec.2', 'qwerty'),
-(7, 'fra', 'panza', 333, '2022-06-22', 'spec.3', 'zcvbnbm');
-
---
--- Dump dei dati per la tabella `pretest`
---
-
-INSERT INTO `pretest` (`idPretest`, `domanda1`, `domanda2`, `domanda3`, `telefono`, `idLogopedista`, `stato`) VALUES
-(3, 'si, molte purtroppo', 'si, quando legge soprattutto', 'no, di 10 mesi', '39444842251', 1, 0);
+(1, 'Martino', 'Pagano', 1234, '2015-06-01', 'Disturbi lingua', 'martinologopedistacf'),
+(2, 'Massimiliano', 'Murdaca', 2345, '2017-06-01', 'Disturbo dell\'attenzione', 'massimilianologopedistacf'),
+(3, 'Giuseppe', 'Mele', 3456, '2019-06-05', 'Disturbi visivi', 'giuseppelogopedistacf'),
+(4, 'Francesco', 'Panza', 4567, '2021-06-01', 'Disturbi cognitivo', 'francescologopedistacf');
 
 --
 -- Dump dei dati per la tabella `terapie_assegnate`
 --
 
 INSERT INTO `terapie_assegnate` (`idTerapia`, `idBatteria`, `idBambino`, `data`, `Diagnosi`) VALUES
-(1, 1, 2, '2022-05-24', 'questa è la diagnosi!'),
-(2, 1, 2, '2020-02-20', 'prova prova prova');
+(1, 1, 5, '2020-02-20', 'Questa è la diagnosi della problematica');
 
 --
 -- Dump dei dati per la tabella `utenti`
 --
 
 INSERT INTO `utenti` (`idUtente`, `email`, `password`, `tipoUtente`) VALUES
-(1, 'a@a.it', 'aaaa', 4),
-(2, 'b@b.it', 'bbbb', 5),
-(3, 'c@c.it', 'cccc', 6),
-(4, 'bb@bb.it', 'bbbb', 5),
-(5, 'cc@cc.it', 'cccc', 6),
-(6, 'aa@aa.it', 'aaaa', 4),
-(7, 'aaa@aaa.it', 'aaaa', 4),
-(8, 'ccc@ccc.it', 'cccc', 6),
-(9, 'm@c.it', 'cccc', 6),
-(10, 'm@b.it', 'bbbbbb', 5),
-(12, 'martino@c.it', 'ccccc', 3),
-(13, 'mm@c.it', 'cccc', 6),
-(15, 'test@b.it', 'bbbb', 5),
-(16, 'massii@b.it', 'bbbb', 5),
-(17, 'massiiiii@b.it', 'bbbb', 5);
+(1, 'martino@logopedista.it', '$2y$13$ufH.LN8LsXAgOj0I8zpb7OrTlUJYN7Fpy2YQWzduMLoOYjX206SPe', 4),
+(2, 'massimiliano@logopedista.it', '$2y$13$HhGMvmlO1j1F4Ze/xvCroeVeOl8HAl94h6bjI6fivk28mcdoijvt2', 4),
+(3, 'giuseppe@logopedista.it', '$2y$13$VxKcninxOVa684ezXc3C0.DVzsj9WaNEUPPhu/AT6naPKPpmAPNsG', 4),
+(4, 'francesco@logopedista.it', '$2y$13$CU.Asu1jvL2Y1gteiRyHh.Fk7nOWlB0flKMz/RIjjQpJt6MgVi5N6', 4),
+(5, 'martino@bambino.it', '$2y$13$1Ob94Tf7R/ICd/Ne/aFHiuOWOaM..J6ol/SPUCwAm/xJtLl/Bgneq', 5),
+(6, 'massimiliano@bambino.it', '$2y$13$97mn7maLMy1NuEz.1XUbNepT6LoaptHy.160ACrmcI4dEidbbK2US', 5),
+(7, 'francesco@bambino.it', '$2y$13$n7ct2wNrntYAssLAwctalOIM/dp9tpwKf7wesu2t3.P9.ci5xuHTS', 5),
+(8, 'martino@caregiver.it', '$2y$13$TtBWyFfwiCILDQqv356FUuhNOv715KqeWvUD8YvgKO2gn4GtwxhQ2', 6),
+(9, 'massimiliano@caregiver.it', '$2y$13$48bjchrFYy6rSAXqUIpo9O6Kh9.e3/bPNhLQnC4X5j8qksxcfW/I.', 6);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

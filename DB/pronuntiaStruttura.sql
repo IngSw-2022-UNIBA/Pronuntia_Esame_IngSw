@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Giu 04, 2022 alle 12:13
+-- Creato il: Giu 06, 2022 alle 17:44
 -- Versione del server: 10.4.24-MariaDB
 -- Versione PHP: 7.4.29
 
@@ -22,13 +22,6 @@ SET time_zone = "+00:00";
 --
 
 -- --------------------------------------------------------
-
-
-DROP DATABASE IF EXISTS pronuntia;
-
-CREATE DATABASE pronuntia;
-
-USE pronuntia;
 
 --
 -- Struttura della tabella `bambini`
@@ -163,7 +156,7 @@ CREATE TABLE `terapie_assegnate` (
 CREATE TABLE `utenti` (
   `idUtente` int(11) NOT NULL,
   `email` varchar(55) NOT NULL,
-  `password` varchar(25) NOT NULL,
+  `password` varchar(100) NOT NULL,
   `tipoUtente` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

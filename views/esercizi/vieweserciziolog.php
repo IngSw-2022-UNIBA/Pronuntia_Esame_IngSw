@@ -13,7 +13,7 @@ $this->title = $model->idEsercizio;
 
 ?>
 
-
+<br><br><br>
 <iframe id="frame" style="border:0px;width:100%;height:500px" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
 <script>
 

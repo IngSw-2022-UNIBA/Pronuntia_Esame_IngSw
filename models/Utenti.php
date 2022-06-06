@@ -40,7 +40,6 @@ class Utenti extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
             [['tipoUtente'], 'integer'],
             [['email'], 'string', 'max' => 55],
             ['email','email'],
-            [['password'], 'string', 'max' => 25],
             [['email'], 'unique'],
             ['password_repeat', 'compare', 'compareAttribute' => 'password'],
         ];
@@ -110,7 +109,7 @@ class Utenti extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
      */
     public function validatePassword($password)
     {
-        return $this->password === $password;
+        return Yii::$app->security->validatePassword($password, $this->password);
     }
 
     /**

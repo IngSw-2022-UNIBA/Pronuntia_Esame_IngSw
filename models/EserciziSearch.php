@@ -69,7 +69,7 @@ class EserciziSearch extends Esercizi
 
     public function searchnotinbat($params, $idBatteria)
     {
-        $query = Esercizi::find()->select('esercizi.idEsercizio, testo, link')->from('es_della_batteria, esercizi')->where("es_della_batteria.idEsercizio = esercizi.idEsercizio and esercizi.idEsercizio NOT IN (SELECT idEsercizio from es_della_batteria where idBatteria = '$idBatteria')")->distinct();
+        $query = Esercizi::find()->select('esercizi.idEsercizio, testo, link')->from('esercizi')->where("esercizi.idEsercizio NOT IN (SELECT idEsercizio from es_della_batteria where idBatteria = '$idBatteria')")->distinct();
 
         // add conditions that should always apply here
 
