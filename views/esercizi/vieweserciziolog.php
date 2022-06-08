@@ -24,3 +24,6 @@ $this->title = $model->idEsercizio;
 
 </script>
 
+    <p>
+<?= Html::a('Torna a elenco Batterie', ['batterie/batteriedellog', 'idLogopedista' => Yii::$app->user->id], ['class' => 'btn btn-primary']) ?>
+    </p>

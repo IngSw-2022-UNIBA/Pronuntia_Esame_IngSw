@@ -24,6 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
+        <?= Html::a('Elenco terapie', ['bambini/terapiebambino', 'idBambino' => $model->idBambino], ['class' => 'btn btn-primary']) ?>
     </p>
 
     <?= DetailView::widget([

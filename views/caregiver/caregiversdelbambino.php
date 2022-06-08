@@ -23,6 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a('Aggiungi un Caregiver al bambino', ['logopedisti/listaperaggiungerecaregiver', 'idBambino' => $idBambino], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Torna alla schermata bambino', ['bambini/viewlog', 'idUtente' => $idBambino], ['class' => 'btn btn-primary']) ?>
     </p>
 
     <?php Pjax::begin(); ?>

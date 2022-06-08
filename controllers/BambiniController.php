@@ -138,7 +138,9 @@ class BambiniController extends Controller
         $model = $this->findModel($idUtente);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->goHome();
+            return $this->render('viewlog', [
+                'model' => $this->findModel($idUtente),
+            ]);
         }
 
         return $this->render('update2', [
