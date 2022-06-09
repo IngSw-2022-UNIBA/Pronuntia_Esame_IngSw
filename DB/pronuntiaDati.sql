@@ -25,29 +25,40 @@ SET time_zone = "+00:00";
 -- Dump dei dati per la tabella `bambini`
 --
 
+USE pronuntia;
+
+
+INSERT INTO `utenti` (`idUtente`, `email`, `password`, `tipoUtente`) VALUES
+(1, 'martino@logopedista.it', '$2y$13$ufH.LN8LsXAgOj0I8zpb7OrTlUJYN7Fpy2YQWzduMLoOYjX206SPe', 4),
+(2, 'massimiliano@logopedista.it', '$2y$13$HhGMvmlO1j1F4Ze/xvCroeVeOl8HAl94h6bjI6fivk28mcdoijvt2', 4),
+(3, 'giuseppe@logopedista.it', '$2y$13$VxKcninxOVa684ezXc3C0.DVzsj9WaNEUPPhu/AT6naPKPpmAPNsG', 4),
+(4, 'francesco@logopedista.it', '$2y$13$CU.Asu1jvL2Y1gteiRyHh.Fk7nOWlB0flKMz/RIjjQpJt6MgVi5N6', 4),
+(5, 'martino@bambino.it', '$2y$13$1Ob94Tf7R/ICd/Ne/aFHiuOWOaM..J6ol/SPUCwAm/xJtLl/Bgneq', 5),
+(6, 'massimiliano@bambino.it', '$2y$13$97mn7maLMy1NuEz.1XUbNepT6LoaptHy.160ACrmcI4dEidbbK2US', 5),
+(7, 'francesco@bambino.it', '$2y$13$n7ct2wNrntYAssLAwctalOIM/dp9tpwKf7wesu2t3.P9.ci5xuHTS', 5),
+(8, 'martino@caregiver.it', '$2y$13$TtBWyFfwiCILDQqv356FUuhNOv715KqeWvUD8YvgKO2gn4GtwxhQ2', 6),
+(9, 'massimiliano@caregiver.it', '$2y$13$48bjchrFYy6rSAXqUIpo9O6Kh9.e3/bPNhLQnC4X5j8qksxcfW/I.', 6);
+
+
+INSERT INTO `logopedisti` (`idUtente`, `nome`, `cognome`, `matricola`, `inizioServizio`, `specializzazione`, `CF`) VALUES
+(1, 'Martino', 'Pagano', 1234, '2015-06-01', 'Disturbi lingua', 'martinologopedistacf'),
+(2, 'Massimiliano', 'Murdaca', 2345, '2017-06-01', 'Disturbo dell\'attenzione', 'massimilianologopedistacf'),
+(3, 'Giuseppe', 'Mele', 3456, '2019-06-05', 'Disturbi visivi', 'giuseppelogopedistacf'),
+(4, 'Francesco', 'Panza', 4567, '2021-06-01', 'Disturbi cognitivo', 'francescologopedistacf');
+
+
 INSERT INTO `bambini` (`idUtente`, `nome`, `cognome`, `idLogopedista`, `dataDiNascita`, `CF`, `notePersonali`) VALUES
 (5, 'Martino', 'Pagano', 4, '2022-06-03', 'martinobambinocf', 'Qui appariranno i consigli del tuo logopedista'),
 (6, 'Massimiliano', 'Murdaca', 4, '2012-06-19', 'massimilianobambinocf', 'Qui appariranno i consigli del tuo logopedista'),
 (7, 'Francesco', 'Panza', NULL, '2009-06-03', 'francescobambinocf', 'Qui appariranno i consigli del tuo logopedista');
 
---
--- Dump dei dati per la tabella `batterie`
---
-
-INSERT INTO `batterie` (`idBatteria`, `nome`, `descrizione`, `categoria`, `idLogopedista`) VALUES
-(1, 'Batteria per vocali', 'Questa è una batteria per vocali', 'vocali', 4);
-
---
--- Dump dei dati per la tabella `caregiver`
---
 
 INSERT INTO `caregiver` (`idUtente`, `nome`, `cognome`, `idBambino`, `CF`, `dataDiNascita`) VALUES
 (8, 'Martino', 'Pagano', 6, 'martinocaregivercf', '1985-06-05'),
 (9, 'Massimiliano', 'Murdaca', 5, 'massimilianocaregivercf', '1990-06-14');
 
---
--- Dump dei dati per la tabella `esercizi`
---
+
+
 
 INSERT INTO `esercizi` (`idEsercizio`, `testo`, `link`) VALUES
 (1, 'Gioca con le sillabe NA, NE, NI, NO, NU ', 'https://learningapps.org/view9413712'),
@@ -81,9 +92,13 @@ INSERT INTO `esercizi` (`idEsercizio`, `testo`, `link`) VALUES
 (29, 'METAFONOLOGIA (Sillaba Iniziale)', 'https://learningapps.org/view12853537'),
 (30, 'Discriminazione /t/ /k/: Uguali o Diversi?', 'https://learningapps.org/view9812830');
 
---
--- Dump dei dati per la tabella `es_della_batteria`
---
+
+
+
+INSERT INTO `batterie` (`idBatteria`, `nome`, `descrizione`, `categoria`, `idLogopedista`) VALUES
+(1, 'Batteria per vocali', 'Questa è una batteria per vocali', 'vocali', 4);
+
+
 
 INSERT INTO `es_della_batteria` (`idBatteria`, `idEsercizio`) VALUES
 (1, 1),
@@ -103,37 +118,15 @@ INSERT INTO `es_della_batteria` (`idBatteria`, `idEsercizio`) VALUES
 (1, 15),
 (1, 30);
 
---
--- Dump dei dati per la tabella `logopedisti`
---
 
-INSERT INTO `logopedisti` (`idUtente`, `nome`, `cognome`, `matricola`, `inizioServizio`, `specializzazione`, `CF`) VALUES
-(1, 'Martino', 'Pagano', 1234, '2015-06-01', 'Disturbi lingua', 'martinologopedistacf'),
-(2, 'Massimiliano', 'Murdaca', 2345, '2017-06-01', 'Disturbo dell\'attenzione', 'massimilianologopedistacf'),
-(3, 'Giuseppe', 'Mele', 3456, '2019-06-05', 'Disturbi visivi', 'giuseppelogopedistacf'),
-(4, 'Francesco', 'Panza', 4567, '2021-06-01', 'Disturbi cognitivo', 'francescologopedistacf');
 
---
--- Dump dei dati per la tabella `terapie_assegnate`
---
+
 
 INSERT INTO `terapie_assegnate` (`idTerapia`, `idBatteria`, `idBambino`, `data`, `Diagnosi`) VALUES
 (1, 1, 5, '2020-02-20', 'Questa è la diagnosi della problematica');
 
---
--- Dump dei dati per la tabella `utenti`
---
 
-INSERT INTO `utenti` (`idUtente`, `email`, `password`, `tipoUtente`) VALUES
-(1, 'martino@logopedista.it', '$2y$13$ufH.LN8LsXAgOj0I8zpb7OrTlUJYN7Fpy2YQWzduMLoOYjX206SPe', 4),
-(2, 'massimiliano@logopedista.it', '$2y$13$HhGMvmlO1j1F4Ze/xvCroeVeOl8HAl94h6bjI6fivk28mcdoijvt2', 4),
-(3, 'giuseppe@logopedista.it', '$2y$13$VxKcninxOVa684ezXc3C0.DVzsj9WaNEUPPhu/AT6naPKPpmAPNsG', 4),
-(4, 'francesco@logopedista.it', '$2y$13$CU.Asu1jvL2Y1gteiRyHh.Fk7nOWlB0flKMz/RIjjQpJt6MgVi5N6', 4),
-(5, 'martino@bambino.it', '$2y$13$1Ob94Tf7R/ICd/Ne/aFHiuOWOaM..J6ol/SPUCwAm/xJtLl/Bgneq', 5),
-(6, 'massimiliano@bambino.it', '$2y$13$97mn7maLMy1NuEz.1XUbNepT6LoaptHy.160ACrmcI4dEidbbK2US', 5),
-(7, 'francesco@bambino.it', '$2y$13$n7ct2wNrntYAssLAwctalOIM/dp9tpwKf7wesu2t3.P9.ci5xuHTS', 5),
-(8, 'martino@caregiver.it', '$2y$13$TtBWyFfwiCILDQqv356FUuhNOv715KqeWvUD8YvgKO2gn4GtwxhQ2', 6),
-(9, 'massimiliano@caregiver.it', '$2y$13$48bjchrFYy6rSAXqUIpo9O6Kh9.e3/bPNhLQnC4X5j8qksxcfW/I.', 6);
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

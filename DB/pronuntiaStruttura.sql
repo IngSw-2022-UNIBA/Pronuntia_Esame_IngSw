@@ -27,6 +27,10 @@ SET time_zone = "+00:00";
 -- Struttura della tabella `bambini`
 --
 
+DROP DATABASE IF EXISTS pronuntia ;
+CREATE DATABASE pronuntia ;
+USE pronuntia;
+
 CREATE TABLE `bambini` (
   `idUtente` int(11) NOT NULL,
   `nome` varchar(25) NOT NULL,
