@@ -21,9 +21,7 @@ SET time_zone = "+00:00";
 -- Database: `pronuntia`
 --
 
---
--- Dump dei dati per la tabella `bambini`
---
+
 
 USE pronuntia;
 
