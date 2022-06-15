@@ -27,7 +27,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'CF')->textInput(['maxlength' => true, 'style' => 'text-transform: uppercase']) ?>
 
-    <?= $form->field($model, 'notePersonali')->textInput(['maxlength' => true, 'style' => 'text-transform: uppercase']) ?>
+    <?= $form->field($model, 'notePersonali')->textInput(['maxlength' => true]) ?>
 
 
     <div class="form-group">

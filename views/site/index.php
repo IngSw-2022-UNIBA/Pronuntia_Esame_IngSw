@@ -87,7 +87,7 @@ $this->title = 'Pronuntia';
 
 
 
-<BR><BR>QUESTO DIVENTA RANDOM CON TESTO PRIMA E INSERITO IN UN DIV <BR><br>
+<BR><BR><h2>Ecco un esempio di un nostro esercizio! </h2><BR><br>
 <iframe src="https://learningapps.org/watch?app=13379551" style="border:0px;width:100%;height:500px"
         allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
 

@@ -38,7 +38,8 @@ class Bambini extends \yii\db\ActiveRecord
         return [
             [['idUtente', 'nome', 'cognome', 'dataDiNascita', 'CF'], 'required'],
             [['idUtente'], 'integer'],
-            [['nome', 'cognome', 'dataDiNascita', 'CF', 'notePersonali'], 'string', 'max' => 25],
+            [['nome', 'cognome', 'dataDiNascita', 'CF'], 'string', 'max' => 25],
+            [['notePersonali'], 'string', 'max' => 45],
             [['idUtente'], 'unique'],
             [['idUtente'], 'exist', 'skipOnError' => true, 'targetClass' => Utenti::className(), 'targetAttribute' => ['idUtente' => 'idUtente']],
         ];
